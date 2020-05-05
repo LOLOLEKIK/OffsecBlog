@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/web/</link>
+    <description>Recent content in Web on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language>
+    
+	<atom:link href="http://lololekik.com/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>FCSC ANSSI 2020</title>
+      <link>http://lololekik.com/writeups/fcsc-anssi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/writeups/fcsc-anssi/</guid>
+      <description>CTF organisé par l&amp;rsquo;ANSSI pour effectuer les préselections de l&amp;rsquo;ECSC
+Introduction Cette année j&amp;rsquo;ai eu le plaisir de participer au CTF de l&amp;rsquo;anssi ! Cet évènement a réuni plus de 2100 participants. C&#39;était un expérience enrichissante et je vous partage la totalité de mes challenges (excepté intro) ici ! Bonne lecture et bon courage :)
+Ah oui et voici mon classement :
+Ce qui correspondait à 75 sur 633 dans la catégorie Sénior.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://lololekik.com/hackthebox/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/ctf/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/writeups/fcsc-anssi/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/forensic/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/misc/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/web/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/writeups/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/categories/writeups/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/writeups/</loc>
+  </url>
+  
+</urlset>
