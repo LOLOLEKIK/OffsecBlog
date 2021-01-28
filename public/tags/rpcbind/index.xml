@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rpcbind on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/rpcbind/</link>
+    <description>Recent content in rpcbind on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/rpcbind/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NFS </title>
+      <link>http://lololekik.com/cuisine/nfsenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/nfsenum/</guid>
+      <description>Introduction NFS est un protocole qui permet à un client d&amp;rsquo;accèder à des fichiers à travers le réseau. Un client désireux d&amp;rsquo;effectuer une requête NFS s&amp;rsquo;adresse au portmapper (port 111 en TCP ou UDP) et lui demande où se trouve le serveur NFS. On lui répond généralement en indiquant le port 2049 (port par défaut pour NFS).
+NMAP - RPCINFO Service accessible dans l&amp;rsquo;annuaire (portmapper)
+┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Cuisine] └─$ nmap -p 111 --script=rpcinfo metasploitable.</description>
+    </item>
+    
+  </channel>
+</rss>

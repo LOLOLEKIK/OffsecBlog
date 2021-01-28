@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>host on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/host/</link>
+    <description>Recent content in host on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/host/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DNS - Transfert de Zone </title>
+      <link>http://lololekik.com/cuisine/zonetransfert/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/zonetransfert/</guid>
+      <description>Introduction Un transfert de zone DNS permet d&amp;rsquo;obtenir une liste de machine inscrite dans le DNS interrogé.
+Host host -l &amp;lt;nom de domaine&amp;gt; &amp;lt;adresse du serveur DNS&amp;gt; DNSRecon dnsrecon -d &amp;lt;nom de domaine&amp;gt; -t axfr DNSenum dnsenum &amp;lt;nom de domaine&amp;gt; NMAP nmap --script=dns-zone-transfer -p 53 &amp;lt;adresse du serveur DNS&amp;gt; </description>
+    </item>
+    
+  </channel>
+</rss>

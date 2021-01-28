@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.78.2" />
+
+    
+    
+    
+
+<title>Lame - Easy • LOLOLEKIK</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Lame - Easy"/>
+<meta name="twitter:description" content="Résolution de la box Lame
+Introduction La box Lame de Hack The Box est une box Linux de difficulté &ldquo;Easy&rdquo;. Cette box fait aussi parti du parcours &ldquo;Beginner Track&rdquo; du mode &ldquo;Tracks&rdquo;.
+Enumeration Pour commencer on énumère les ports ouverts pour trouver les services distants.
+FTP Anonyme On voit que le service FTP est accessible en anonyme. On tente une connexion pour vérifier s&rsquo;il y a des fichiers qui pourraient nous intéresser."/>
+
+<meta property="og:title" content="Lame - Easy" />
+<meta property="og:description" content="Résolution de la box Lame
+Introduction La box Lame de Hack The Box est une box Linux de difficulté &ldquo;Easy&rdquo;. Cette box fait aussi parti du parcours &ldquo;Beginner Track&rdquo; du mode &ldquo;Tracks&rdquo;.
+Enumeration Pour commencer on énumère les ports ouverts pour trouver les services distants.
+FTP Anonyme On voit que le service FTP est accessible en anonyme. On tente une connexion pour vérifier s&rsquo;il y a des fichiers qui pourraient nous intéresser." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lololekik.com/hack-the-box/lame/" />
+<meta property="og:site_name" content="OffSec &amp; CO" />
+
+
+    
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/qtcreator_dark.min.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.816e5b26c5966343ef21f902ba05a763964deb2ae3fdcd9a954614131b756c59.css" integrity="sha256-gW5bJsWWY0PvIfkCugWnY5ZN6yrj/c2alUYUExt1bFk=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/custom.css">
+
+
+
+
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://lololekik.com/">LOLOLEKIK</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://lololekik.com/img/author.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         OffSec &amp; Co 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">LOLOLEKIK</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/cuisine/">
+						<span>Cuisine</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/exploit/">
+						<span>Exploit</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/network/">
+						<span>Network</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/writeups/">
+						<span>WriteUps</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/hack-the-box/">
+						<span>HackTheBox</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	
+	
+	<a href="https://github.com/LOLOLEKIK" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://root-me.org/lololekik" target="blank" class="linklogo"><div class="rootme_logo logohover"> </div></a>
+	
+	
+	<a href="https://hackthebox.eu/home/users/profile/202145" target="blank" class="linklogo"><div class="hackthebox_logo logohover"> </div></a>
+	
+	
+	<a href="https://linkedin.com/in/loris-thiebaut-8b4b85197" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:loris.thiebaut@gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Lame - Easy</h1>
+    
+    
+<div class="post__meta">
+    
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/hack-the-box">HACK THE BOX</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/pentest">pentest</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/linux">linux</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/easy">easy</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/offsec">offsec</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/samba">samba</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/ftp">ftp</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 2 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p><strong>Résolution de la box Lame</strong></p>
+<h1 id="introduction">Introduction</h1>
+<p>La box <strong>Lame</strong> de Hack The Box est une box Linux de difficulté &ldquo;Easy&rdquo;. Cette box fait aussi parti du parcours &ldquo;<strong>Beginner Track</strong>&rdquo; du mode &ldquo;<strong>Tracks</strong>&rdquo;.</p>
+
+
+
+  <img src="/img/htb/lame/lame_resume.png" alt="Résumé de la machine Lame" class="imageformat"/>
+
+<h1 id="enumeration">Enumeration</h1>
+<p>Pour commencer on énumère les ports ouverts pour trouver les services distants.</p>
+
+
+
+  <img src="/img/htb/lame/nmap_lame.png" alt="Nmap Lame" class="imageformat"/>
+
+<h2 id="ftp-anonyme">FTP Anonyme</h2>
+<p>On voit que le service FTP est accessible en anonyme. On tente une connexion pour vérifier s&rsquo;il y a des fichiers qui pourraient nous intéresser.</p>
+
+
+
+  <img src="/img/htb/lame/lame_ftp.png" alt="Lame connexion anonyme" class="imageformat"/>
+
+<p>Il n&rsquo;y a rien dans le répertoire. Nous vérifions si nous avons les droits d&rsquo;écriture</p>
+
+
+
+  <img src="/img/htb/lame/lame_ftp_edit.png" alt="Lame écriture ftp" class="imageformat"/>
+
+<p>Ici, impossible d&rsquo;ajouter du contenu, alors on continue l&rsquo;énumération</p>
+<h2 id="enumération-des-versions">Enumération des versions</h2>
+<p>Avec <strong>searchsploit</strong> on commence par énumérer les vulnérabilités connues en fonction des versions des différents services. Ici deux services m&rsquo;ont interessé : FTP et SMB.</p>
+<p>On voit sur l&rsquo;image ci-dessous qu&rsquo;il existe un exploit sur cette version de FTP. De plus il est diponnible sous metasploit.</p>
+
+
+
+  <img src="/img/htb/lame/lame_ftp_search.png" alt="Lame searchsploit ftp" class="imageformat"/>
+
+<p>Je regarde aussi s&rsquo;il existe des exploits disponnible sous SMB.</p>
+
+
+
+  <img src="/img/htb/lame/lame_smb_search.png" alt="Lame searchsploit smb" class="imageformat"/>
+
+<p>Ici on peut voir qu&rsquo;il existe aussi une vulnérabilité de type RCE dans la version de samba et que l&rsquo;exploit est présent dans Metasploit.</p>
+<h1 id="exploit">Exploit</h1>
+<p>Je me suis d&rsquo;abord interessé à la vulnérabilité sur FTP car c&rsquo;est la première que j&rsquo;ai trouvé.</p>
+<h2 id="ftp-via-metasploit">FTP via Metasploit</h2>
+<p>J&rsquo;ai d&rsquo;abord lancé metasploit avec la commande <code>msfconsole</code></p>
+
+
+
+  <img src="/img/htb/lame/lame_msfconsole.png" alt="Lame msfconsole" class="imageformat"/>
+
+<p>On recherche d&rsquo;abord le chemin de l&rsquo;exploit au sein de metasploit.</p>
+
+
+
+  <img src="/img/htb/lame/lame_metasploit_ftp_search.png" alt="Lame metasploit recherche vulnérabilité FTP" class="imageformat"/>
+
+<p>On configure ensuite notre attaque.</p>
+
+
+
+  <img src="/img/htb/lame/lame_metasploit_ftp_configure.png" alt="Lame metasploit configure vulnérabilité FTP" class="imageformat"/>
+
+<p>Et on la lance.</p>
+
+
+
+  <img src="/img/htb/lame/lame_metasploit_ftp_exploit.png" alt="Lame metasploit exploit vulnérabilité FTP" class="imageformat"/>
+
+<p>Ici on voit qu&rsquo;aucune session n&rsquo;a été créé.</p>
+<h2 id="ftp-via-script">FTP via script</h2>
+<p>J&rsquo;ai voulu savoir si l&rsquo;erreur venait de metasploit ou si la machine bloquait cette attaque. Pour cela j&rsquo;ai téléchargé un script sur le git suivant : <a href="https://github.com/ahervias77/vsftpd-2.3.4-exploit">https://github.com/ahervias77/vsftpd-2.3.4-exploit</a></p>
+
+
+
+  <img src="/img/htb/lame/lame_ftp_script.png" alt="Lame script exploit vulnérabilité FTP" class="imageformat"/>
+
+<p>Ici le script n&rsquo;a pas fonctionné non plus, je l&rsquo;ai donc annulé pour me concentrer sur la vulnérabilité SMB.</p>
+<h2 id="samba-via-metasploit">Samba via Metasploit</h2>
+<p>Comme pour FTP on sélectionne l&rsquo;exploit correspondant à la vulnérabilité.</p>
+
+
+
+  <img src="/img/htb/lame/lame_metasploit_smb_search.png" alt="Lame metasploit recherche vulnérabilité SMB" class="imageformat"/>
+
+<p>Ensuite on configure l&rsquo;attaque en indiquant notre interface réseau dans LHOST et la machine distance dans RHOSTS.</p>
+
+
+
+  <img src="/img/htb/lame/lame_metasploit_smb_configure.png" alt="Lame metasploit configure vulnérabilité SMB" class="imageformat"/>
+
+<p>Enfin on lance l&rsquo;attaque et on énumère les dossiers pour trouver les deux flags.</p>
+
+
+
+  <img src="/img/htb/lame/lame_metasploit_smb_exploit.png" alt="Lame metasploit exploit vulnérabilité SMB" class="imageformat"/>
+
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/hack-the-box/mango/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Mango - Medium</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>

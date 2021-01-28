@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.78.2" />
+
+    
+    
+    
+
+<title>[Cisco] ACL standard &amp; étendue • LOLOLEKIK</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[Cisco] ACL standard &amp; étendue"/>
+<meta name="twitter:description" content="** Mise en place des ACL pour sécuriser les accès réseaux**
+Introduction Les Access Control List (ACL) sont des règles qui permettent d&rsquo;autoriser ou refuser certains traffique. Les ACL peuvent s&rsquo;appuyer sur de nombreux paramètres pour filtrer les accès comme l&rsquo;adresse IP source ou encore le port à joindre. Au sein des systèmes Cisco, on identifie deux types d&rsquo;ACL distinct. Les ACL standard et les ACL étendue.
+ACL Standard Les ACL standard, sont les acl qui proposent le moins de paramètres à surveiller."/>
+
+<meta property="og:title" content="[Cisco] ACL standard &amp; étendue" />
+<meta property="og:description" content="** Mise en place des ACL pour sécuriser les accès réseaux**
+Introduction Les Access Control List (ACL) sont des règles qui permettent d&rsquo;autoriser ou refuser certains traffique. Les ACL peuvent s&rsquo;appuyer sur de nombreux paramètres pour filtrer les accès comme l&rsquo;adresse IP source ou encore le port à joindre. Au sein des systèmes Cisco, on identifie deux types d&rsquo;ACL distinct. Les ACL standard et les ACL étendue.
+ACL Standard Les ACL standard, sont les acl qui proposent le moins de paramètres à surveiller." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lololekik.com/network/cisco_acl/" />
+<meta property="og:site_name" content="OffSec &amp; CO" />
+
+
+    
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/qtcreator_dark.min.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.816e5b26c5966343ef21f902ba05a763964deb2ae3fdcd9a954614131b756c59.css" integrity="sha256-gW5bJsWWY0PvIfkCugWnY5ZN6yrj/c2alUYUExt1bFk=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/custom.css">
+
+
+
+
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://lololekik.com/">LOLOLEKIK</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://lololekik.com/img/author.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         OffSec &amp; Co 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">LOLOLEKIK</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/cuisine/">
+						<span>Cuisine</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/exploit/">
+						<span>Exploit</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/network/">
+						<span>Network</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/writeups/">
+						<span>WriteUps</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/hack-the-box/">
+						<span>HackTheBox</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	
+	
+	<a href="https://github.com/LOLOLEKIK" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://root-me.org/lololekik" target="blank" class="linklogo"><div class="rootme_logo logohover"> </div></a>
+	
+	
+	<a href="https://hackthebox.eu/home/users/profile/202145" target="blank" class="linklogo"><div class="hackthebox_logo logohover"> </div></a>
+	
+	
+	<a href="https://linkedin.com/in/loris-thiebaut-8b4b85197" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:loris.thiebaut@gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>[Cisco] ACL standard &amp; étendue</h1>
+    
+    
+<div class="post__meta">
+    
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/network">NETWORK</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/network">network</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/cisco">cisco</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/configuration">configuration</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/acl">acl</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/security">security</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 4 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p>** Mise en place des ACL pour sécuriser les accès réseaux**</p>
+<h1 id="introduction">Introduction</h1>
+<p>Les Access Control List (ACL) sont des règles qui permettent d&rsquo;autoriser ou refuser certains traffique. Les ACL peuvent s&rsquo;appuyer sur de nombreux paramètres pour filtrer les accès comme l&rsquo;adresse IP source ou encore le port à joindre. Au sein des systèmes Cisco, on identifie deux types d&rsquo;ACL distinct. Les ACL standard et les ACL étendue.</p>
+<h2 id="acl-standard">ACL Standard</h2>
+<p>Les ACL standard, sont les acl qui proposent le moins de paramètres à surveiller. En effet on ne peut que surveiller l&rsquo;adresse IP source du paquet. Par conséquent elles sont placées au plus proche de la destination. Comme ça, on le prend pas le risque d&rsquo;interdire des réseaux non voulu et d&rsquo;être trop restrictif. De plus on ne multiplie pas les règles inutiles.</p>
+
+
+
+  <img src="/img/cisco_acl/standar_ex.png" alt="ACL standard exemple" class="imageformat"/>
+
+<p>Dans l&rsquo;exemple ci-dessus, on part du principe qu&rsquo;uniquement le PC7 est autorisé à joindre le serveur. Si on place les ACL là ou il y a les routeurs avec les encadrés rouge, alors on va multiplier le nombre d&rsquo;ACL entre les routeurs et en plus on va être trop restrictif. Dans ce cas là le PC4 ne pourra plus communiquer avec le PC5 car les échanges sont bloqués des deux côtés. La solution consisterai à placer l&rsquo;ACL côté serveur et n&rsquo;autoriser uniquement les paquets venant de PC7.</p>
+<p>Les ACL peuvent être numérotées de 1 à 99 ou nommées vient un nom.</p>
+<pre><code>access-list (1-99) permit Source-Ip Wild-Mask
+
+ip access-list standard NomACL
+permit Source-Ip Wild-Mask
+</code></pre><h2 id="acl-étendue">ACL étendue</h2>
+<p>Les ACL étendues peuvent s&rsquo;appuyer sur de nombreux paramètres pour décider de rejeter ou d&rsquo;accepter le paquet. On peut compter sur l&rsquo;adresse source, destination le protocole, le port source, le port destination etc.. Par conséquent il est facile de d&rsquo;identifier précisément un besoin et on place le paquet au plus proche de la source. De cette manière, on évite de multiplier le nombre d&rsquo;ACL et on réduit le traffique réseau.</p>
+
+
+
+  <img src="/img/cisco_acl/etendu_ex.png" alt="ACL étendu exemple" class="imageformat"/>
+
+<p>Dans l&rsquo;exemple ci-dessus, on veut que notre PC4 puisse joindre uniquement le serveur web depuis sur un port bien spécifique. Si on place les ACL dans les routeurs avec les encadrés rouge, on va multiplier le nombre d&rsquo;ACL. Si nous placons notre ACL étendu sur le routeur du PC4 nous pouvons indiquer que le traffique est autorisé à sortir uniquement s&rsquo;il correpond à une destination et un port bien précis. On ne prend donc pas de risque que des paquets qui devaient être rejetés transitent sur le réseau.</p>
+<p>Les ACL peuvent être numérotées de 100 à 199 et 2000 à 2699 ou nommées vient un nom.</p>
+<pre><code>access-list (100-199) permit tcp/udp Source-Ip Wild-Mask Dest-IP
+
+ip access-list extended NomACL
+permit tcp/udp Source-Ip Wild-Mask Dest-IP
+</code></pre><h2 id="remarque">Remarque</h2>
+<p>Il existe beaucoup de cas d&rsquo;utilisations pour les ACL et il peut exister des entorces à ces règles. Ici nous ne traiterons pas des exceptions, qui résultent souvent d&rsquo;une infrastructure désorganisée. Nous traiterons des cas généraux à travers quelques exemples parlant.</p>
+<h2 id="objectifs">Objectifs</h2>
+<p>Pour la réalisation de ce TP, j&rsquo;utiliserai <strong>Cisco Packet Tracer Student</strong>. Pour les switchs nous utiliserons les switchs <strong>Cisco 2960</strong> et pour les routeurs nous utiliserons les routeurs <strong>Cisco 2911</strong>. Le réseau de gauche sur le schéma ci-dessous a été traité dans l&rsquo;article suivant : <code>https://lololekik/network/cisco_vlan</code></p>
+
+
+
+  <img src="/img/cisco_acl/old_network.png" alt="Réseau VLAN et ACL" class="imageformat"/>
+
+<p>Voici la liste des exigences à remplir :</p>
+<ul>
+<li>Le VLAN <strong>Interne</strong> ne peut pas accèder au <strong>Site sécurisé</strong>.</li>
+<li>Le <strong>PC3</strong> seulement est autorisé à joindre le server web en HTTPS en passant par une résolution DNS.</li>
+<li>Le serveur HTTPS peut être interrogé uniquement par le VLAN <strong>Web</strong></li>
+<li>Le serveur web HTTPS ne peut contacter personne de lui même</li>
+</ul>
+<p>Les tests à effectuer pour vérifier si la configuration réseau est bonne :</p>
+
+
+
+  <img src="/img/cisco_acl/flux.png" alt="Matrice des flux pour test" class="imageformat"/>
+
+<h1 id="configuration-des-routeurs">Configuration des routeurs</h1>
+<p>Pour mettre en place des ACL il faut d&rsquo;abord créer la liste de règle puis les ajouter sur une interface en entrée ou sortie.</p>
+<p>On autorise les accès juste pour PC3</p>
+
+
+
+  <img src="/img/cisco_acl/crea_pc3.png" alt="Création de l&#39;ACL à PC3" class="imageformat"/>
+
+<p>Puis on applique l&rsquo;ACL</p>
+
+
+
+  <img src="/img/cisco_acl/app_pc3.png" alt="Application de l&#39;ACL à PC3" class="imageformat"/>
+
+<p>On autorise le server2 à répondre aux requêtes qu&rsquo;il reçoit qui viennent du vlan <strong>Web</strong>.</p>
+
+
+
+  <img src="/img/cisco_acl/crea_reponly.png" alt="Création de l&#39;ACL replyonly" class="imageformat"/>
+
+<p>Application de l&rsquo;acl</p>
+
+
+
+  <img src="/img/cisco_acl/app_reponly.png" alt="Application de l&#39;ACL replyonly" class="imageformat"/>
+
+<p>On interdit l&rsquo;accès du VLAN interne sur le réseau sécurisé</p>
+
+
+
+  <img src="/img/cisco_acl/deny_interne.png" alt="Création et Application de l&#39;ACL denyinterne" class="imageformat"/>
+
+<h1 id="test">Test</h1>
+<p>Ici on ping de PC3 vers les différents serveurs</p>
+
+
+
+  <img src="/img/cisco_acl/pc3_ping.png" alt="Test acl ping serveur" class="imageformat"/>
+
+<p>Pourtant on arrive bien à voir la page Web</p>
+
+
+
+  <img src="/img/cisco_acl/pc3_web.png" alt="Tes acl web serveur" class="imageformat"/>
+
+<p>Ensuite depuis PC1 on ne peut pas ping le serveur HTTPS</p>
+
+
+
+  <img src="/img/cisco_acl/pc1_ping.png" alt="Test acl ping serveur" class="imageformat"/>
+
+<p>Enfin notre serveur 1 ne peut pas joindre notre serveur 2 car serveur 2 est autorisé uniquement à répondre.</p>
+
+
+
+  <img src="/img/cisco_acl/server_ping.png" alt="Test acl ping serveur" class="imageformat"/>
+
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/network/cisco_ospf/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">[Cisco] Routage dynamique - OSPF</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>

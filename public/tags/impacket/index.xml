@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>impacket on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/impacket/</link>
+    <description>Recent content in impacket on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/impacket/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Active directory </title>
+      <link>http://lololekik.com/cuisine/ad/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/ad/</guid>
+      <description>Introduction Active directory est le service d&amp;rsquo;annuaire LDAP de microsoft. Il écoute sur le port 389 (Local domain controller) et 3268 (forêt entière)
+Bloodhound Bloodhound est un outil permettant d&amp;rsquo;avoir un visuel l&amp;rsquo;architecture de l&amp;rsquo;active directory. Il permet de rapidement visualiser les droits, utilisateurs, objets..
+Récupération des informations pour construire la BDD
+──(lololekik㉿Ashitaka)-[~/tools/bloodhound/sauna] └─$ bloodhound-python -u svc_loanmgr -p Moneymakestheworldgoround! -d EGOTISTICAL-BANK.LOCAL -ns 10.10.10.175 -c All INFO: Found AD domain: egotistical-bank.local INFO: Connecting to LDAP server: SAUNA.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ftp on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/ftp/</link>
+    <description>Recent content in ftp on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/ftp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lame - Easy</title>
+      <link>http://lololekik.com/hack-the-box/lame/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/lame/</guid>
+      <description>Résolution de la box Lame
+Introduction La box Lame de Hack The Box est une box Linux de difficulté &amp;ldquo;Easy&amp;rdquo;. Cette box fait aussi parti du parcours &amp;ldquo;Beginner Track&amp;rdquo; du mode &amp;ldquo;Tracks&amp;rdquo;.
+Enumeration Pour commencer on énumère les ports ouverts pour trouver les services distants.
+FTP Anonyme On voit que le service FTP est accessible en anonyme. On tente une connexion pour vérifier s&amp;rsquo;il y a des fichiers qui pourraient nous intéresser.</description>
+    </item>
+    
+    <item>
+      <title>Traceback - Easy</title>
+      <link>http://lololekik.com/hack-the-box/traceback/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/traceback/</guid>
+      <description>Résolution de la box Mango
+Introduction La box Traceback de Hack The Box est une box Linux de difficulté &amp;ldquo;Easy&amp;rdquo;.
+Foothold Enumération On commence par faire un nmap sur tous les ports.
+On voit qu&amp;rsquo;il y a un serveur web. En se rendant dessus on trouve ceci.
+On va donc se créer une wordlist avec plein de webshell populaire pour voir si on peut en retrouver un. La liste a été prise ici : https://github.</description>
+    </item>
+    
+  </channel>
+</rss>

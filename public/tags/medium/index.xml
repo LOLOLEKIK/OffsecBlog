@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Medium on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/medium/</link>
+    <description>Recent content in Medium on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/medium/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mango - Medium</title>
+      <link>http://lololekik.com/hack-the-box/mango/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/mango/</guid>
+      <description>Résolution de la box Mango
+Introduction La box Mango de Hack The Box est une box Linux de difficulté &amp;ldquo;Medium&amp;rdquo;.
+Foothold &amp;amp; User Enumération On débute la box, comme d&amp;rsquo;habitude, avec un nmap.
+On voit ici que deux ports web sont ouverts. En se rendant sur le site web en https on inspecte le certificat. On voit rapidement une entrée qui nous intéresse.
+On essaie de voir si en renseignant le nom dans notre fichier host nous n&amp;rsquo;allons pas être redirigé sur un autre site.</description>
+    </item>
+    
+  </channel>
+</rss>

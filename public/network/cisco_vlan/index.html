@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.78.2" />
+
+    
+    
+    
+
+<title>[Cisco] Vlan &amp; Routage inter vlan • LOLOLEKIK</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[Cisco] Vlan &amp; Routage inter vlan"/>
+<meta name="twitter:description" content="Mise en place de Vlan et du routage inter-vlan sur un routeur Cisco
+Introduction Les Virtual Local Area Network (VLAN), sont des réseaux informatiques séparés logiquement entre eux. Cela permet d&rsquo;isoler logiquement les flux entre les équipements d&rsquo;interconnexion. Pour la réalisation de ce TP, j&rsquo;utiliserai Cisco Packet Tracer Student. Pour les switchs nous utiliserons les switchs Cisco 2960 et pour les routeurs nous utiliserons les routeurs Cisco 2911. On va isoler un trois réseaux pour trois services différents."/>
+
+<meta property="og:title" content="[Cisco] Vlan &amp; Routage inter vlan" />
+<meta property="og:description" content="Mise en place de Vlan et du routage inter-vlan sur un routeur Cisco
+Introduction Les Virtual Local Area Network (VLAN), sont des réseaux informatiques séparés logiquement entre eux. Cela permet d&rsquo;isoler logiquement les flux entre les équipements d&rsquo;interconnexion. Pour la réalisation de ce TP, j&rsquo;utiliserai Cisco Packet Tracer Student. Pour les switchs nous utiliserons les switchs Cisco 2960 et pour les routeurs nous utiliserons les routeurs Cisco 2911. On va isoler un trois réseaux pour trois services différents." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lololekik.com/network/cisco_vlan/" />
+<meta property="og:site_name" content="OffSec &amp; CO" />
+
+
+    
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/qtcreator_dark.min.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.816e5b26c5966343ef21f902ba05a763964deb2ae3fdcd9a954614131b756c59.css" integrity="sha256-gW5bJsWWY0PvIfkCugWnY5ZN6yrj/c2alUYUExt1bFk=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/custom.css">
+
+
+
+
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://lololekik.com/">LOLOLEKIK</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://lololekik.com/img/author.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         OffSec &amp; Co 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">LOLOLEKIK</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/cuisine/">
+						<span>Cuisine</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/exploit/">
+						<span>Exploit</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/network/">
+						<span>Network</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/writeups/">
+						<span>WriteUps</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/hack-the-box/">
+						<span>HackTheBox</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	
+	
+	<a href="https://github.com/LOLOLEKIK" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://root-me.org/lololekik" target="blank" class="linklogo"><div class="rootme_logo logohover"> </div></a>
+	
+	
+	<a href="https://hackthebox.eu/home/users/profile/202145" target="blank" class="linklogo"><div class="hackthebox_logo logohover"> </div></a>
+	
+	
+	<a href="https://linkedin.com/in/loris-thiebaut-8b4b85197" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:loris.thiebaut@gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>[Cisco] Vlan &amp; Routage inter vlan</h1>
+    
+    
+<div class="post__meta">
+    
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/network">NETWORK</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/network">network</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/cisco">cisco</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/configuration">configuration</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/vlan">vlan</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/security">security</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 2 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p><strong>Mise en place de Vlan et du routage inter-vlan sur un routeur Cisco</strong></p>
+<h1 id="introduction">Introduction</h1>
+<p>Les Virtual Local Area Network (VLAN), sont des réseaux informatiques séparés logiquement entre eux. Cela permet d&rsquo;isoler logiquement les flux entre les équipements d&rsquo;interconnexion. Pour la réalisation de ce TP, j&rsquo;utiliserai <strong>Cisco Packet Tracer Student</strong>. Pour les switchs nous utiliserons les switchs <strong>Cisco 2960</strong> et pour les routeurs nous utiliserons les routeurs <strong>Cisco 2911</strong>. On va isoler un trois réseaux pour trois services différents. Un réseau <strong>Interne</strong>, un réseau <strong>Web</strong> et un réseau <strong>Server</strong>.</p>
+<p>Voici la maquette que nous allons utiliser :</p>
+
+
+
+  <img src="/img/cisco_vlan/maquette.png" alt="Vlan Maquette" class="imageformat"/>
+
+<h1 id="configuration-du-switch">Configuration du switch</h1>
+<p>La configuration du switch va consister à créer les VLANs sur le switch et indiquer les ports à tagger. Comme nous utilisons qu&rsquo;un seul lien entre le routeur et le switch nous devrons aussi mettre en place la technologie 802.1q.</p>
+<h2 id="création-des-vlan-sur-le-switch">Création des VLAN sur le switch</h2>
+<p>Pour créer les VLAN il suffit de les déclarer. Ici j&rsquo;ai aussi fait le choix de les nommer.</p>
+
+
+
+  <img src="/img/cisco_vlan/creation_vlan.png" alt="Creation Vlan" class="imageformat"/>
+
+<h2 id="affectation-des-vlan-sur-chaque-port">Affectation des VLAN sur chaque port</h2>
+<p>Pour définir un VLAN sur un port, il faut d&rsquo;abord changer son mode puis affecter le VLAN.</p>
+
+
+
+  <img src="/img/cisco_vlan/affect_vlan.png" alt="affectation Vlan" class="imageformat"/>
+
+<p>Il est aussi possible de déclarer des VLAN sur plusieurs ports à la fois.</p>
+
+
+
+  <img src="/img/cisco_vlan/multiple_vlan.png" alt="affectation multiple Vlan" class="imageformat"/>
+
+<h2 id="utilisation-du-mode-trunk-de-cisco">Utilisation du mode trunk de Cisco</h2>
+<p>Afin de pouvoir différencier, au sein d&rsquo;un même lien physique, les paquets des différents VLAN, on va utiliser l&rsquo;encapsulation DOT1Q. Cela va permettre de mettre un <strong>tag</strong> sur chaque trame pour identifier le VLAN correspondant. Voilà la modfification de la trame :</p>
+
+
+
+  <img src="/img/cisco_vlan/8021q.png" alt="Explication 802.1q" class="imageformat"/>
+
+<p>On peut voir aussi que la QoS est prise en charge avec le 802.1q.</p>
+<p>Pour faire cela, Cisco utilise la terminologie <strong>Trunk</strong> pour identifier les liens qui utilisent cette technologie.</p>
+<p><em>Remarque : Cisco utilise la terminologie <strong>Trunk</strong> mais d&rsquo;autres constructeurs comme <strong>HP</strong> utilisent cette terminologie pour identifier une agrégation de lien.</em></p>
+<p>Voici la configuration à effectuer :
+Voici la configuration à effectuer :</p>
+
+
+
+  <img src="/img/cisco_vlan/trunk.png" alt="Création d&#39;un port trunk" class="imageformat"/>
+
+<h1 id="configuration-routeur">Configuration Routeur</h1>
+<p>Sur le routeur il va falloir créer les interfaces correpondantes à chaque VLAN. Il faudra ensuite définir sur ces interfaces que la technologie utilisé est le 802.1q et nous pourrons donc mettre une adresse IP.</p>
+
+
+
+  <img src="/img/cisco_vlan/router_vlan.png" alt="Configuration du routeur pour les VLAN" class="imageformat"/>
+
+<h1 id="test">Test</h1>
+<p>Pour les tests on va essayer depuis PC1 de ping une machine de son VLAN et une qui n&rsquo;est pas dans son VLAN.</p>
+
+
+
+  <img src="/img/cisco_vlan/router_vlan.png" alt="Configuration du routeur pour les VLAN" class="imageformat"/>
+
+<p>Ici on voit bien si le paquet passe par le routeur ou non si la personne est dans son VLAN ou non.</p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    
+    <a href="/network/cisco_ospf/" class="navigation-next">
+      <span class="navigation-tittle">[Cisco] Routage dynamique - OSPF</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>

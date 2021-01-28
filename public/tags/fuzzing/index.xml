@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fuzzing on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/fuzzing/</link>
+    <description>Recent content in Fuzzing on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/fuzzing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>wfuzz - Fuzzing Web </title>
+      <link>http://lololekik.com/cuisine/wfuzz/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/wfuzz/</guid>
+      <description>Introduction wfuzz est un outil permettant de faire du bruteforfce sur les répertoires web afin de trouver des pages intéressantes.
+Voici le git de wfuzz : https://github.com/xmendez/wfuzz
+Aide -h # help --help # aide avancée -w # wordlist --hc	# pour cacher les pages avec un code spécifique --hl	# pour cacher les pages avec un nombre de ligne spécifique --hw	# pour cacher les pages avec un nombre de mot spécifique --hh	# pour cacher les pages avec un nombre de charactère spécifique -b # ajouter des cookies -d # Requête post -u # url --ip	# utilise l&#39;ip sous le format &#39;ip:port&#39; -f # fichier de sortie -L/--follow # suivre les redirections -X # methode -R # Recusrif Recherche de répertoire avec dictionnaire Ici on cache toute les requêtes avec un code 404.</description>
+    </item>
+    
+  </channel>
+</rss>

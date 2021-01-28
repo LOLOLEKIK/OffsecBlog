@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dcsync on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/dcsync/</link>
+    <description>Recent content in dcsync on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/dcsync/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sauna - Easy</title>
+      <link>http://lololekik.com/hack-the-box/sauna/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/sauna/</guid>
+      <description>Résolution de la box Sauna
+Introduction La box Sauna de Hack The Box est une box Windows de difficulté &amp;ldquo;Easy&amp;rdquo;.
+User 1 Enumération On commence par faire un nmap sur tous les ports.
+┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nmap -A sauna.htb Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-20 09:13 CET Nmap scan report for sauna.htb (10.10.10.175) Host is up (0.043s latency). Not shown: 988 filtered ports PORT STATE SERVICE VERSION 53/tcp open domain Simple DNS Plus 80/tcp open http Microsoft IIS httpd 10.</description>
+    </item>
+    
+  </channel>
+</rss>

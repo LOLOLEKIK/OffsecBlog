@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SMB on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/smb/</link>
+    <description>Recent content in SMB on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/smb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SMB &amp; NetBIOS </title>
+      <link>http://lololekik.com/cuisine/smbenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/smbenum/</guid>
+      <description>Introduction On peut retrouver deux services important ici. NetBIOS UDP (138) TCP (139) et SMB TCP 445
+NBTscan Il est possible d&amp;rsquo;utiliser nbtscan sur une adresse réseau avec son CIDR.
+┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nbtscan -r 192.168.1.91 Doing NBT name scan for addresses from 192.168.1.91 IP address NetBIOS Name Server User MAC address ------------------------------------------------------------------------------ 192.168.1.91 METASPLOITABLE &amp;lt;server&amp;gt; METASPLOITABLE 00:00:00:00:00:00 NMAP On peut retrouver beaucoup de scripts ici
+┌──(lololekik㉿Ashitaka)-[~] └─$ ll /usr/share/nmap/scripts/smb* -rw-r--r-- 1 root root 3355 12 oct.</description>
+    </item>
+    
+  </channel>
+</rss>

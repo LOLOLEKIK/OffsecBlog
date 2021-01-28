@@ -5,10 +5,78 @@
     <link>http://lololekik.com/tags/</link>
     <description>Recent content in Tags on LOLOLEKIK</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>fr</language>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ACL</title>
+      <link>http://lololekik.com/tags/acl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/acl/</guid>
+      <description></description>
+    </item>
     
-	<atom:link href="http://lololekik.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AD</title>
+      <link>http://lololekik.com/tags/ad/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/ad/</guid>
+      <description></description>
+    </item>
     
+    <item>
+      <title>ASREPRoasting</title>
+      <link>http://lololekik.com/tags/asreproasting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/asreproasting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bloodhound</title>
+      <link>http://lololekik.com/tags/bloodhound/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/bloodhound/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bruteforce</title>
+      <link>http://lololekik.com/tags/bruteforce/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/bruteforce/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cisco</title>
+      <link>http://lololekik.com/tags/cisco/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/cisco/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Configuration</title>
+      <link>http://lololekik.com/tags/configuration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/configuration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cracking</title>
+      <link>http://lololekik.com/tags/cracking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/cracking/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>CTF</title>
@@ -16,6 +84,96 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://lololekik.com/tags/ctf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dcsync</title>
+      <link>http://lololekik.com/tags/dcsync/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/dcsync/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Disponnibilité</title>
+      <link>http://lololekik.com/tags/disponnibilit%C3%A9/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/disponnibilit%C3%A9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DNS</title>
+      <link>http://lololekik.com/tags/dns/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/dns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dnsenum</title>
+      <link>http://lololekik.com/tags/dnsenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/dnsenum/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dnsrecon</title>
+      <link>http://lololekik.com/tags/dnsrecon/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/dnsrecon/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Easy</title>
+      <link>http://lololekik.com/tags/easy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/easy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>enum4linux</title>
+      <link>http://lololekik.com/tags/enum4linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/enum4linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>enumeration</title>
+      <link>http://lololekik.com/tags/enumeration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/enumeration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>evilwinrm</title>
+      <link>http://lololekik.com/tags/evilwinrm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/evilwinrm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>exploit</title>
+      <link>http://lololekik.com/tags/exploit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/exploit/</guid>
       <description></description>
     </item>
     
@@ -29,6 +187,105 @@
     </item>
     
     <item>
+      <title>ftp</title>
+      <link>http://lololekik.com/tags/ftp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/ftp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fuzzing</title>
+      <link>http://lololekik.com/tags/fuzzing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/fuzzing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gtfobins</title>
+      <link>http://lololekik.com/tags/gtfobins/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/gtfobins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>host</title>
+      <link>http://lololekik.com/tags/host/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/host/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>impacket</title>
+      <link>http://lololekik.com/tags/impacket/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/impacket/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>injection</title>
+      <link>http://lololekik.com/tags/injection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/injection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LFI</title>
+      <link>http://lololekik.com/tags/lfi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/lfi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>http://lololekik.com/tags/linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>log poisonning</title>
+      <link>http://lololekik.com/tags/log-poisonning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/log-poisonning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Medium</title>
+      <link>http://lololekik.com/tags/medium/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/medium/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>meterpreter</title>
+      <link>http://lololekik.com/tags/meterpreter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/meterpreter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Misc</title>
       <link>http://lololekik.com/tags/misc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -38,11 +295,344 @@
     </item>
     
     <item>
-      <title>Web</title>
+      <title>msrpc</title>
+      <link>http://lololekik.com/tags/msrpc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/msrpc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nbtscan</title>
+      <link>http://lololekik.com/tags/nbtscan/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/nbtscan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>netbios</title>
+      <link>http://lololekik.com/tags/netbios/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/netbios/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>netcat</title>
+      <link>http://lololekik.com/tags/netcat/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/netcat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>network</title>
+      <link>http://lololekik.com/tags/network/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NFS</title>
+      <link>http://lololekik.com/tags/nfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/nfs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nmap</title>
+      <link>http://lololekik.com/tags/nmap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/nmap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NoSQLi</title>
+      <link>http://lololekik.com/tags/nosqli/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/nosqli/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>offsec</title>
+      <link>http://lololekik.com/tags/offsec/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/offsec/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>onesixtyone</title>
+      <link>http://lololekik.com/tags/onesixtyone/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/onesixtyone/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OSPF</title>
+      <link>http://lololekik.com/tags/ospf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/ospf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Password</title>
+      <link>http://lololekik.com/tags/password/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/password/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pentest</title>
+      <link>http://lololekik.com/tags/pentest/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/pentest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RCE</title>
+      <link>http://lololekik.com/tags/rce/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/rce/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Reverse Shell</title>
+      <link>http://lololekik.com/tags/reverse-shell/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/reverse-shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RFI</title>
+      <link>http://lololekik.com/tags/rfi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/rfi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rpcbind</title>
+      <link>http://lololekik.com/tags/rpcbind/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/rpcbind/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rpcinfo</title>
+      <link>http://lololekik.com/tags/rpcinfo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/rpcinfo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>samba</title>
+      <link>http://lololekik.com/tags/samba/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/samba/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>security</title>
+      <link>http://lololekik.com/tags/security/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shares</title>
+      <link>http://lololekik.com/tags/shares/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/shares/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SMB</title>
+      <link>http://lololekik.com/tags/smb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/smb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>smbclient</title>
+      <link>http://lololekik.com/tags/smbclient/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/smbclient/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SMTP</title>
+      <link>http://lololekik.com/tags/smtp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/smtp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>snmpwalk</title>
+      <link>http://lololekik.com/tags/snmpwalk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/snmpwalk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SQL</title>
+      <link>http://lololekik.com/tags/sql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/sql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SQLI</title>
+      <link>http://lololekik.com/tags/sqli/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/sqli/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sqlmap</title>
+      <link>http://lololekik.com/tags/sqlmap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/sqlmap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ssh</title>
+      <link>http://lololekik.com/tags/ssh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/ssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tips</title>
+      <link>http://lololekik.com/tags/tips/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/tips/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tool</title>
+      <link>http://lololekik.com/tags/tool/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/tool/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Umbraco</title>
+      <link>http://lololekik.com/tags/umbraco/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/umbraco/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>usosvc</title>
+      <link>http://lololekik.com/tags/usosvc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/usosvc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vlan</title>
+      <link>http://lololekik.com/tags/vlan/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/vlan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>web</title>
       <link>http://lololekik.com/tags/web/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://lololekik.com/tags/web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>webshell</title>
+      <link>http://lololekik.com/tags/webshell/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/webshell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>http://lololekik.com/tags/windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>winrm</title>
+      <link>http://lololekik.com/tags/winrm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/winrm/</guid>
       <description></description>
     </item>
     
@@ -52,6 +642,15 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://lololekik.com/tags/writeups/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Zip</title>
+      <link>http://lololekik.com/tags/zip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/zip/</guid>
       <description></description>
     </item>
     

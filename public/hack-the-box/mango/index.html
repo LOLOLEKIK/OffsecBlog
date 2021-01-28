@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.78.2" />
+
+    
+    
+    
+
+<title>Mango - Medium • LOLOLEKIK</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mango - Medium"/>
+<meta name="twitter:description" content="Résolution de la box Mango
+Introduction La box Mango de Hack The Box est une box Linux de difficulté &ldquo;Medium&rdquo;.
+Foothold &amp; User Enumération On débute la box, comme d&rsquo;habitude, avec un nmap.
+On voit ici que deux ports web sont ouverts. En se rendant sur le site web en https on inspecte le certificat. On voit rapidement une entrée qui nous intéresse.
+On essaie de voir si en renseignant le nom dans notre fichier host nous n&rsquo;allons pas être redirigé sur un autre site."/>
+
+<meta property="og:title" content="Mango - Medium" />
+<meta property="og:description" content="Résolution de la box Mango
+Introduction La box Mango de Hack The Box est une box Linux de difficulté &ldquo;Medium&rdquo;.
+Foothold &amp; User Enumération On débute la box, comme d&rsquo;habitude, avec un nmap.
+On voit ici que deux ports web sont ouverts. En se rendant sur le site web en https on inspecte le certificat. On voit rapidement une entrée qui nous intéresse.
+On essaie de voir si en renseignant le nom dans notre fichier host nous n&rsquo;allons pas être redirigé sur un autre site." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lololekik.com/hack-the-box/mango/" />
+<meta property="og:site_name" content="OffSec &amp; CO" />
+
+
+    
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/qtcreator_dark.min.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.816e5b26c5966343ef21f902ba05a763964deb2ae3fdcd9a954614131b756c59.css" integrity="sha256-gW5bJsWWY0PvIfkCugWnY5ZN6yrj/c2alUYUExt1bFk=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/custom.css">
+
+
+
+
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://lololekik.com/">LOLOLEKIK</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://lololekik.com/img/author.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         OffSec &amp; Co 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">LOLOLEKIK</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/cuisine/">
+						<span>Cuisine</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/exploit/">
+						<span>Exploit</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/network/">
+						<span>Network</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/writeups/">
+						<span>WriteUps</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/hack-the-box/">
+						<span>HackTheBox</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	
+	
+	<a href="https://github.com/LOLOLEKIK" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://root-me.org/lololekik" target="blank" class="linklogo"><div class="rootme_logo logohover"> </div></a>
+	
+	
+	<a href="https://hackthebox.eu/home/users/profile/202145" target="blank" class="linklogo"><div class="hackthebox_logo logohover"> </div></a>
+	
+	
+	<a href="https://linkedin.com/in/loris-thiebaut-8b4b85197" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:loris.thiebaut@gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Mango - Medium</h1>
+    
+    
+<div class="post__meta">
+    
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/hack-the-box">HACK THE BOX</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/pentest">pentest</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/linux">linux</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/medium">medium</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/nosqli">nosqli</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/gtfobins">gtfobins</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/network">network</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 2 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p><strong>Résolution de la box Mango</strong></p>
+<h1 id="introduction">Introduction</h1>
+<p>La box <strong>Mango</strong> de Hack The Box est une box Linux de difficulté &ldquo;Medium&rdquo;.</p>
+
+
+
+  <img src="/img/htb/mango/mango_resume.png" alt="Résumé de la machine Mango" class="imageformat"/>
+
+<h1 id="foothold--user">Foothold &amp; User</h1>
+<h2 id="enumération">Enumération</h2>
+<p>On débute la box, comme d&rsquo;habitude, avec un nmap.</p>
+
+
+
+  <img src="/img/htb/mango/mango_nmap.png" alt="nmap de la machine Mango" class="imageformat"/>
+
+<p>On voit ici que deux ports web sont ouverts. En se rendant sur le site web en https on inspecte le certificat. On voit rapidement une entrée qui nous intéresse.</p>
+
+
+
+  <img src="/img/htb/mango/mango_cert.png" alt="certificat de la machine Mango" class="imageformat"/>
+
+<p>On essaie de voir si en renseignant le nom dans notre fichier host nous n&rsquo;allons pas être redirigé sur un autre site.</p>
+
+
+
+  <img src="/img/htb/mango/mango_host.png" alt="host pour la machine Mango" class="imageformat"/>
+
+<p>En se rendant sur le site web, mais cette fois sur le port 80, on obtient une nouvelle page.</p>
+
+
+
+  <img src="/img/htb/mango/mango_web.png" alt="web pour la machine Mango" class="imageformat"/>
+
+<p>Ici impossible de bypass l&rsquo;authentification avec un SQLi. Je finis donc par essayer une NoSQLi.</p>
+
+
+
+  <img src="/img/htb/mango/mango_inject.png" alt="nosqli pour la machine Mango" class="imageformat"/>
+
+<p>Et bingo, on arrive sur une nouvelle page.</p>
+
+
+
+  <img src="/img/htb/mango/mango_web2.png" alt="nosqli pour la machine Mango" class="imageformat"/>
+
+<p>J&rsquo;ai utilisé le cookie de session qui m&rsquo;a été attribué pour voir je ne trouvais pas d&rsquo;autres pages web intéressentes mais en vain.</p>
+
+
+
+  <img src="/img/htb/mango/mango_wfuzz.png" alt="Fuzzing pour la machine Mango" class="imageformat"/>
+
+
+
+
+  <img src="/img/htb/mango/mango_wfuzz2.png" alt="Fuzzing pour la machine Mango" class="imageformat"/>
+
+<h2 id="exploit">Exploit</h2>
+<p>Je suis donc retouné sur la NoSQLi pour essayer de faire un peu d&rsquo;énumération. Pour cela j&rsquo;ai utilisé mon script que vous pouvez retrouver ici : <a href="https://lololekik.com/payload/nosqlinjection/">https://lololekik.com/payload/nosqlinjection/</a>. Pour cela j&rsquo;ai d&rsquo;abord fais une extraction complète de tous les users.</p>
+
+
+
+  <img src="/img/htb/mango/mango_enum.png" alt="Enumération user pour la machine Mango" class="imageformat"/>
+
+<p>J&rsquo;ai ensuite recherché les mots de passes pour les deux users.</p>
+
+
+
+  <img src="/img/htb/mango/mango_password.png" alt="Enumération password user pour la machine Mango" class="imageformat"/>
+
+<pre><code>admin:t9KcS3&gt;!0B#2
+mango:h3mXK8RhU~f{]f5H
+</code></pre>
+<p>Ici je me suis connecté directement avec l&rsquo;utilisateur mango puis je me suis connecté à Admin pour récupérer le flag.</p>
+
+
+
+  <img src="/img/htb/mango/mango_user.png" alt="user pour la machine Mango" class="imageformat"/>
+
+<h1 id="root">Root</h1>
+<h2 id="enumération-1">Enumération</h2>
+<p>J&rsquo;ai d&rsquo;abord commencé par upgrade mon shell et vérifier si je pouvais executer des commandes en tant que root.</p>
+
+
+
+  <img src="/img/htb/mango/mango_user_sudo.png" alt=" Verif accès root la machine Mango" class="imageformat"/>
+
+<p>Comme il n&rsquo;y avait rien d&rsquo;intéressant j&rsquo;ai executé LinPEAS.sh sur la machine.</p>
+
+
+
+  <img src="/img/htb/mango/mango_user_lin.png" alt="LinPeas.sh sur la machine Mango" class="imageformat"/>
+
+<p>Ici on voit qu&rsquo;on a la possibilité d&rsquo;executé jjs avec les droits root</p>
+
+
+
+  <img src="/img/htb/mango/mango_user_jjs.png" alt=" Verif accès root la machine Mango" class="imageformat"/>
+
+<h2 id="exploit-1">Exploit</h2>
+<p>En regardant dans les GTFOBins on voit que l&rsquo;on peut executer des commandes en tant que root.</p>
+
+
+
+  <img src="/img/htb/mango/mango_user_test.png" alt=" Verif accès root la machine Mango" class="imageformat"/>
+
+<p>Je me suis donc placé dans le groupe autorisé à utiliser la commande sudo.</p>
+
+
+
+  <img src="/img/htb/mango/mango_user_jjssude.png" alt=" Verif accès root la machine Mango" class="imageformat"/>
+
+<p>En relançant ma session j&rsquo;ai pu me connecter en tant que root.</p>
+
+
+
+  <img src="/img/htb/mango/mango_root.png" alt=" Accès root la machine Mango" class="imageformat"/>
+
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/hack-the-box/openadmin/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">OpenAdmin - Easy</span>
+    </a>
+    
+    
+    <a href="/hack-the-box/lame/" class="navigation-next">
+      <span class="navigation-tittle">Lame - Easy</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>

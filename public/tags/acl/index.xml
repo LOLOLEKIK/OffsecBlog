@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ACL on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/acl/</link>
+    <description>Recent content in ACL on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/acl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Cisco] ACL standard &amp; étendue</title>
+      <link>http://lololekik.com/network/cisco_acl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/network/cisco_acl/</guid>
+      <description>** Mise en place des ACL pour sécuriser les accès réseaux**
+Introduction Les Access Control List (ACL) sont des règles qui permettent d&amp;rsquo;autoriser ou refuser certains traffique. Les ACL peuvent s&amp;rsquo;appuyer sur de nombreux paramètres pour filtrer les accès comme l&amp;rsquo;adresse IP source ou encore le port à joindre. Au sein des systèmes Cisco, on identifie deux types d&amp;rsquo;ACL distinct. Les ACL standard et les ACL étendue.
+ACL Standard Les ACL standard, sont les acl qui proposent le moins de paramètres à surveiller.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.78.2" />
+
+    
+    
+    
+
+<title>SMB &amp; NetBIOS  • LOLOLEKIK</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SMB &amp; NetBIOS "/>
+<meta name="twitter:description" content="Introduction On peut retrouver deux services important ici. NetBIOS UDP (138) TCP (139) et SMB TCP 445
+NBTscan Il est possible d&rsquo;utiliser nbtscan sur une adresse réseau avec son CIDR.
+┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nbtscan -r 192.168.1.91 Doing NBT name scan for addresses from 192.168.1.91 IP address NetBIOS Name Server User MAC address ------------------------------------------------------------------------------ 192.168.1.91 METASPLOITABLE &lt;server&gt; METASPLOITABLE 00:00:00:00:00:00 NMAP On peut retrouver beaucoup de scripts ici
+┌──(lololekik㉿Ashitaka)-[~] └─$ ll /usr/share/nmap/scripts/smb* -rw-r--r-- 1 root root 3355 12 oct."/>
+
+<meta property="og:title" content="SMB &amp; NetBIOS " />
+<meta property="og:description" content="Introduction On peut retrouver deux services important ici. NetBIOS UDP (138) TCP (139) et SMB TCP 445
+NBTscan Il est possible d&rsquo;utiliser nbtscan sur une adresse réseau avec son CIDR.
+┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nbtscan -r 192.168.1.91 Doing NBT name scan for addresses from 192.168.1.91 IP address NetBIOS Name Server User MAC address ------------------------------------------------------------------------------ 192.168.1.91 METASPLOITABLE &lt;server&gt; METASPLOITABLE 00:00:00:00:00:00 NMAP On peut retrouver beaucoup de scripts ici
+┌──(lololekik㉿Ashitaka)-[~] └─$ ll /usr/share/nmap/scripts/smb* -rw-r--r-- 1 root root 3355 12 oct." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lololekik.com/cuisine/smbenum/" />
+<meta property="og:site_name" content="OffSec &amp; CO" />
+
+
+    
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/qtcreator_dark.min.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.816e5b26c5966343ef21f902ba05a763964deb2ae3fdcd9a954614131b756c59.css" integrity="sha256-gW5bJsWWY0PvIfkCugWnY5ZN6yrj/c2alUYUExt1bFk=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/custom.css">
+
+
+
+
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://lololekik.com/">LOLOLEKIK</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://lololekik.com/img/author.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         OffSec &amp; Co 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">LOLOLEKIK</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/cuisine/">
+						<span>Cuisine</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/exploit/">
+						<span>Exploit</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/network/">
+						<span>Network</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/writeups/">
+						<span>WriteUps</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/hack-the-box/">
+						<span>HackTheBox</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	
+	
+	<a href="https://github.com/LOLOLEKIK" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://root-me.org/lololekik" target="blank" class="linklogo"><div class="rootme_logo logohover"> </div></a>
+	
+	
+	<a href="https://hackthebox.eu/home/users/profile/202145" target="blank" class="linklogo"><div class="hackthebox_logo logohover"> </div></a>
+	
+	
+	<a href="https://linkedin.com/in/loris-thiebaut-8b4b85197" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:loris.thiebaut@gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>SMB &amp; NetBIOS </h1>
+    
+    
+<div class="post__meta">
+    
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/cuisine">CUISINE</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/smb">smb</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/enumeration">enumeration</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/netbios">netbios</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/nmap">nmap</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/nbtscan">nbtscan</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/smbclient">smbclient</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/enum4linux">enum4linux</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 3 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <h1 id="introduction">Introduction</h1>
+<p>On peut retrouver deux services important ici. NetBIOS UDP (138) TCP (139) et SMB TCP 445</p>
+<h1 id="nbtscan">NBTscan</h1>
+<p>Il est possible d&rsquo;utiliser nbtscan sur une adresse réseau avec son CIDR.</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~]
+└─$ sudo nbtscan -r 192.168.1.91                                        
+Doing NBT name scan for addresses from 192.168.1.91
+
+IP address       NetBIOS Name     Server    User             MAC address      
+------------------------------------------------------------------------------
+192.168.1.91     METASPLOITABLE   &lt;server&gt;  METASPLOITABLE   00:00:00:00:00:00
+
+</code></pre><h1 id="nmap">NMAP</h1>
+<p>On peut retrouver beaucoup de scripts ici</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~]
+└─$ ll /usr/share/nmap/scripts/smb*
+-rw-r--r-- 1 root root  3355 12 oct.  15:29 /usr/share/nmap/scripts/smb2-capabilities.nse
+-rw-r--r-- 1 root root  3075 12 oct.  15:29 /usr/share/nmap/scripts/smb2-security-mode.nse
+-rw-r--r-- 1 root root  1447 12 oct.  15:29 /usr/share/nmap/scripts/smb2-time.nse
+-rw-r--r-- 1 root root  5238 12 oct.  15:29 /usr/share/nmap/scripts/smb2-vuln-uptime.nse
+-rw-r--r-- 1 root root 45138 12 oct.  15:29 /usr/share/nmap/scripts/smb-brute.nse
+-rw-r--r-- 1 root root  5289 12 oct.  15:29 /usr/share/nmap/scripts/smb-double-pulsar-backdoor.nse
+-rw-r--r-- 1 root root  4840 12 oct.  15:29 /usr/share/nmap/scripts/smb-enum-domains.nse
+-rw-r--r-- 1 root root  5971 12 oct.  15:29 /usr/share/nmap/scripts/smb-enum-groups.nse
+-rw-r--r-- 1 root root  8043 12 oct.  15:29 /usr/share/nmap/scripts/smb-enum-processes.nse
+-rw-r--r-- 1 root root 27274 12 oct.  15:29 /usr/share/nmap/scripts/smb-enum-services.nse
+-rw-r--r-- 1 root root 12097 12 oct.  15:29 /usr/share/nmap/scripts/smb-enum-sessions.nse
+-rw-r--r-- 1 root root  6923 12 oct.  15:29 /usr/share/nmap/scripts/smb-enum-shares.nse
+-rw-r--r-- 1 root root 12527 12 oct.  15:29 /usr/share/nmap/scripts/smb-enum-users.nse
+-rw-r--r-- 1 root root  1706 12 oct.  15:29 /usr/share/nmap/scripts/smb-flood.nse
+-rw-r--r-- 1 root root  7471 12 oct.  15:29 /usr/share/nmap/scripts/smb-ls.nse
+-rw-r--r-- 1 root root  8758 12 oct.  15:29 /usr/share/nmap/scripts/smb-mbenum.nse
+-rw-r--r-- 1 root root  8220 12 oct.  15:29 /usr/share/nmap/scripts/smb-os-discovery.nse
+-rw-r--r-- 1 root root  4982 12 oct.  15:29 /usr/share/nmap/scripts/smb-print-text.nse
+-rw-r--r-- 1 root root  1831 12 oct.  15:29 /usr/share/nmap/scripts/smb-protocols.nse
+-rw-r--r-- 1 root root 63596 12 oct.  15:29 /usr/share/nmap/scripts/smb-psexec.nse
+-rw-r--r-- 1 root root  5190 12 oct.  15:29 /usr/share/nmap/scripts/smb-security-mode.nse
+-rw-r--r-- 1 root root  2424 12 oct.  15:29 /usr/share/nmap/scripts/smb-server-stats.nse
+-rw-r--r-- 1 root root 14159 12 oct.  15:29 /usr/share/nmap/scripts/smb-system-info.nse
+-rw-r--r-- 1 root root  7524 12 oct.  15:29 /usr/share/nmap/scripts/smb-vuln-conficker.nse
+-rw-r--r-- 1 root root  6402 12 oct.  15:29 /usr/share/nmap/scripts/smb-vuln-cve2009-3103.nse
+-rw-r--r-- 1 root root 23154 12 oct.  15:29 /usr/share/nmap/scripts/smb-vuln-cve-2017-7494.nse
+-rw-r--r-- 1 root root  6545 12 oct.  15:29 /usr/share/nmap/scripts/smb-vuln-ms06-025.nse
+-rw-r--r-- 1 root root  5386 12 oct.  15:29 /usr/share/nmap/scripts/smb-vuln-ms07-029.nse
+-rw-r--r-- 1 root root  5688 12 oct.  15:29 /usr/share/nmap/scripts/smb-vuln-ms08-067.nse
+-rw-r--r-- 1 root root  5647 12 oct.  15:29 /usr/share/nmap/scripts/smb-vuln-ms10-054.nse
+-rw-r--r-- 1 root root  7214 12 oct.  15:29 /usr/share/nmap/scripts/smb-vuln-ms10-061.nse
+-rw-r--r-- 1 root root  7344 12 oct.  15:29 /usr/share/nmap/scripts/smb-vuln-ms17-010.nse
+-rw-r--r-- 1 root root  4400 12 oct.  15:29 /usr/share/nmap/scripts/smb-vuln-regsvc-dos.nse
+-rw-r--r-- 1 root root  6586 12 oct.  15:29 /usr/share/nmap/scripts/smb-vuln-webexec.nse
+-rw-r--r-- 1 root root  5084 12 oct.  15:29 /usr/share/nmap/scripts/smb-webexec-exploit.nse
+</code></pre><p>Exemple d&rsquo;énumération des utilisateurs</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~]
+└─$ sudo nmap -p 139,445 --script=smb-enum-users metasploitable.lab                                                                                                                                                                  
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-19 21:13 CET
+Nmap scan report for metasploitable.lab (192.168.1.91)
+Host is up (0.00042s latency).
+
+PORT    STATE SERVICE
+139/tcp open  netbios-ssn
+445/tcp open  microsoft-ds
+MAC Address: 08:00:27:8B:6E:26 (Oracle VirtualBox virtual NIC)
+
+Host script results:
+| smb-enum-users: 
+|   METASPLOITABLE\backup (RID: 1068)
+|     Full name:   backup
+|     Flags:       Account disabled, Normal user account
+
+		[....]
+
+|   METASPLOITABLE\www-data (RID: 1066)
+|     Full name:   www-data
+|_    Flags:       Account disabled, Normal user account
+
+Nmap done: 1 IP address (1 host up) scanned in 1.62 seconds
+
+</code></pre><h1 id="smbclient">SMBCLIENT</h1>
+<p>Connexion anonyme</p>
+<pre><code class="language-"shell" data-lang=""shell">smbclient -L //IP
+</code></pre><h1 id="enum4linux">ENUM4LINUX</h1>
+<p>Enumération par défaut</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~]
+└─$ enum4linux &lt;ip&gt;
+</code></pre><p>Enumération avec toutes les options</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~]
+└─$ enum4linux -a &lt;ip&gt;
+</code></pre><p>Enumération avec authentification</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~]
+└─$ enum4linux -u &lt;user&gt; -p &lt;password&gt; &lt;ip&gt;
+</code></pre><p>Enumerer les partages</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~]
+└─$ enum4linux -S &lt;ip&gt;
+</code></pre>
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/cuisine/smtpenum/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">SMTP - Enumeration </span>
+    </a>
+    
+    
+    <a href="/cuisine/nfsenum/" class="navigation-next">
+      <span class="navigation-tittle">NFS </span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>

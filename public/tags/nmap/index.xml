@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nmap on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/nmap/</link>
+    <description>Recent content in nmap on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/nmap/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DNS - Transfert de Zone </title>
+      <link>http://lololekik.com/cuisine/zonetransfert/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/zonetransfert/</guid>
+      <description>Introduction Un transfert de zone DNS permet d&amp;rsquo;obtenir une liste de machine inscrite dans le DNS interrogé.
+Host host -l &amp;lt;nom de domaine&amp;gt; &amp;lt;adresse du serveur DNS&amp;gt; DNSRecon dnsrecon -d &amp;lt;nom de domaine&amp;gt; -t axfr DNSenum dnsenum &amp;lt;nom de domaine&amp;gt; NMAP nmap --script=dns-zone-transfer -p 53 &amp;lt;adresse du serveur DNS&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>MSRPC </title>
+      <link>http://lololekik.com/cuisine/msrpcenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/msrpcenum/</guid>
+      <description>Introduction msrpc est un protocole client/serveur developpé pour executé des tâches sur un serveur distant. Il écoute sur le port 139.
+NMAP - Script Service accessible dans l&amp;rsquo;annuaire (portmapper)
+┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nmap &amp;lt;ip&amp;gt; --script=msrpc-enum </description>
+    </item>
+    
+    <item>
+      <title>NFS </title>
+      <link>http://lololekik.com/cuisine/nfsenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/nfsenum/</guid>
+      <description>Introduction NFS est un protocole qui permet à un client d&amp;rsquo;accèder à des fichiers à travers le réseau. Un client désireux d&amp;rsquo;effectuer une requête NFS s&amp;rsquo;adresse au portmapper (port 111 en TCP ou UDP) et lui demande où se trouve le serveur NFS. On lui répond généralement en indiquant le port 2049 (port par défaut pour NFS).
+NMAP - RPCINFO Service accessible dans l&amp;rsquo;annuaire (portmapper)
+┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Cuisine] └─$ nmap -p 111 --script=rpcinfo metasploitable.</description>
+    </item>
+    
+    <item>
+      <title>SMB &amp; NetBIOS </title>
+      <link>http://lololekik.com/cuisine/smbenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/smbenum/</guid>
+      <description>Introduction On peut retrouver deux services important ici. NetBIOS UDP (138) TCP (139) et SMB TCP 445
+NBTscan Il est possible d&amp;rsquo;utiliser nbtscan sur une adresse réseau avec son CIDR.
+┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nbtscan -r 192.168.1.91 Doing NBT name scan for addresses from 192.168.1.91 IP address NetBIOS Name Server User MAC address ------------------------------------------------------------------------------ 192.168.1.91 METASPLOITABLE &amp;lt;server&amp;gt; METASPLOITABLE 00:00:00:00:00:00 NMAP On peut retrouver beaucoup de scripts ici
+┌──(lololekik㉿Ashitaka)-[~] └─$ ll /usr/share/nmap/scripts/smb* -rw-r--r-- 1 root root 3355 12 oct.</description>
+    </item>
+    
+  </channel>
+</rss>

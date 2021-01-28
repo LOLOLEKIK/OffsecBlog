@@ -5,11 +5,7 @@
     <link>http://lololekik.com/tags/forensic/</link>
     <description>Recent content in Forensic on LOLOLEKIK</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>fr</language>
-    
-	<atom:link href="http://lololekik.com/tags/forensic/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>fr</language><atom:link href="http://lololekik.com/tags/forensic/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FCSC ANSSI 2020</title>
       <link>http://lololekik.com/writeups/fcsc-anssi/</link>
@@ -17,7 +13,7 @@
       
       <guid>http://lololekik.com/writeups/fcsc-anssi/</guid>
       <description>CTF organisé par l&amp;rsquo;ANSSI pour effectuer les préselections de l&amp;rsquo;ECSC
-Introduction Cette année j&amp;rsquo;ai eu le plaisir de participer au CTF de l&amp;rsquo;anssi ! Cet évènement a réuni plus de 2100 participants. C&#39;était un expérience enrichissante et je vous partage la totalité de mes challenges (excepté intro) ici ! Bonne lecture et bon courage :)
+Introduction Cette année j&amp;rsquo;ai eu le plaisir de participer au CTF de l&amp;rsquo;anssi ! Cet évènement a réuni plus de 2100 participants. C&amp;rsquo;était une expérience enrichissante et je vous partage la totalité de mes challenges (excepté intro) ici ! Bonne lecture et bon courage :)
 Ah oui et voici mon classement :
 Ce qui correspondait à 75 sur 633 dans la catégorie Sénior.</description>
     </item>

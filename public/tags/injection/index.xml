@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>injection on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/injection/</link>
+    <description>Recent content in injection on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/injection/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NoSQL Injection Blind</title>
+      <link>http://lololekik.com/exploit/nosqlinjection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/exploit/nosqlinjection/</guid>
+      <description>Introduction Pour les injections NoSQL comme mongoDB, j&amp;rsquo;ai developpé un petit script qui permet de trouver des informations à l&amp;rsquo;aveugle. Il suffit de rentrer l&amp;rsquo;url en indiquant l&amp;rsquo;endroit d&amp;rsquo;injection. Il faut ensuite préciser au script comment il peut reconnaitre une page d&amp;rsquo;erreur et une page valide. Puis le tour est joué !
+Avant de faire tourner le script il faut connaitre la page qui nous donne une erreur et la page qui nous indique que le payload a fonctionné.</description>
+    </item>
+    
+    <item>
+      <title>Web - SQLi </title>
+      <link>http://lololekik.com/cuisine/sqli/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/sqli/</guid>
+      <description>Introduction Les injections SQL permettent via une entrée utilisateur de modifier la requête envoyé à la BDD.
+Manuel Lorsqu&amp;rsquo;on trouve une SQLI et que l&amp;rsquo;on veut énumerer les tables il faut d&amp;rsquo;abord savoir quels sont les colonnes afficher dans la table. Pour cela on commence par trouver le nombre de colonne de la table que l&amp;rsquo;on requête. Pour cela on utilise l&amp;rsquo;instruction order by pour faire un tri sur les colonnes.</description>
+    </item>
+    
+  </channel>
+</rss>

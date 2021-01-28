@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bruteforce on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/bruteforce/</link>
+    <description>Recent content in bruteforce on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/bruteforce/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fcrackzip - Zip BruteForce </title>
+      <link>http://lololekik.com/cuisine/fcrackzip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/fcrackzip/</guid>
+      <description>Utilisation fcrackzip
+Téléchargement Pour le télécharger :
+sudo apt-get update sudo apt-get install fcrackzip  Utilisation Pour obtenir l&amp;rsquo;aide fcrakzip :
+fcrackzip --help
+Pour l&amp;rsquo;utiliser :
+Pour les options :
+-v = verbos
+-u = Utilise unzip pour tester la décompression
+-D = utilisation du mode dictionnaire
+-p = indication des mots de passes à tester</description>
+    </item>
+    
+    <item>
+      <title>ssh2john - RSA Private Key BruteForce </title>
+      <link>http://lololekik.com/cuisine/ssh2john/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/ssh2john/</guid>
+      <description>Introduction ssh2john est un outil permettant de transformer une clé RSA dans un format utilisable par John The Ripper. On peut retrouver l&amp;rsquo;outil ici : https://github.com/openwall/john/blob/bleeding-jumbo/run/ssh2john.py
+Utilisation Pour l&amp;rsquo;utiliser il faut d&amp;rsquo;abord un fichier avec un certificat dedans.
+Ensuite utilisation de ssh2john
+./ssh2john.py joanna.pub &amp;gt; 4john  Ensuite il ne manque plus qu&amp;rsquo;a déchifrer avec John The Ripper
+Utilisation concrète dans la box Openadmin https://lololekik.com/hack-the-box/openadmin/</description>
+    </item>
+    
+    <item>
+      <title>wfuzz - Fuzzing Web </title>
+      <link>http://lololekik.com/cuisine/wfuzz/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/wfuzz/</guid>
+      <description>Introduction wfuzz est un outil permettant de faire du bruteforfce sur les répertoires web afin de trouver des pages intéressantes.
+Voici le git de wfuzz : https://github.com/xmendez/wfuzz
+Aide -h # help --help # aide avancée -w # wordlist --hc	# pour cacher les pages avec un code spécifique --hl	# pour cacher les pages avec un nombre de ligne spécifique --hw	# pour cacher les pages avec un nombre de mot spécifique --hh	# pour cacher les pages avec un nombre de charactère spécifique -b # ajouter des cookies -d # Requête post -u # url --ip	# utilise l&#39;ip sous le format &#39;ip:port&#39; -f # fichier de sortie -L/--follow # suivre les redirections -X # methode -R # Recusrif Recherche de répertoire avec dictionnaire Ici on cache toute les requêtes avec un code 404.</description>
+    </item>
+    
+    <item>
+      <title>WinRM </title>
+      <link>http://lololekik.com/cuisine/winrm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/winrm/</guid>
+      <description>Introduction Winrm est un protocole permettant de faire de la gestion à distance. Il repose sur le port 5985 en HTTP et 5986 en HTTPS.
+Crackmapexec Via le module Winrm de crackmapexec on peut vérifier des couples user/password et faire une RCE.
+sudo crackmapexec winrm -u &amp;lt;user&amp;gt; -p &amp;lt;password&amp;gt; -d &amp;lt;domain&amp;gt; &amp;lt;host/Ip&amp;gt; -x command Il est aussi possible d&amp;rsquo;invoquer des shells via des modules.
+Evil-winrm Evil Winrm permet d&amp;rsquo;obtenir un shell</description>
+    </item>
+    
+  </channel>
+</rss>

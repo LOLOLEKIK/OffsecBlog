@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>netcat on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/netcat/</link>
+    <description>Recent content in netcat on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/netcat/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SMTP - Enumeration </title>
+      <link>http://lololekik.com/cuisine/smtpenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/smtpenum/</guid>
+      <description>Introduction SMTP est un protocole sur le port 25 utilisé pour envoyer des mails
+Netcat Enumération d&amp;rsquo;utilisateur
+┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Cuisine] └─$ nc -n 192.168.1.91 25 1 ⨯ 220 metasploitable.localdomain ESMTP Postfix (Ubuntu) VRFY ROOT 252 2.0.0 ROOT VRFY msfadmin 252 2.0.0 msfadmin VRFY LOLOLEKIK 550 5.1.1 &amp;lt;LOLOLEKIK&amp;gt;: Recipient address rejected: User unknown in local recipient table </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Network on LOLOLEKIK</title>
+    <link>http://lololekik.com/network/</link>
+    <description>Recent content in Network on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/network/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Cisco] ACL standard &amp; étendue</title>
+      <link>http://lololekik.com/network/cisco_acl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/network/cisco_acl/</guid>
+      <description>** Mise en place des ACL pour sécuriser les accès réseaux**
+Introduction Les Access Control List (ACL) sont des règles qui permettent d&amp;rsquo;autoriser ou refuser certains traffique. Les ACL peuvent s&amp;rsquo;appuyer sur de nombreux paramètres pour filtrer les accès comme l&amp;rsquo;adresse IP source ou encore le port à joindre. Au sein des systèmes Cisco, on identifie deux types d&amp;rsquo;ACL distinct. Les ACL standard et les ACL étendue.
+ACL Standard Les ACL standard, sont les acl qui proposent le moins de paramètres à surveiller.</description>
+    </item>
+    
+    <item>
+      <title>[Cisco] Routage dynamique - OSPF</title>
+      <link>http://lololekik.com/network/cisco_ospf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/network/cisco_ospf/</guid>
+      <description>** Configuration du routage dynamique avec OSPF**
+Introduction Open Shortest Path First (OSPF) est un protocole de routage à état de liens. Il permet de trouver les chemins les plus &amp;ldquo;courts&amp;rdquo; en vérifiant plusiseurs paramètres, comme la bande passante, afin de trouver un réseau. Pour la réalisation de ce TP, j&amp;rsquo;utiliserai Cisco Packet Tracer Student. Pour les switchs nous utiliserons les switchs Cisco 2960 et pour les routeurs nous utiliserons les routeurs Cisco 2911.</description>
+    </item>
+    
+    <item>
+      <title>[Cisco] Vlan &amp; Routage inter vlan</title>
+      <link>http://lololekik.com/network/cisco_vlan/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/network/cisco_vlan/</guid>
+      <description>Mise en place de Vlan et du routage inter-vlan sur un routeur Cisco
+Introduction Les Virtual Local Area Network (VLAN), sont des réseaux informatiques séparés logiquement entre eux. Cela permet d&amp;rsquo;isoler logiquement les flux entre les équipements d&amp;rsquo;interconnexion. Pour la réalisation de ce TP, j&amp;rsquo;utiliserai Cisco Packet Tracer Student. Pour les switchs nous utiliserons les switchs Cisco 2960 et pour les routeurs nous utiliserons les routeurs Cisco 2911. On va isoler un trois réseaux pour trois services différents.</description>
+    </item>
+    
+  </channel>
+</rss>

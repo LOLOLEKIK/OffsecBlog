@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NoSQLi on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/nosqli/</link>
+    <description>Recent content in NoSQLi on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/nosqli/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mango - Medium</title>
+      <link>http://lololekik.com/hack-the-box/mango/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/mango/</guid>
+      <description>Résolution de la box Mango
+Introduction La box Mango de Hack The Box est une box Linux de difficulté &amp;ldquo;Medium&amp;rdquo;.
+Foothold &amp;amp; User Enumération On débute la box, comme d&amp;rsquo;habitude, avec un nmap.
+On voit ici que deux ports web sont ouverts. En se rendant sur le site web en https on inspecte le certificat. On voit rapidement une entrée qui nous intéresse.
+On essaie de voir si en renseignant le nom dans notre fichier host nous n&amp;rsquo;allons pas être redirigé sur un autre site.</description>
+    </item>
+    
+    <item>
+      <title>NoSQL Injection Blind</title>
+      <link>http://lololekik.com/exploit/nosqlinjection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/exploit/nosqlinjection/</guid>
+      <description>Introduction Pour les injections NoSQL comme mongoDB, j&amp;rsquo;ai developpé un petit script qui permet de trouver des informations à l&amp;rsquo;aveugle. Il suffit de rentrer l&amp;rsquo;url en indiquant l&amp;rsquo;endroit d&amp;rsquo;injection. Il faut ensuite préciser au script comment il peut reconnaitre une page d&amp;rsquo;erreur et une page valide. Puis le tour est joué !
+Avant de faire tourner le script il faut connaitre la page qui nous donne une erreur et la page qui nous indique que le payload a fonctionné.</description>
+    </item>
+    
+  </channel>
+</rss>

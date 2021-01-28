@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hack The Box on LOLOLEKIK</title>
+    <link>http://lololekik.com/hack-the-box/</link>
+    <description>Recent content in Hack The Box on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/hack-the-box/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lame - Easy</title>
+      <link>http://lololekik.com/hack-the-box/lame/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/lame/</guid>
+      <description>Résolution de la box Lame
+Introduction La box Lame de Hack The Box est une box Linux de difficulté &amp;ldquo;Easy&amp;rdquo;. Cette box fait aussi parti du parcours &amp;ldquo;Beginner Track&amp;rdquo; du mode &amp;ldquo;Tracks&amp;rdquo;.
+Enumeration Pour commencer on énumère les ports ouverts pour trouver les services distants.
+FTP Anonyme On voit que le service FTP est accessible en anonyme. On tente une connexion pour vérifier s&amp;rsquo;il y a des fichiers qui pourraient nous intéresser.</description>
+    </item>
+    
+    <item>
+      <title>Mango - Medium</title>
+      <link>http://lololekik.com/hack-the-box/mango/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/mango/</guid>
+      <description>Résolution de la box Mango
+Introduction La box Mango de Hack The Box est une box Linux de difficulté &amp;ldquo;Medium&amp;rdquo;.
+Foothold &amp;amp; User Enumération On débute la box, comme d&amp;rsquo;habitude, avec un nmap.
+On voit ici que deux ports web sont ouverts. En se rendant sur le site web en https on inspecte le certificat. On voit rapidement une entrée qui nous intéresse.
+On essaie de voir si en renseignant le nom dans notre fichier host nous n&amp;rsquo;allons pas être redirigé sur un autre site.</description>
+    </item>
+    
+    <item>
+      <title>OpenAdmin - Easy</title>
+      <link>http://lololekik.com/hack-the-box/openadmin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/openadmin/</guid>
+      <description>Résolution de la box OpenAdmin
+Introduction La box OpenAdmin de Hack The Box est une box Linux de difficulté &amp;ldquo;Easy&amp;rdquo;.
+Foothold Enumération On commence par un nmap avec l&amp;rsquo;option -A car c&amp;rsquo;est une machine HTB et on ne risque pas de la faire tomber.
+On peut constater qu&amp;rsquo;il y a un service web et un service ssh. On regade sur le service web est vulnérable avec searchsploit.
+Il n&amp;rsquo;y a pas d&amp;rsquo;exploit qui nous permettrait de prendre la main sur la machine.</description>
+    </item>
+    
+    <item>
+      <title>Remote - Easy</title>
+      <link>http://lololekik.com/hack-the-box/remote/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/remote/</guid>
+      <description>Résolution de la box Sauna
+Introduction La box Remote de Hack The Box est une box Windows de difficulté &amp;ldquo;Easy&amp;rdquo;.
+User Enumération On commence par faire un nmap sur tous les ports.
+┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Hack The Box] └─$ sudo nmap -A remote.htb Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-21 11:45 CET Nmap scan report for remote.htb (10.10.10.180) Host is up (0.032s latency). Not shown: 993 closed ports PORT STATE SERVICE VERSION 21/tcp open ftp Microsoft ftpd |_ftp-anon: Anonymous FTP login allowed (FTP code 230) | ftp-syst: |_ SYST: Windows_NT 80/tcp open http Microsoft HTTPAPI httpd 2.</description>
+    </item>
+    
+    <item>
+      <title>Sauna - Easy</title>
+      <link>http://lololekik.com/hack-the-box/sauna/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/sauna/</guid>
+      <description>Résolution de la box Sauna
+Introduction La box Sauna de Hack The Box est une box Windows de difficulté &amp;ldquo;Easy&amp;rdquo;.
+User 1 Enumération On commence par faire un nmap sur tous les ports.
+┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nmap -A sauna.htb Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-20 09:13 CET Nmap scan report for sauna.htb (10.10.10.175) Host is up (0.043s latency). Not shown: 988 filtered ports PORT STATE SERVICE VERSION 53/tcp open domain Simple DNS Plus 80/tcp open http Microsoft IIS httpd 10.</description>
+    </item>
+    
+    <item>
+      <title>Traceback - Easy</title>
+      <link>http://lololekik.com/hack-the-box/traceback/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/traceback/</guid>
+      <description>Résolution de la box Mango
+Introduction La box Traceback de Hack The Box est une box Linux de difficulté &amp;ldquo;Easy&amp;rdquo;.
+Foothold Enumération On commence par faire un nmap sur tous les ports.
+On voit qu&amp;rsquo;il y a un serveur web. En se rendant dessus on trouve ceci.
+On va donc se créer une wordlist avec plein de webshell populaire pour voir si on peut en retrouver un. La liste a été prise ici : https://github.</description>
+    </item>
+    
+    <item>
+      <title>Traverexec - Easy</title>
+      <link>http://lololekik.com/hack-the-box/traverxec/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/traverxec/</guid>
+      <description>Résolution de la box Traverexec
+Introduction La box OpenAdmin de Hack The Box est une box Linux de difficulté &amp;ldquo;Easy&amp;rdquo;.
+Foothold Enumération Comme d&amp;rsquo;habitude on commence avec un nmap.
+On voit via searchsploit que la version de nostromo est vulnérable à une RCE
+Exploit On récupère le script présent sur exploitdb https://www.exploit-db.com/exploits/47837 puis on l&amp;rsquo;execute pour vérifier la vulnérabilité.
+Maintenant on va s&amp;rsquo;envoyer un shell via netcat.
+Et on vérifie sur notre port en écoute si on l&amp;rsquo;a bien reçu.</description>
+    </item>
+    
+  </channel>
+</rss>

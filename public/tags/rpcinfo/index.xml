@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rpcinfo on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/rpcinfo/</link>
+    <description>Recent content in rpcinfo on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/rpcinfo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MSRPC </title>
+      <link>http://lololekik.com/cuisine/msrpcenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/msrpcenum/</guid>
+      <description>Introduction msrpc est un protocole client/serveur developpé pour executé des tâches sur un serveur distant. Il écoute sur le port 139.
+NMAP - Script Service accessible dans l&amp;rsquo;annuaire (portmapper)
+┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nmap &amp;lt;ip&amp;gt; --script=msrpc-enum </description>
+    </item>
+    
+    <item>
+      <title>NFS </title>
+      <link>http://lololekik.com/cuisine/nfsenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/nfsenum/</guid>
+      <description>Introduction NFS est un protocole qui permet à un client d&amp;rsquo;accèder à des fichiers à travers le réseau. Un client désireux d&amp;rsquo;effectuer une requête NFS s&amp;rsquo;adresse au portmapper (port 111 en TCP ou UDP) et lui demande où se trouve le serveur NFS. On lui répond généralement en indiquant le port 2049 (port par défaut pour NFS).
+NMAP - RPCINFO Service accessible dans l&amp;rsquo;annuaire (portmapper)
+┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Cuisine] └─$ nmap -p 111 --script=rpcinfo metasploitable.</description>
+    </item>
+    
+  </channel>
+</rss>

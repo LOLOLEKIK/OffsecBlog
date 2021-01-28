@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>winrm on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/winrm/</link>
+    <description>Recent content in winrm on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/winrm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WinRM </title>
+      <link>http://lololekik.com/cuisine/winrm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/winrm/</guid>
+      <description>Introduction Winrm est un protocole permettant de faire de la gestion à distance. Il repose sur le port 5985 en HTTP et 5986 en HTTPS.
+Crackmapexec Via le module Winrm de crackmapexec on peut vérifier des couples user/password et faire une RCE.
+sudo crackmapexec winrm -u &amp;lt;user&amp;gt; -p &amp;lt;password&amp;gt; -d &amp;lt;domain&amp;gt; &amp;lt;host/Ip&amp;gt; -x command Il est aussi possible d&amp;rsquo;invoquer des shells via des modules.
+Evil-winrm Evil Winrm permet d&amp;rsquo;obtenir un shell</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>enumeration on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/enumeration/</link>
+    <description>Recent content in enumeration on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/enumeration/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Active directory </title>
+      <link>http://lololekik.com/cuisine/ad/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/ad/</guid>
+      <description>Introduction Active directory est le service d&amp;rsquo;annuaire LDAP de microsoft. Il écoute sur le port 389 (Local domain controller) et 3268 (forêt entière)
+Bloodhound Bloodhound est un outil permettant d&amp;rsquo;avoir un visuel l&amp;rsquo;architecture de l&amp;rsquo;active directory. Il permet de rapidement visualiser les droits, utilisateurs, objets..
+Récupération des informations pour construire la BDD
+──(lololekik㉿Ashitaka)-[~/tools/bloodhound/sauna] └─$ bloodhound-python -u svc_loanmgr -p Moneymakestheworldgoround! -d EGOTISTICAL-BANK.LOCAL -ns 10.10.10.175 -c All INFO: Found AD domain: egotistical-bank.local INFO: Connecting to LDAP server: SAUNA.</description>
+    </item>
+    
+    <item>
+      <title>DNS - Transfert de Zone </title>
+      <link>http://lololekik.com/cuisine/zonetransfert/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/zonetransfert/</guid>
+      <description>Introduction Un transfert de zone DNS permet d&amp;rsquo;obtenir une liste de machine inscrite dans le DNS interrogé.
+Host host -l &amp;lt;nom de domaine&amp;gt; &amp;lt;adresse du serveur DNS&amp;gt; DNSRecon dnsrecon -d &amp;lt;nom de domaine&amp;gt; -t axfr DNSenum dnsenum &amp;lt;nom de domaine&amp;gt; NMAP nmap --script=dns-zone-transfer -p 53 &amp;lt;adresse du serveur DNS&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>MSRPC </title>
+      <link>http://lololekik.com/cuisine/msrpcenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/msrpcenum/</guid>
+      <description>Introduction msrpc est un protocole client/serveur developpé pour executé des tâches sur un serveur distant. Il écoute sur le port 139.
+NMAP - Script Service accessible dans l&amp;rsquo;annuaire (portmapper)
+┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nmap &amp;lt;ip&amp;gt; --script=msrpc-enum </description>
+    </item>
+    
+    <item>
+      <title>NFS </title>
+      <link>http://lololekik.com/cuisine/nfsenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/nfsenum/</guid>
+      <description>Introduction NFS est un protocole qui permet à un client d&amp;rsquo;accèder à des fichiers à travers le réseau. Un client désireux d&amp;rsquo;effectuer une requête NFS s&amp;rsquo;adresse au portmapper (port 111 en TCP ou UDP) et lui demande où se trouve le serveur NFS. On lui répond généralement en indiquant le port 2049 (port par défaut pour NFS).
+NMAP - RPCINFO Service accessible dans l&amp;rsquo;annuaire (portmapper)
+┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Cuisine] └─$ nmap -p 111 --script=rpcinfo metasploitable.</description>
+    </item>
+    
+    <item>
+      <title>NoSQL Injection Blind</title>
+      <link>http://lololekik.com/exploit/nosqlinjection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/exploit/nosqlinjection/</guid>
+      <description>Introduction Pour les injections NoSQL comme mongoDB, j&amp;rsquo;ai developpé un petit script qui permet de trouver des informations à l&amp;rsquo;aveugle. Il suffit de rentrer l&amp;rsquo;url en indiquant l&amp;rsquo;endroit d&amp;rsquo;injection. Il faut ensuite préciser au script comment il peut reconnaitre une page d&amp;rsquo;erreur et une page valide. Puis le tour est joué !
+Avant de faire tourner le script il faut connaitre la page qui nous donne une erreur et la page qui nous indique que le payload a fonctionné.</description>
+    </item>
+    
+    <item>
+      <title>SMB &amp; NetBIOS </title>
+      <link>http://lololekik.com/cuisine/smbenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/smbenum/</guid>
+      <description>Introduction On peut retrouver deux services important ici. NetBIOS UDP (138) TCP (139) et SMB TCP 445
+NBTscan Il est possible d&amp;rsquo;utiliser nbtscan sur une adresse réseau avec son CIDR.
+┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nbtscan -r 192.168.1.91 Doing NBT name scan for addresses from 192.168.1.91 IP address NetBIOS Name Server User MAC address ------------------------------------------------------------------------------ 192.168.1.91 METASPLOITABLE &amp;lt;server&amp;gt; METASPLOITABLE 00:00:00:00:00:00 NMAP On peut retrouver beaucoup de scripts ici
+┌──(lololekik㉿Ashitaka)-[~] └─$ ll /usr/share/nmap/scripts/smb* -rw-r--r-- 1 root root 3355 12 oct.</description>
+    </item>
+    
+    <item>
+      <title>SMTP - Enumeration </title>
+      <link>http://lololekik.com/cuisine/smtpenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/smtpenum/</guid>
+      <description>Introduction SMTP est un protocole sur le port 25 utilisé pour envoyer des mails
+Netcat Enumération d&amp;rsquo;utilisateur
+┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Cuisine] └─$ nc -n 192.168.1.91 25 1 ⨯ 220 metasploitable.localdomain ESMTP Postfix (Ubuntu) VRFY ROOT 252 2.0.0 ROOT VRFY msfadmin 252 2.0.0 msfadmin VRFY LOLOLEKIK 550 5.1.1 &amp;lt;LOLOLEKIK&amp;gt;: Recipient address rejected: User unknown in local recipient table </description>
+    </item>
+    
+    <item>
+      <title>SNMP - Enumeration </title>
+      <link>http://lololekik.com/cuisine/snmpenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/snmpenum/</guid>
+      <description>Introduction SNMP est un protocole permettant de superviser un réseau via les ports 161 et 162 (pour les traps).
+Onesixtyone Enumération d&amp;rsquo;utilisateur
+onesixtyone -c &amp;lt;fichier avec les communautés à tester&amp;gt; -i &amp;lt;fichier avec les ips&amp;gt; onesixtyone &amp;lt;ip&amp;gt; &amp;lt;communauté&amp;gt; SNMwalk Enumération de l&amp;rsquo;arbre MIB entièrement snmpwalk -c &amp;lt;communauté&amp;gt; -v &amp;lt;version&amp;gt; &amp;lt;ip&amp;gt; Enumération des utilisateurs windows Il existe plein de branches à l&amp;rsquo;arbre MIB à interroger. On peut demander les ports ouverts, les services présents, les utilisateurs etc&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Web - SQLi </title>
+      <link>http://lololekik.com/cuisine/sqli/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/sqli/</guid>
+      <description>Introduction Les injections SQL permettent via une entrée utilisateur de modifier la requête envoyé à la BDD.
+Manuel Lorsqu&amp;rsquo;on trouve une SQLI et que l&amp;rsquo;on veut énumerer les tables il faut d&amp;rsquo;abord savoir quels sont les colonnes afficher dans la table. Pour cela on commence par trouver le nombre de colonne de la table que l&amp;rsquo;on requête. Pour cela on utilise l&amp;rsquo;instruction order by pour faire un tri sur les colonnes.</description>
+    </item>
+    
+    <item>
+      <title>wfuzz - Fuzzing Web </title>
+      <link>http://lololekik.com/cuisine/wfuzz/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/wfuzz/</guid>
+      <description>Introduction wfuzz est un outil permettant de faire du bruteforfce sur les répertoires web afin de trouver des pages intéressantes.
+Voici le git de wfuzz : https://github.com/xmendez/wfuzz
+Aide -h # help --help # aide avancée -w # wordlist --hc	# pour cacher les pages avec un code spécifique --hl	# pour cacher les pages avec un nombre de ligne spécifique --hw	# pour cacher les pages avec un nombre de mot spécifique --hh	# pour cacher les pages avec un nombre de charactère spécifique -b # ajouter des cookies -d # Requête post -u # url --ip	# utilise l&#39;ip sous le format &#39;ip:port&#39; -f # fichier de sortie -L/--follow # suivre les redirections -X # methode -R # Recusrif Recherche de répertoire avec dictionnaire Ici on cache toute les requêtes avec un code 404.</description>
+    </item>
+    
+    <item>
+      <title>WinRM </title>
+      <link>http://lololekik.com/cuisine/winrm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/winrm/</guid>
+      <description>Introduction Winrm est un protocole permettant de faire de la gestion à distance. Il repose sur le port 5985 en HTTP et 5986 en HTTPS.
+Crackmapexec Via le module Winrm de crackmapexec on peut vérifier des couples user/password et faire une RCE.
+sudo crackmapexec winrm -u &amp;lt;user&amp;gt; -p &amp;lt;password&amp;gt; -d &amp;lt;domain&amp;gt; &amp;lt;host/Ip&amp;gt; -x command Il est aussi possible d&amp;rsquo;invoquer des shells via des modules.
+Evil-winrm Evil Winrm permet d&amp;rsquo;obtenir un shell</description>
+    </item>
+    
+  </channel>
+</rss>
