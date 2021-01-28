@@ -251,6 +251,10 @@
   </url>
   
   <url>
+    <loc>http://lololekik.com/hack-the-box/obscurity/</loc>
+  </url>
+  
+  <url>
     <loc>http://lololekik.com/tags/offsec/</loc>
   </url>
   
@@ -412,6 +416,10 @@
   
   <url>
     <loc>http://lololekik.com/tags/webshell/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/tags/wfuzz/</loc>
   </url>
   
   <url>

