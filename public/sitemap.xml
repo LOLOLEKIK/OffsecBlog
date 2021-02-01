@@ -95,6 +95,30 @@
   </url>
   
   <url>
+    <loc>http://lololekik.com/hack-the-box/lame/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/openadmin/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/sauna/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/traceback/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/traverxec/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/remote/</loc>
+  </url>
+  
+  <url>
     <loc>http://lololekik.com/tags/enum4linux/</loc>
   </url>
   
@@ -163,10 +187,6 @@
   </url>
   
   <url>
-    <loc>http://lololekik.com/hack-the-box/lame/</loc>
-  </url>
-  
-  <url>
     <loc>http://lololekik.com/tags/lfi/</loc>
   </url>
   
@@ -183,11 +203,23 @@
   </url>
   
   <url>
+    <loc>http://lololekik.com/tags/medium/</loc>
+  </url>
+  
+  <url>
     <loc>http://lololekik.com/hack-the-box/mango/</loc>
   </url>
   
   <url>
-    <loc>http://lololekik.com/tags/medium/</loc>
+    <loc>http://lololekik.com/hack-the-box/monteverde/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/obscurity/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/resolute/</loc>
   </url>
   
   <url>
@@ -251,19 +283,11 @@
   </url>
   
   <url>
-    <loc>http://lololekik.com/hack-the-box/obscurity/</loc>
-  </url>
-  
-  <url>
     <loc>http://lololekik.com/tags/offsec/</loc>
   </url>
   
   <url>
     <loc>http://lololekik.com/tags/onesixtyone/</loc>
-  </url>
-  
-  <url>
-    <loc>http://lololekik.com/hack-the-box/openadmin/</loc>
   </url>
   
   <url>
@@ -279,11 +303,11 @@
   </url>
   
   <url>
-    <loc>http://lololekik.com/tags/rce/</loc>
+    <loc>http://lololekik.com/tags/python/</loc>
   </url>
   
   <url>
-    <loc>http://lololekik.com/hack-the-box/remote/</loc>
+    <loc>http://lololekik.com/tags/rce/</loc>
   </url>
   
   <url>
@@ -304,10 +328,6 @@
   
   <url>
     <loc>http://lololekik.com/tags/samba/</loc>
-  </url>
-  
-  <url>
-    <loc>http://lololekik.com/hack-the-box/sauna/</loc>
   </url>
   
   <url>
@@ -376,14 +396,6 @@
   
   <url>
     <loc>http://lololekik.com/tags/tool/</loc>
-  </url>
-  
-  <url>
-    <loc>http://lololekik.com/hack-the-box/traceback/</loc>
-  </url>
-  
-  <url>
-    <loc>http://lololekik.com/hack-the-box/traverxec/</loc>
   </url>
   
   <url>

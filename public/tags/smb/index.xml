@@ -7,6 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language><atom:link href="http://lololekik.com/tags/smb/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Medium - Resolute</title>
+      <link>http://lololekik.com/hack-the-box/resolute/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/resolute/</guid>
+      <description>Résolution de la box Resolute
+Introduction La box Resolute de Hack The Box est une box Windows de difficulté &amp;ldquo;Medium&amp;rdquo;.
+Foothold Enumération Nmap sur la machine.
+┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nmap -p- -A resolute.htb Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-28 16:19 CET Nmap scan report for resolute.htb (10.10.10.169) Host is up (0.032s latency). Not shown: 65514 closed ports PORT STATE SERVICE VERSION 53/tcp open domain Simple DNS Plus 88/tcp open kerberos-sec Microsoft Windows Kerberos (server time: 2021-01-28 15:27:17Z) 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 389/tcp open ldap Microsoft Windows Active Directory LDAP (Domain: megabank.</description>
+    </item>
+    
+    <item>
       <title>SMB &amp; NetBIOS </title>
       <link>http://lololekik.com/cuisine/smbenum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

@@ -345,7 +345,19 @@ Nmap done: 1 IP address (1 host up) scanned in 1.62 seconds
 </code></pre><p>Enumerer les partages</p>
 <pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~]
 └─$ enum4linux -S &lt;ip&gt;
-</code></pre>
+</code></pre><h1 id="crackmapexec">Crackmapexec</h1>
+<p>Avec crackmapexec on peut bruteforce des accès smb pour tenter de trouver des mots de passe.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">crackmapexec smb &lt;ip&gt; -d &lt;domaine&gt; -u &lt;usersfile&gt; -p &lt;passwordfile&gt;
+</code></pre></div><h1 id="smbmap">SMBmap</h1>
+<p>Lister les répertoires</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">smbmap -u &lt;user&gt; -p &lt;password&gt; -d &lt;domain&gt; -H &lt;ip&gt; 
+</code></pre></div><p>Executer des commandes</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">smbmap -u &lt;user&gt; -p &lt;password&gt; -d &lt;domain&gt; -H &lt;ip&gt; -x &lt;command&gt;
+</code></pre></div><p>Lire un répertoire</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">smbmap -u &lt;user&gt; -p &lt;password&gt; -d &lt;domain&gt; -H &lt;ip&gt; -r <span style="color:#e6db74">&#39;&lt;répertorie&gt;&#39;</span>
+</code></pre></div><p>Récupérer tous les fichiers avec une extension particulière</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">smbmap -u &lt;user&gt; -p &lt;password&gt; -d &lt;domain&gt; -H &lt;ip&gt; -A <span style="color:#e6db74">&#39;(&lt;ext1&gt;|&lt;ext2&gt;|&lt;ext3&gt;)&#39;</span> -R
+</code></pre></div>
   </div>
   
 

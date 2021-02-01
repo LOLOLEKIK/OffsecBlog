@@ -7,18 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language><atom:link href="http://lololekik.com/tags/nfs/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>NFS </title>
-      <link>http://lololekik.com/cuisine/nfsenum/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://lololekik.com/cuisine/nfsenum/</guid>
-      <description>Introduction NFS est un protocole qui permet à un client d&amp;rsquo;accèder à des fichiers à travers le réseau. Un client désireux d&amp;rsquo;effectuer une requête NFS s&amp;rsquo;adresse au portmapper (port 111 en TCP ou UDP) et lui demande où se trouve le serveur NFS. On lui répond généralement en indiquant le port 2049 (port par défaut pour NFS).
-NMAP - RPCINFO Service accessible dans l&amp;rsquo;annuaire (portmapper)
-┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Cuisine] └─$ nmap -p 111 --script=rpcinfo metasploitable.</description>
-    </item>
-    
-    <item>
-      <title>Remote - Easy</title>
+      <title>Easy- Remote</title>
       <link>http://lololekik.com/hack-the-box/remote/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -27,6 +16,17 @@ NMAP - RPCINFO Service accessible dans l&amp;rsquo;annuaire (portmapper)
 Introduction La box Remote de Hack The Box est une box Windows de difficulté &amp;ldquo;Easy&amp;rdquo;.
 User Enumération On commence par faire un nmap sur tous les ports.
 ┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Hack The Box] └─$ sudo nmap -A remote.htb Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-21 11:45 CET Nmap scan report for remote.htb (10.10.10.180) Host is up (0.032s latency). Not shown: 993 closed ports PORT STATE SERVICE VERSION 21/tcp open ftp Microsoft ftpd |_ftp-anon: Anonymous FTP login allowed (FTP code 230) | ftp-syst: |_ SYST: Windows_NT 80/tcp open http Microsoft HTTPAPI httpd 2.</description>
+    </item>
+    
+    <item>
+      <title>NFS </title>
+      <link>http://lololekik.com/cuisine/nfsenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/nfsenum/</guid>
+      <description>Introduction NFS est un protocole qui permet à un client d&amp;rsquo;accèder à des fichiers à travers le réseau. Un client désireux d&amp;rsquo;effectuer une requête NFS s&amp;rsquo;adresse au portmapper (port 111 en TCP ou UDP) et lui demande où se trouve le serveur NFS. On lui répond généralement en indiquant le port 2049 (port par défaut pour NFS).
+NMAP - RPCINFO Service accessible dans l&amp;rsquo;annuaire (portmapper)
+┌──(lololekik㉿Ashitaka)-[~/Documents/bloglololekik/content/Cuisine] └─$ nmap -p 111 --script=rpcinfo metasploitable.</description>
     </item>
     
   </channel>
