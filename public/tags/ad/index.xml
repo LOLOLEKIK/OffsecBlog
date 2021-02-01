@@ -30,5 +30,17 @@ User 1 Enumération On commence par faire un nmap sur tous les ports.
 ┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nmap -A sauna.htb Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-20 09:13 CET Nmap scan report for sauna.htb (10.10.10.175) Host is up (0.043s latency). Not shown: 988 filtered ports PORT STATE SERVICE VERSION 53/tcp open domain Simple DNS Plus 80/tcp open http Microsoft IIS httpd 10.</description>
     </item>
     
+    <item>
+      <title>Medium - Monteverde</title>
+      <link>http://lololekik.com/hack-the-box/monteverde/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/hack-the-box/monteverde/</guid>
+      <description>Résolution de la box Monteverde
+Introduction La box Monteverde de Hack The Box est une box Windows de difficulté &amp;ldquo;Medium&amp;rdquo;.
+Foothold Enumération On commence par faire un nmap sur la machine distante
+┌──(lololekik㉿Ashitaka)-[~] └─$ nmap -p- -A -Pn monteverde.htb Host discovery disabled (-Pn). All addresses will be marked &amp;#39;up&amp;#39; and scan times will be slower. Starting Nmap 7.91 ( https://nmap.org ) at 2021-02-01 17:41 CET Nmap scan report for monteverde.htb (10.</description>
+    </item>
+    
   </channel>
 </rss>
