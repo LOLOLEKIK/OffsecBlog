@@ -34,15 +34,6 @@
     </item>
     
     <item>
-      <title>Azure</title>
-      <link>http://lololekik.com/tags/azure/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://lololekik.com/tags/azure/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>bloodhound</title>
       <link>http://lololekik.com/tags/bloodhound/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -214,15 +205,6 @@
     </item>
     
     <item>
-      <title>GraphQL</title>
-      <link>http://lololekik.com/tags/graphql/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://lololekik.com/tags/graphql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>gtfobins</title>
       <link>http://lololekik.com/tags/gtfobins/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -250,7 +232,7 @@
     </item>
     
     <item>
-      <title>Injection</title>
+      <title>injection</title>
       <link>http://lololekik.com/tags/injection/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -471,6 +453,15 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://lololekik.com/tags/rpcbind/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rpcclient</title>
+      <link>http://lololekik.com/tags/rpcclient/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/tags/rpcclient/</guid>
       <description></description>
     </item>
     

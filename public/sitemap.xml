@@ -31,10 +31,6 @@
   </url>
   
   <url>
-    <loc>http://lololekik.com/tags/azure/</loc>
-  </url>
-  
-  <url>
     <loc>http://lololekik.com/tags/bloodhound/</loc>
   </url>
   
@@ -99,30 +95,6 @@
   </url>
   
   <url>
-    <loc>http://lololekik.com/hack-the-box/lame/</loc>
-  </url>
-  
-  <url>
-    <loc>http://lololekik.com/hack-the-box/openadmin/</loc>
-  </url>
-  
-  <url>
-    <loc>http://lololekik.com/hack-the-box/sauna/</loc>
-  </url>
-  
-  <url>
-    <loc>http://lololekik.com/hack-the-box/traceback/</loc>
-  </url>
-  
-  <url>
-    <loc>http://lololekik.com/hack-the-box/traverxec/</loc>
-  </url>
-  
-  <url>
-    <loc>http://lololekik.com/hack-the-box/remote/</loc>
-  </url>
-  
-  <url>
     <loc>http://lololekik.com/tags/enum4linux/</loc>
   </url>
   
@@ -167,14 +139,6 @@
   </url>
   
   <url>
-    <loc>http://lololekik.com/tags/graphql/</loc>
-  </url>
-  
-  <url>
-    <loc>http://lololekik.com/cuisine/graphql/</loc>
-  </url>
-  
-  <url>
     <loc>http://lololekik.com/tags/gtfobins/</loc>
   </url>
   
@@ -199,6 +163,10 @@
   </url>
   
   <url>
+    <loc>http://lololekik.com/hack-the-box/lame/</loc>
+  </url>
+  
+  <url>
     <loc>http://lololekik.com/tags/lfi/</loc>
   </url>
   
@@ -215,23 +183,11 @@
   </url>
   
   <url>
-    <loc>http://lololekik.com/tags/medium/</loc>
-  </url>
-  
-  <url>
     <loc>http://lololekik.com/hack-the-box/mango/</loc>
   </url>
   
   <url>
-    <loc>http://lololekik.com/hack-the-box/monteverde/</loc>
-  </url>
-  
-  <url>
-    <loc>http://lololekik.com/hack-the-box/obscurity/</loc>
-  </url>
-  
-  <url>
-    <loc>http://lololekik.com/hack-the-box/resolute/</loc>
+    <loc>http://lololekik.com/tags/medium/</loc>
   </url>
   
   <url>
@@ -295,11 +251,19 @@
   </url>
   
   <url>
+    <loc>http://lololekik.com/hack-the-box/obscurity/</loc>
+  </url>
+  
+  <url>
     <loc>http://lololekik.com/tags/offsec/</loc>
   </url>
   
   <url>
     <loc>http://lololekik.com/tags/onesixtyone/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/openadmin/</loc>
   </url>
   
   <url>
@@ -323,6 +287,14 @@
   </url>
   
   <url>
+    <loc>http://lololekik.com/hack-the-box/remote/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/resolute/</loc>
+  </url>
+  
+  <url>
     <loc>http://lololekik.com/tags/reverse-shell/</loc>
   </url>
   
@@ -335,11 +307,19 @@
   </url>
   
   <url>
+    <loc>http://lololekik.com/tags/rpcclient/</loc>
+  </url>
+  
+  <url>
     <loc>http://lololekik.com/tags/rpcinfo/</loc>
   </url>
   
   <url>
     <loc>http://lololekik.com/tags/samba/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/sauna/</loc>
   </url>
   
   <url>
@@ -408,6 +388,14 @@
   
   <url>
     <loc>http://lololekik.com/tags/tool/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/traceback/</loc>
+  </url>
+  
+  <url>
+    <loc>http://lololekik.com/hack-the-box/traverxec/</loc>
   </url>
   
   <url>

@@ -49,7 +49,7 @@ NBTscan Il est possible d&rsquo;utiliser nbtscan sur une adresse réseau avec so
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.2aa50c1cef9d4c1452dcd5fdae0f04b8af0b434ba4411ac5045b3b0fb71da69a.css" integrity="sha256-KqUMHO&#43;dTBRS3NX9rg8EuK8LQ0ukQRrFBFs7D7cdppo=">
+<link rel="stylesheet" href="/scss/hyde-hyde.816e5b26c5966343ef21f902ba05a763964deb2ae3fdcd9a954614131b756c59.css" integrity="sha256-gW5bJsWWY0PvIfkCugWnY5ZN6yrj/c2alUYUExt1bFk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -332,7 +332,19 @@ Nmap done: 1 IP address (1 host up) scanned in 1.62 seconds
 </code></pre><h1 id="smbclient">SMBCLIENT</h1>
 <p>Connexion anonyme</p>
 <pre><code class="language-"shell" data-lang=""shell">smbclient -L //IP
-</code></pre><h1 id="enum4linux">ENUM4LINUX</h1>
+</code></pre><p>Connexion authentifiée</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">smbclient -U <span style="color:#e6db74">&#39;&lt;user&gt;&#39;</span>  //&lt;ip&gt;/sysvol
+Enter WORKGROUP<span style="color:#ae81ff">\s</span>vc-alfresco<span style="color:#960050;background-color:#1e0010">&#39;</span>s password: &lt;password&gt;
+Try <span style="color:#e6db74">&#34;help&#34;</span> to get a list of possible commands.
+smb: <span style="color:#ae81ff">\&gt;</span> dir
+  .                                   D        <span style="color:#ae81ff">0</span>  Wed Sep <span style="color:#ae81ff">18</span> 17:45:49 <span style="color:#ae81ff">2019</span>
+  ..                                  D        <span style="color:#ae81ff">0</span>  Wed Sep <span style="color:#ae81ff">18</span> 17:45:49 <span style="color:#ae81ff">2019</span>
+  htb.local                          Dr        <span style="color:#ae81ff">0</span>  Wed Sep <span style="color:#ae81ff">18</span> 17:45:49 <span style="color:#ae81ff">2019</span>
+
+                <span style="color:#ae81ff">5069055</span> blocks of size 4096. <span style="color:#ae81ff">2549006</span> blocks available
+smb: <span style="color:#ae81ff">\&gt;</span> 
+<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> 0:smbclient*   
+</code></pre></div><h1 id="enum4linux">ENUM4LINUX</h1>
 <p>Enumération par défaut</p>
 <pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~]
 └─$ enum4linux &lt;ip&gt;
@@ -345,19 +357,7 @@ Nmap done: 1 IP address (1 host up) scanned in 1.62 seconds
 </code></pre><p>Enumerer les partages</p>
 <pre><code class="language-"shell" data-lang=""shell">┌──(lololekik㉿Ashitaka)-[~]
 └─$ enum4linux -S &lt;ip&gt;
-</code></pre><h1 id="crackmapexec">Crackmapexec</h1>
-<p>Avec crackmapexec on peut bruteforce des accès smb pour tenter de trouver des mots de passe.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">crackmapexec smb &lt;ip&gt; -d &lt;domaine&gt; -u &lt;usersfile&gt; -p &lt;passwordfile&gt;
-</code></pre></div><h1 id="smbmap">SMBmap</h1>
-<p>Lister les répertoires</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">smbmap -u &lt;user&gt; -p &lt;password&gt; -d &lt;domain&gt; -H &lt;ip&gt; 
-</code></pre></div><p>Executer des commandes</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">smbmap -u &lt;user&gt; -p &lt;password&gt; -d &lt;domain&gt; -H &lt;ip&gt; -x &lt;command&gt;
-</code></pre></div><p>Lire un répertoire</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">smbmap -u &lt;user&gt; -p &lt;password&gt; -d &lt;domain&gt; -H &lt;ip&gt; -r <span style="color:#e6db74">&#39;&lt;répertorie&gt;&#39;</span>
-</code></pre></div><p>Récupérer tous les fichiers avec une extension particulière</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">smbmap -u &lt;user&gt; -p &lt;password&gt; -d &lt;domain&gt; -H &lt;ip&gt; -A <span style="color:#e6db74">&#39;(&lt;ext1&gt;|&lt;ext2&gt;|&lt;ext3&gt;)&#39;</span> -R
-</code></pre></div>
+</code></pre>
   </div>
   
 

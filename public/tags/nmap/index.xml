@@ -24,7 +24,9 @@ Host host -l &amp;lt;nom de domaine&amp;gt; &amp;lt;adresse du serveur DNS&amp;g
       <guid>http://lololekik.com/cuisine/msrpcenum/</guid>
       <description>Introduction msrpc est un protocole client/serveur developpé pour executé des tâches sur un serveur distant. Il écoute sur le port 139.
 NMAP - Script Service accessible dans l&amp;rsquo;annuaire (portmapper)
-┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nmap &amp;lt;ip&amp;gt; --script=msrpc-enum </description>
+┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nmap &amp;lt;ip&amp;gt; --script=msrpc-enum RPC - Client On peut se connecter en anonyme via rpcclient :
+rpcclient -U &amp;#39;&amp;#39; -N 10.10.10.161 On peut ensuite utiliser les commandes suivantes pour exploiter le service :
+   Command Interface Description     queryuser SAMR Retrieve user information.</description>
     </item>
     
     <item>

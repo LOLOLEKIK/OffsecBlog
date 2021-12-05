@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rpcclient on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/rpcclient/</link>
+    <description>Recent content in rpcclient on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/rpcclient/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MSRPC </title>
+      <link>http://lololekik.com/cuisine/msrpcenum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/msrpcenum/</guid>
+      <description>Introduction msrpc est un protocole client/serveur developpé pour executé des tâches sur un serveur distant. Il écoute sur le port 139.
+NMAP - Script Service accessible dans l&amp;rsquo;annuaire (portmapper)
+┌──(lololekik㉿Ashitaka)-[~] └─$ sudo nmap &amp;lt;ip&amp;gt; --script=msrpc-enum RPC - Client On peut se connecter en anonyme via rpcclient :
+rpcclient -U &amp;#39;&amp;#39; -N 10.10.10.161 On peut ensuite utiliser les commandes suivantes pour exploiter le service :
+   Command Interface Description     queryuser SAMR Retrieve user information.</description>
+    </item>
+    
+  </channel>
+</rss>
