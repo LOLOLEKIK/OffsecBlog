@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mona on LOLOLEKIK</title>
+    <link>http://lololekik.com/tags/mona/</link>
+    <description>Recent content in mona on LOLOLEKIK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language><atom:link href="http://lololekik.com/tags/mona/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Buffer Overflow</title>
+      <link>http://lololekik.com/cuisine/bo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/cuisine/bo/</guid>
+      <description>Introduction Voici un petit guide pour exploiter des buffers overflow simple avec shellcode.
+Dans notre cas on utilise une room de TryHackMe pour s&amp;rsquo;entrainer et on a accès à la machine distante avec immunity.
+Fuzzing La première étape consite à fuzz le programme pour provoquer un segmentation fault.
+Pour cela j&amp;rsquo;utilise le script ci-dessous
+#!/usr/bin/env python3 import socket, time, sys ip = &amp;#34;10.10.9.235&amp;#34; port = 1337 timeout = 5 prefix = &amp;#34;OVERFLOW4 &amp;#34; # si besoin string = prefix + &amp;#34;A&amp;#34; * 100 while True: try: with socket.</description>
+    </item>
+    
+  </channel>
+</rss>
