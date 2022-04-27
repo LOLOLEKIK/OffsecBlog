@@ -103,6 +103,17 @@ Ce qui correspondait à 75 sur 633 dans la catégorie Sénior.</description>
     </item>
     
     <item>
+      <title>Hacky&#39;Nov 2022</title>
+      <link>http://lololekik.com/writeups/hackynov2022/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://lololekik.com/writeups/hackynov2022/</guid>
+      <description>Introduction Le 01/04/2022 a eu lieu l&amp;rsquo;événement Hacky&amp;rsquo;Nov que j&amp;rsquo;ai eu le plaisir d&amp;rsquo;organiser. Dans le cadre de cet événement j&amp;rsquo;ai produit 4 challenges. Il y avait deux challenges web, et deux challenges de programation. Je détaillerai ici uniquement la résolution des challenges web.
+Pour plus d&amp;rsquo;informations sur l&amp;rsquo;événement : https://hackynov.fr
+Time To Plane Lorsqu&amp;rsquo;on arrive sur la page on tombe sur un système de supervision d&amp;rsquo;avion. Dessus on peut indiquer le numéro du vol que l&amp;rsquo;on veut superviser.</description>
+    </item>
+    
+    <item>
       <title>Lame - Easy</title>
       <link>http://lololekik.com/hack-the-box/lame/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.80.0" />
+
+    
+    
+    
+
+<title>Hacky&#39;Nov 2022 • LOLOLEKIK</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hacky&#39;Nov 2022"/>
+<meta name="twitter:description" content="Introduction Le 01/04/2022 a eu lieu l&rsquo;événement Hacky&rsquo;Nov que j&rsquo;ai eu le plaisir d&rsquo;organiser. Dans le cadre de cet événement j&rsquo;ai produit 4 challenges. Il y avait deux challenges web, et deux challenges de programation. Je détaillerai ici uniquement la résolution des challenges web.
+Pour plus d&rsquo;informations sur l&rsquo;événement : https://hackynov.fr
+Time To Plane Lorsqu&rsquo;on arrive sur la page on tombe sur un système de supervision d&rsquo;avion. Dessus on peut indiquer le numéro du vol que l&rsquo;on veut superviser."/>
+
+<meta property="og:title" content="Hacky&#39;Nov 2022" />
+<meta property="og:description" content="Introduction Le 01/04/2022 a eu lieu l&rsquo;événement Hacky&rsquo;Nov que j&rsquo;ai eu le plaisir d&rsquo;organiser. Dans le cadre de cet événement j&rsquo;ai produit 4 challenges. Il y avait deux challenges web, et deux challenges de programation. Je détaillerai ici uniquement la résolution des challenges web.
+Pour plus d&rsquo;informations sur l&rsquo;événement : https://hackynov.fr
+Time To Plane Lorsqu&rsquo;on arrive sur la page on tombe sur un système de supervision d&rsquo;avion. Dessus on peut indiquer le numéro du vol que l&rsquo;on veut superviser." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lololekik.com/writeups/hackynov2022/" />
+<meta property="og:site_name" content="OffSec &amp; CO" />
+
+
+    
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/qtcreator_dark.min.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.816e5b26c5966343ef21f902ba05a763964deb2ae3fdcd9a954614131b756c59.css" integrity="sha256-gW5bJsWWY0PvIfkCugWnY5ZN6yrj/c2alUYUExt1bFk=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/custom.css">
+
+
+
+
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://lololekik.com/">LOLOLEKIK</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://lololekik.com/img/author.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         OffSec &amp; Co 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">LOLOLEKIK</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/cuisine/">
+						<span>Cuisine</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/exploit/">
+						<span>Exploit</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/network/">
+						<span>Network</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/writeups/">
+						<span>WriteUps</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/hack-the-box/">
+						<span>HackTheBox</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	
+	
+	<a href="https://github.com/LOLOLEKIK" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://root-me.org/lololekik" target="blank" class="linklogo"><div class="rootme_logo logohover"> </div></a>
+	
+	
+	<a href="https://hackthebox.eu/home/users/profile/202145" target="blank" class="linklogo"><div class="hackthebox_logo logohover"> </div></a>
+	
+	
+	<a href="https://linkedin.com/in/loris-thiebaut-8b4b85197" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:loris.thiebaut@gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Hacky&#39;Nov 2022</h1>
+    
+    
+<div class="post__meta">
+    
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/writeups">WRITEUPS</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/ctf">ctf</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/writeups">writeups</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/web">web</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 2 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <h1 id="introduction">Introduction</h1>
+<p>Le 01/04/2022 a eu lieu l&rsquo;événement Hacky&rsquo;Nov que j&rsquo;ai eu le plaisir d&rsquo;organiser. Dans le cadre de cet événement j&rsquo;ai produit 4 challenges. Il y avait deux challenges web, et deux challenges de programation. Je détaillerai ici uniquement la résolution des challenges web.</p>
+<p>Pour plus d&rsquo;informations sur l&rsquo;événement : <a href="https://hackynov.fr">https://hackynov.fr</a></p>
+<h1 id="time-to-plane">Time To Plane</h1>
+
+
+
+  <img src="/img/hacky2022/timetoplane.png" alt="time to plane" class="imageformat"/>
+
+<p>Lorsqu&rsquo;on arrive sur la page on tombe sur un système de supervision d&rsquo;avion. Dessus on peut indiquer le numéro du vol que l&rsquo;on veut superviser.</p>
+
+
+
+  <img src="/img/hacky2022/prez.png" alt="time to plane accueil" class="imageformat"/>
+
+<p>On comprend vite avec le message indiqué qu&rsquo;il faut faire planter le système de supervision. Pour cela on commence à tester les caractères qu&rsquo;on peut utiliser.</p>
+
+
+
+  <img src="/img/hacky2022/aa.png" alt="time to plane test" class="imageformat"/>
+
+<p>On voit que les lettres ne sont pas reconnues et que quelques caractères spéciaux sont reconnus comme une attaque.</p>
+
+
+
+  <img src="/img/hacky2022/apos.png" alt="time to plane test" class="imageformat"/>
+
+<p>Cependant on voit que lorsqu&rsquo;on met deux paranthèses il n&rsquo;y a pas d&rsquo;erreur.</p>
+
+
+
+  <img src="/img/hacky2022/plus.png" alt="time to plane test" class="imageformat"/>
+
+<p>En regardant les headers du site on voit que c&rsquo;est une application flask qui tourne, donc du python.</p>
+
+
+
+  <img src="/img/hacky2022/header.png" alt="time to plane header" class="imageformat"/>
+
+<p>On peut se dire que <em>&ldquo;nouvelle technique pour évaluer la pertinance des numéros d&rsquo;avion&rdquo;</em> est surement une fonction eval. On essaie donc d&rsquo;injecter du code.</p>
+<p>payload = time.sleep(10)</p>
+
+
+
+  <img src="/img/hacky2022/resolution.png" alt="time to plane resolution" class="imageformat"/>
+
+<h1 id="recoapp">RECOAPP</h1>
+
+
+
+  <img src="/img/hacky2022/recoapp.png" alt="recoapp" class="imageformat"/>
+
+<p>Voici la page sur laquelle nous tombons.</p>
+
+
+
+  <img src="/img/hacky2022/recoaccueil.png" alt="recoapp accueil" class="imageformat"/>
+
+<p>En traduisant et jouant un peu avec l&rsquo;application on comprend que c&rsquo;est un outil qui permet de reconnaitre les mots dans une image. L&rsquo;outil permet de déterminer si le mot est réputé comme bon ou mauvais. Pour tester on prend un document word sur lequel on écrit :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">test
+test 1
+test2
+azertyuiop
+</code></pre></div>
+
+
+  <img src="/img/hacky2022/recoapp_test.png" alt="recoapp test" class="imageformat"/>
+
+<p>En répétant l&rsquo;opération on se rend compte que l&rsquo;outil ne met jamais la même &ldquo;notation&rdquo; à notre mot. On peut considérer que c&rsquo;est fait totalement aléatoirement. On utilise alors une liste de caractères spéciaux pour détecter un comportement anormal.</p>
+<p>Exemple :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">&amp;
+&#39;
+#
+||
+(
+)
+@
+_
+^
+)
+</code></pre></div>
+
+
+  <img src="/img/hacky2022/recoapp_test.png" alt="recoapp test" class="imageformat"/>
+
+<p>On voit que des caractères sont bien interprétés mais pourtant pas affiché. On voit aussi que seulement 4 lignes sont présentent.</p>
+<p>On test alors de chainer un caractère spécial avec une commande pour voir le résultat. avec le payload suivant : &amp;ls</p>
+
+
+
+  <img src="/img/hacky2022/recols.png" alt="recoapp ls" class="imageformat"/>
+
+<p>Il nous manque plus qu&rsquo;a affichier le résultat en envoyant une image contenant le texte <strong>&amp;cat flag</strong>.</p>
+
+
+
+  <img src="/img/hacky2022/recoflag.png" alt="recoapp result" class="imageformat"/>
+
+<h1 id="source">Source</h1>
+<p>Vous pouvez retrouver les sources de mes challenges ici : <a href="https://github.com/LOLOLEKIK/hackynov2022">https://github.com/LOLOLEKIK/hackynov2022</a></p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    
+    <a href="/writeups/fcsc-anssi/" class="navigation-next">
+      <span class="navigation-tittle">FCSC ANSSI 2020</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>
